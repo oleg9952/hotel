@@ -1,0 +1,85 @@
+.header_nav {
+    width: 98%;
+    height: 80px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 1fr 60% 1fr;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.nav_column {
+    border: 1px solid #fff;
+    position: relative;
+}
+
+.header_nav .nav_logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.9);
+}
+
+.header_nav .nav_items {
+    color: #fff;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+.nav_items .nav_item {
+    padding: 0 25px;
+    cursor: pointer;
+}
+
+.logged_in {
+    border: 1px solid red;
+    height: 80px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.logged_in .profile_circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: orange;
+    text-align: center;
+    cursor: pointer;
+}   
+
+.profile_nav {
+    background-color: orange;
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+
+.profile_nav .triangle {
+    width: 45px;
+    height: 45px;
+    background-color: inherit;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    transform: translateY(-50%) rotate(45deg);
+}
+
