@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
+import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
@@ -14,9 +15,12 @@ const Nav = () => {
             </div>
             <div className="nav_column">
                 <ul className="nav_items">
-                    <li className="nav_item">Home</li> 
+                    <Link to="/">
+                        <li className="nav_item">Home</li> 
+                    </Link>
                     <span className="divider-one">|</span>
-                    <li className="nav_item">Rooms
+                    <li className="nav_item">
+                        <Link to="/rooms">Rooms</Link>
                         <ul className="room_class">
                             <li className="class_item">VIP</li>
                             <li className="class_item">Bussines</li>
@@ -25,9 +29,13 @@ const Nav = () => {
                         </ul>
                     </li>
                     <span className="divider-two">|</span>
-                    <li className="nav_item">Gallery</li>
+                    <Link to="/gallery">
+                        <li className="nav_item">Gallery</li>
+                    </Link>
                     <span className="divider-three">|</span>
-                    <li className="nav_item">Contact</li> 
+                    <Link to="/contact">
+                        <li className="nav_item">Contact</li> 
+                    </Link>
                 </ul>
             </div>
             <div className="nav_column">

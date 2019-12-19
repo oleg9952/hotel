@@ -9,7 +9,7 @@
 .booking_widget {
     width: 80%;
     height: 200px;
-    margin: 0 auto;
+    margin: 0 auto 150px;
     border-radius: 35px;
     position: relative;
     box-shadow: 0 3px 20px -5px #444;   

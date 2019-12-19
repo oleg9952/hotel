@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
@@ -22,25 +23,25 @@ const Nav = () => {
                             <span className="item_icon">
                                 <i className="fas fa-h-square"></i>
                             </span>
-                            Home
+                            <Link to="/">Home</Link>
                         </li>
                         <li className="nav_item">
                             <span className="item_icon">
                                 <i className="fas fa-hotel"></i>
                             </span>
-                            Rooms
+                            <Link to="/rooms">Rooms</Link>
                         </li>
                         <li className="nav_item">
                             <span className="item_icon">
                                 <i className="fas fa-images"></i>
                             </span>
-                            Gallery
+                            <Link to="/gallery">Gallery</Link>
                         </li>
                         <li className="nav_item">
                             <span className="item_icon">
                                 <i className="fas fa-address-book"></i>
                             </span>
-                            Contact
+                            <Link to="/contact">Contact</Link>
                         </li>
                     </ul>
                 </div> 

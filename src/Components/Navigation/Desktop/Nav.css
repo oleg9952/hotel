@@ -15,6 +15,11 @@
     animation: animateNavBg 1s forwards;
 }
 
+.header_nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .nav_column {
     position: relative;
     /* border: 1px solid #fff; */
