@@ -1,9 +1,14 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleMobileNav } from '../../../store/actions/navActions'
 import './Nav.css'
 
 const Nav = () => {
+    const animIntro = useSelector(state => state.navReducers.intro)
+    const dispatch = useDispatch()
+
     return (
-        <div className="header_nav">
+        <div className="header_nav" style={{display: animIntro ? 'grid' : 'none'}}>
             <div className="nav_column">
                 <div className="nav_logo"></div>
             </div>
@@ -26,7 +31,7 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="nav_column">
-                {/* <div className="logged_in">
+                <div className="logged_in">
                     <div className="profile_circle">
                         S
                         <div className="hover_holder">
@@ -37,11 +42,11 @@ const Nav = () => {
                             </ul>
                         </div>
                     </div>
-                </div> */}
-                <div className="logged_out">
-                    <button className="log_in">Log in</button>
                 </div>
-                <div className="mobile_toggle">
+                {/* <div className="logged_out">
+                    <button className="log_in">Log in</button>
+                </div> */}
+                <div className="mobile_toggle" onClick={() => dispatch(toggleMobileNav())}>
                     <div></div>
                     <div></div>
                     <div></div>

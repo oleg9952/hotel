@@ -11,6 +11,7 @@
     grid-template-columns: 1fr 60% 1fr;
     align-items: center;
     padding: 0 15px;
+    z-index: 2;
 }
 
 .nav_column {
@@ -254,6 +255,8 @@
         margin-left: auto;
         position: relative;
         cursor: pointer;
+        opacity: 0;
+        animation: animateLogo 1s forwards;
     }
     .mobile_toggle div {
         width: 40px;

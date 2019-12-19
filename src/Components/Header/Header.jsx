@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Slider from 'react-slick'
+import { useDispatch, useSelector } from 'react-redux'
 import './Header.css'
 import Nav from '../Navigation/Desktop/Nav'
+import { animateIntro } from '../../store/actions/navActions'
 
 const Header = () => {
-    const [animTransition, setAnimTransition] = useState(true)
+    const animIntro = useSelector(state => state.navReducers.intro)
+    const dispatch = useDispatch()
     const settings = {
         dots: true,
         infinite: true,
@@ -19,7 +22,7 @@ const Header = () => {
 
     const delayHeaderBody = (delay) => {
         setTimeout(() => {
-            setAnimTransition(true)
+            dispatch(animateIntro())
         }, delay)
     }
 
@@ -29,11 +32,11 @@ const Header = () => {
 
     return (
         <div className="header">
-            {/* <div className="header_intro">
+            <div className="header_intro">
                 <p className="intro_title">Welcome to Hotel</p>
                 <p className="intro_subtitle">Some title below</p>
-            </div> */}
-            <div className="header_body" style={{display: animTransition ? 'block' : 'none'}}>
+            </div>
+            <div className="header_body" style={{display: animIntro ? 'block' : 'none'}}>
                 <Slider className="header_slider" {...settings}>
                     <div className="slide-one">
                         <div className="slide_title">
@@ -51,7 +54,7 @@ const Header = () => {
                         </div>
                     </div>
                 </Slider>
-                <Nav />
+                {/* <Nav /> */}
             </div>
         </div>
     )

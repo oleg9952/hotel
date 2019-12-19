@@ -51,7 +51,8 @@
     margin-bottom: 10px;
 }
 
-.logged_in--mobile .log_out {
+.logged_in--mobile .log_out,
+.logged_out--mobile .login_btn {
     width: 100px;
     height: 30px;
     color: #000;
@@ -64,8 +65,16 @@
     transition: .3s;
     margin: 0 auto;
 }
-.logged_in--mobile .log_out:hover {
+.logged_in--mobile .log_out:hover,
+.logged_out--mobile .login_btn:hover {
     background-color: rgba(255, 255, 255, 1);
+}
+
+.logged_out--mobile {
+    padding-top: 70px;
+}
+.logged_out--mobile .login_btn {
+    
 }
 
 .mobile_nav .nav_body {
@@ -74,7 +83,7 @@
     position: relative;
     z-index: 1;
     padding-left: 50px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .body_nav {
