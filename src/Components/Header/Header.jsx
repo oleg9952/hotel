@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import './Header.css'
-import Nav from './Navigation/Nav'
+import Nav from '../Navigation/Desktop/Nav'
 
 const Header = () => {
-    const [animTransition, setAnimTransition] = useState(false)
+    const [animTransition, setAnimTransition] = useState(true)
     const settings = {
         dots: true,
         infinite: true,
@@ -29,10 +29,10 @@ const Header = () => {
 
     return (
         <div className="header">
-            <div className="header_intro">
+            {/* <div className="header_intro">
                 <p className="intro_title">Welcome to Hotel</p>
                 <p className="intro_subtitle">Some title below</p>
-            </div>
+            </div> */}
             <div className="header_body" style={{display: animTransition ? 'block' : 'none'}}>
                 <Slider className="header_slider" {...settings}>
                     <div className="slide-one">

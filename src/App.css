@@ -1,8 +1,50 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
+body {
+    position: relative;
+    min-height: 100%;
+}
 
+.App {
+    min-height: 100vh;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transform: translateX(0%) scale(1);
+  transition: .5s;
+  box-shadow: -7px 0 20px -5px #000;
+  /* display: none; */
+  z-index: 1;
+}
+
+.wrapper.active {
+    transform: translateX(70%) scale(.8);
+    z-index: 1;
+}
+
+.close_nav {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: none;
+    border: 1px solid red;
+    background-color: #fff;
+}
+
+.content {
+    height: 1500px;
+    background-color: #fff;
+}

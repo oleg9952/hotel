@@ -41,6 +41,11 @@ const Nav = () => {
                 <div className="logged_out">
                     <button className="log_in">Log in</button>
                 </div>
+                <div className="mobile_toggle">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
             <div className="header_underline"></div>
         </div>

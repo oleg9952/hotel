@@ -216,7 +216,10 @@
 .logged_out .log_in:hover {
     background-color: #fff;
     color: #000;
+    margin-left: auto;
 }
+
+
 
 .header_underline {
     width: 0%;
@@ -231,8 +234,45 @@
 
 /*********** MOBILE ***********/
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 850px) {
+    .header_nav .nav_items,
+    .header_nav .logged_out,
+    .header_nav .logged_in {
+        display: none;
+    }
 
+    .header_nav .nav_column:nth-child(3) {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+    
+    .mobile_toggle {
+        width: 40px;
+        height: 30px;
+        /* background-color: #fff; */
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+    }
+    .mobile_toggle div {
+        width: 40px;
+        height: 5px;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        color: #fff;
+    }
+    .mobile_toggle div:nth-child(1) {
+        transform: translateY(-10px);
+    }
+    .mobile_toggle div:nth-child(2) {
+        width: 35px;
+    }
+    .mobile_toggle div:nth-child(3) {
+        transform: translateY(10px);
+    }
 }
 
 /*********** ANIMATIONS ***********/
