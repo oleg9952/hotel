@@ -105,3 +105,9 @@
 .body_nav .item_icon {
     font-size: 24px;
 }
+
+@media screen and (min-width: 850px) { 
+    .mobile_nav {
+        display: none;
+    }
+}

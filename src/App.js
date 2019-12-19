@@ -4,6 +4,7 @@ import { toggleMobileNav } from './store/actions/navActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
+import Footer from './Components/Footer/Footer'
 import DesktopNav from './Components/Navigation/Desktop/Nav'
 import MobileNav from './Components/Navigation/Mobile/Nav'
 
@@ -21,8 +22,9 @@ const App = () => {
         onClick={() => dispatch(toggleMobileNav())}
       ></div>
       <div className={`wrapper ${toggeleNav ? 'active' : ''}`}>
-        <Header />
+        {/* <Header /> */}
         <Content />
+        <Footer />
       </div>
     </div>
   );

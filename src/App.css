@@ -45,6 +45,8 @@ body {
 }
 
 .content {
-    height: 1500px;
-    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border: 1px solid red;
 }

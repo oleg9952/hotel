@@ -25,7 +25,7 @@ const Header = () => {
             dispatch(animateIntro())
         }, delay)
     }
-
+    
     useEffect(() => {
         delayHeaderBody(4500)
     }, [])
