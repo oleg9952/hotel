@@ -19,7 +19,7 @@ class FeedBack extends Component {
     render() {
         const settings = {
             dots: false,
-            arrows: true,
+            arrows: false,
             infinite: true,
             speed: 1000,
             slidesToShow: 3,

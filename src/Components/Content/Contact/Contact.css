@@ -1,0 +1,163 @@
+.contact {
+    min-height: 975px;
+    background-color: #fff;
+}
+
+.contact .contact_map {
+    height: 650px;
+    border: 2px solid black;
+    background-color: #fff;
+    position: relative;
+}
+
+.contact_map .contact_form {
+    width: 650px;
+    height: 500px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    box-shadow: 0px 7px 35px -15px #444;
+}
+
+.contact_form .contact_info {
+    height: 350px;
+    width: 290px;
+    background-color: #f74949;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-30%, -50%);
+    box-shadow: 0px 7px 25px -15px #444;
+    padding: 15px;
+    color: #fff;
+}
+
+.contact_info .info_title {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.contact_info .info_itmes {
+    list-style: none;
+    line-height: 50px;
+}
+
+.info_itmes .info_item {
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    grid-column-gap: 15px;
+    font-size: 18px;
+}
+
+.info_itmes a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.contact_form .form_inputs {
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 60%;
+    margin-left: auto;
+    padding-top: 20px;
+}
+
+.contact_form .form_title {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.contact_form .form_subtitle {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 20px;
+    width: 88%;
+}
+
+.contact_form .contact_input {
+    display: block;
+    width: 88%;
+    margin-bottom: 10px;
+    height: 50px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 0 20px;
+    outline: none;
+    font-size: 18px;
+}
+
+.contact_form .contact_message {
+    padding: 20px;
+    height: 150px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.contact_form .contact_send {
+    display: block;
+    padding: 10px 40px;
+    border: none;
+    background-color: #f74949;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/************** MEDIA AUERIES **************/
+
+@media screen and (max-width: 992px) {
+    .contact {
+        min-height: 1225px;
+    }
+
+    .contact_map .contact_form {
+        width: 650px;
+        min-height: 750px;
+        display: flex;
+        flex-direction: column-reverse;
+        transform: translate(-50%, 70%);
+    }
+
+    .contact_form .contact_info {
+        height: 300px;
+        width: 100%;
+        position: static;
+        transform: translate(0);
+    }
+
+    .contact_form .form_inputs {
+        height: 100%;
+        width: 100%;
+        padding: 20px 20px 0 20px;
+    }
+
+    .contact_form .contact_input {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .contact_map .contact_form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contact_map .contact_form {
+        min-height: 770px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .contact_map .contact_form {
+        min-height: 790px;
+    }
+}

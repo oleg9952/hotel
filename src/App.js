@@ -24,7 +24,7 @@ const App = () => {
           onClick={() => dispatch(toggleMobileNav())}
         ></div>
         <div className={`wrapper ${toggeleNav ? 'active' : ''}`}>
-          <Header />
+          {/* <Header /> */}
           <Content />
           <Footer />
         </div>

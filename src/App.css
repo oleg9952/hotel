@@ -22,7 +22,6 @@ body {
   transform: translateX(0%) scale(1);
   transition: .5s;
   box-shadow: -7px 0 20px -5px #000;
-  /* display: none; */
   z-index: 1;
 }
 
@@ -52,8 +51,7 @@ body {
 }
 
 .rooms,
-.gallery,
-.contact {
+.gallery {
     height: 150vh;
     text-align: center;
     background-color: #fff;
