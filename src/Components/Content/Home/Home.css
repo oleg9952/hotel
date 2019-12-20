@@ -1,5 +1,5 @@
 .home {
-    min-height: 100vh;
+    min-height: 150vh;
     background-color: #fff;
 }
 
@@ -8,7 +8,7 @@
 .booking_widget {
     width: 80%;
     height: 200px;
-    margin: 0 auto 150px;
+    margin: 0 auto 100px;
     border-radius: 35px;
     position: relative;
     box-shadow: 0 3px 20px -5px #444;   
@@ -61,7 +61,7 @@
 }
 .widget_inputs .input_item:nth-child(2) {
     background-image: url(../../../Assets/Home/Widget/resume.svg);  
-    background-size: 8%;  
+    background-size: 33px;  
 }
 .widget_inputs .input_item:nth-child(3),
 .widget_inputs .input_item:nth-child(4) {
@@ -83,4 +83,270 @@
     cursor: pointer;
     color: #fff;
     text-align: center;
+}
+
+/************** WHY_US **************/
+
+.why_us {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* padding-bottom: 50px; */
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.why_us .whyus_bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url(../../../Assets/Home/WhyUs/why-us-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    filter: brightness(50%);
+}
+
+.why_us .whyus_title {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 0 5px #444;
+}
+
+.why_us .content {
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    padding-bottom: 50px;
+}
+
+.why_us .whyus_card {
+    height: 300px;
+    width: 350px;
+    background-color: #fff;
+    box-shadow: 0 3px 15px -5px #444;
+    position: relative;
+    padding: 65px 15px 10px 15px;
+}
+
+.whyus_card .card_title,
+.whyus_card .card_details {
+    text-align: center;
+}
+
+.whyus_card .card_title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.whyus_card .card_details {
+    font-size: 18px;
+}
+
+.whyus_card .card_circle {
+    width: 70px;
+    height: 70px;
+    background-color: orange;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+}
+
+/************** FEEDBACK **************/
+
+.feedback {
+    height: 350px;
+    /* border: 3px solid green; */
+    position: relative;
+}
+
+.feedback .feedback_title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 45px;
+}
+
+.feedback .content {
+    padding: 0 20px;
+}
+
+.feedback_slider {
+    height: 210px;
+    margin-bottom: 20px;
+    position: relative;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback_slider .feedback_card {
+    height: 210px;
+    padding: 50px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+.feedback_card .card {
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0px 0px 15px -5px rgba(0,0,0,0.35);
+    padding: 40px 10px 10px;
+}
+
+.feedback_card .card_img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(104, 104, 104);
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.feedback_card .feedback_message {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.feedback_card .customer_details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* border: 1px solid black; */
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    padding: 0 10px;
+}
+
+.customer_details .customer_name {
+    font-weight: bold;
+}
+
+.feedback .slider_arrows {
+    width: 100px;
+    height: 45px;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider_arrows .slider_arrow {
+    background-color: #f0f0f0;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.slider_arrows .slider_arrow:hover {
+    background-color: #353535;
+    color: #fff;
+}
+
+/************** MEDIA AUERIES **************/
+
+@media screen and (max-width: 1170px) {
+
+    .why_us {
+        height: 870px;
+    }
+    
+    .why_us .content {
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .why_us {
+        height: 1210px;
+    }
+    
+    .why_us .content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .booking_widget {
+        width: 80%;
+        height: 330px;
+        margin: 0 auto 100px;
+        border-radius: 35px;
+        position: relative;
+        box-shadow: 0 3px 20px -5px #444;   
+        border: 5px solid #fff; 
+    }
+    
+    .widget_inputs {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        /* background-color: #fff; */
+        border-radius: 35px;
+        overflow: hidden;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: 0px;
+    }
+
+    .feedback .feedback_title {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .why_us {
+        height: 1050px;
+    }
+
+    .why_us .whyus_title {
+        top: 30px;
+        font-size: 30px;
+    }
+
+    .why_us .whyus_card {
+        height: 250px;
+        width: 300px;
+        padding: 50px 15px 10px 15px;
+    }
+    
+    .whyus_card .card_title {
+        font-size: 24px;
+    }
+    
+    .whyus_card .card_details {
+        font-size: 15px;
+    }
 }
