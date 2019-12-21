@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ReactMapGL, { Marker } from 'react-map-gl'
 import './Contact.css'
 
 const Contact = () => {
+    const [ mapViewPort, setMapViewPort ] = useState({
+        latitude: 25.774812761223764,
+        longitude: -80.19464284409483,
+        width: '100%',
+        height: '100%',
+        zoom: 13.5
+    })
+
+
     return (
         <div className="contact">
             <div className="contact_map">
+                <ReactMapGL 
+                    {...mapViewPort}
+                    mapboxApiAccessToken={'pk.eyJ1Ijoib2xlZzI1OTkiLCJhIjoiY2s0ZXRlZWp5MGZ4djNubGhudTEycWp1MCJ9.F1pKJlElFS_IFrzQSnPf-Q'}
+                    onViewportChange={viewport => setMapViewPort(viewport)}
+                    mapStyle={'mapbox://styles/oleg2599/ck4eurf9v0u621cqmo8nxfw2j'}
+                >
+                    <Marker
+                        key={1}
+                        latitude={25.777749797856167}
+                        longitude={-80.19477159012754}
+                    >
+                        <button className="location_pin"></button>
+                    </Marker>
+                </ReactMapGL>
                 <form className="contact_form">
                     <div className="contact_info">
                         <h2 className="info_title">Contact Us</h2>
