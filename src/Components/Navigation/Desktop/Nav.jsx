@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
-    const animIntro = useSelector(state => state.navReducers.intro)
+    const { intro, mobileNav } = useSelector(state => state.navReducers)
     const dispatch = useDispatch()
 
     return (
-        <div className="header_nav" style={{display: animIntro ? 'grid' : 'none'}}>
+        <div className="header_nav" style={{display: intro ? 'grid' : 'none'}}>
             <div className="nav_column">
                 <div className="nav_logo"></div>
             </div>
             <div className="nav_column">
                 <ul className="nav_items">
-                    <Link to="/">
-                        <li className="nav_item">Home</li> 
+                    <Link to="/" className="nav_item">
+                        <li>Home</li> 
                     </Link>
                     <span className="divider-one">|</span>
                     <li className="nav_item">
@@ -29,17 +29,17 @@ const Nav = () => {
                         </ul>
                     </li>
                     <span className="divider-two">|</span>
-                    <Link to="/gallery">
-                        <li className="nav_item">Gallery</li>
+                    <Link to="/gallery" className="nav_item">
+                        <li>Gallery</li>
                     </Link>
                     <span className="divider-three">|</span>
-                    <Link to="/contact">
-                        <li className="nav_item">Contact</li> 
+                    <Link to="/contact" className="nav_item">
+                        <li>Contact</li> 
                     </Link>
                 </ul>
             </div>
             <div className="nav_column">
-                <div className="logged_in">
+                {/* <div className="logged_in">
                     <div className="profile_circle">
                         S
                         <div className="hover_holder">
@@ -50,11 +50,11 @@ const Nav = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
-                {/* <div className="logged_out">
-                    <button className="log_in">Log in</button>
                 </div> */}
-                <div className="mobile_toggle" onClick={() => dispatch(toggleMobileNav())}>
+                <div className="logged_out">
+                    <button className="log_in">Log in</button>
+                </div>
+                <div className={`mobile_toggle ${mobileNav ? 'active' : ''}`} onClick={() => dispatch(toggleMobileNav())}>
                     <div></div>
                     <div></div>
                     <div></div>

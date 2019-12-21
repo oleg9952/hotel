@@ -1,51 +1,90 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleMobileNav } from '../../../store/actions/navActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
+    const mobileNav = useSelector(state => state.navReducers.mobileNav)
+    const dispatch = useDispatch()
+
     return (
-        <div className="mobile_nav">
-            <div className="nav_bg"></div>
+        <div className={`mobile_nav ${mobileNav ? 'active' : ''}`}>
             <div className="nav_holder">
-                <div className="nav_auth">
+                <div className="mobile_bg"></div>
+                <div className="nav_header">
+                    <div>
+                        <p className="header_title">Sections</p>
+                        <div className="title_underline"></div>
+                    </div>
                     <div className="logged_in--mobile">
                         <div className="profile_img"></div>
-                        <p className="user_email">user@gmail.com</p>
-                        <div className="log_out">Log out</div>
+                        <p className="user_name">Alex Brand</p>
+                        <p className="user_email">alex.brand@gmail.com</p>
                     </div>
-                    {/* <div className="logged_out--mobile">
-                        <div className="login_btn">Log in</div>
-                    </div> */}
                 </div>
                 <div className="nav_body">
-                    <ul className="body_nav">
+                    <ul className="mobile_items">
                         <li className="nav_item">
-                            <span className="item_icon">
-                                <i className="fas fa-h-square"></i>
+                            <span>
+                            <i className="fas fa-bookmark"></i>
                             </span>
-                            <Link to="/">Home</Link>
+                            My Bookings
                         </li>
                         <li className="nav_item">
-                            <span className="item_icon">
-                                <i className="fas fa-hotel"></i>
+                            <span>
+                                <i className="fas fa-user-circle"></i>
                             </span>
-                            <Link to="/rooms">Rooms</Link>
+                            Account
                         </li>
                         <li className="nav_item">
-                            <span className="item_icon">
-                                <i className="fas fa-images"></i>
+                            <span>
+                                <i className="fas fa-sign-out-alt"></i>
                             </span>
-                            <Link to="/gallery">Gallery</Link>
-                        </li>
-                        <li className="nav_item">
-                            <span className="item_icon">
-                                <i className="fas fa-address-book"></i>
-                            </span>
-                            <Link to="/contact">Contact</Link>
+                            Log out
                         </li>
                     </ul>
-                </div> 
+                    <ul className="mobile_items">
+                        <li className="nav_item">
+                            <span>
+                                <i className="fas fa-hotel"></i>
+                            </span>
+                            <Link 
+                                to="/" 
+                                onClick={() => dispatch(toggleMobileNav())}
+                            >Home</Link>
+                        </li>
+                        <li className="nav_item">
+                            <span>
+                                <i className="fas fa-door-open"></i>
+                            </span>
+                            <Link 
+                                to="/rooms"
+                                onClick={() => dispatch(toggleMobileNav())}
+                            >Rooms</Link>
+                        </li>
+                        <li className="nav_item">
+                            <span>
+                                <i className="fas fa-images"></i>
+                            </span>
+                            <Link 
+                                to="/gallery"
+                                onClick={() => dispatch(toggleMobileNav())}
+                            >Gallery</Link>
+                        </li>
+                        <li className="nav_item">
+                            <span>
+                                <i className="fas fa-address-book"></i>
+                            </span>
+                            <Link 
+                                to="/contact"
+                                onClick={() => dispatch(toggleMobileNav())}
+                            >Contact</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            
         </div>
     )
 }

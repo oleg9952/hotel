@@ -18,7 +18,7 @@ const Contact = () => {
                 <ReactMapGL 
                     {...mapViewPort}
                     mapboxApiAccessToken={'pk.eyJ1Ijoib2xlZzI1OTkiLCJhIjoiY2s0ZXRlZWp5MGZ4djNubGhudTEycWp1MCJ9.F1pKJlElFS_IFrzQSnPf-Q'}
-                    onViewportChange={viewport => setMapViewPort(viewport)}
+                    // onViewportChange={viewport => setMapViewPort(viewport)}
                     mapStyle={'mapbox://styles/oleg2599/ck4eurf9v0u621cqmo8nxfw2j'}
                 >
                     <Marker

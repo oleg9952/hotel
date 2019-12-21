@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import Slider from 'react-slick'
 import { useDispatch, useSelector } from 'react-redux'
 import './Header.css'
-import Nav from '../Navigation/Desktop/Nav'
+import DesktopNav from '../Navigation/Desktop/Nav'
+import MobileNav from '../Navigation/Mobile/Nav'
 import { animateIntro } from '../../store/actions/navActions'
 
 const Header = () => {
@@ -32,6 +33,7 @@ const Header = () => {
 
     return (
         <div className="header">
+            
             <div className="header_intro">
                 <p className="intro_title">Welcome to Hotel</p>
                 <p className="intro_subtitle">Some title below</p>
@@ -53,9 +55,10 @@ const Header = () => {
                             <p>Slide Title 3</p>
                         </div>
                     </div>
-                </Slider>
-                {/* <Nav /> */}
+                </Slider>  
             </div>
+            <MobileNav />
+            <DesktopNav />
         </div>
     )
 }

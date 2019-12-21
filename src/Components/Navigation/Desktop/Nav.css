@@ -60,6 +60,7 @@
     font-size: 24px;
     text-transform: uppercase;
 }
+.nav_items a,
 .nav_items .nav_item {
     padding: 0 25px;
     cursor: pointer;
@@ -243,6 +244,17 @@
 /*********** MOBILE ***********/
 
 @media screen and (max-width: 850px) {
+
+    .header_nav {
+        height: 50px;
+    }
+
+    .header_nav .nav_logo {
+        width: 35px;
+        height: 35px;
+        border: 6px solid rgba(255, 255, 255, 0.9);
+    }
+
     .header_nav .nav_items,
     .header_nav .logged_out,
     .header_nav .logged_in {
@@ -273,15 +285,31 @@
         right: 0;
         top: 50%;
         color: #fff;
+        transition: .5s;
     }
     .mobile_toggle div:nth-child(1) {
         transform: translateY(-10px);
     }
     .mobile_toggle div:nth-child(2) {
-        width: 35px;
+        width: 30px;
     }
     .mobile_toggle div:nth-child(3) {
         transform: translateY(10px);
+    }
+
+    .mobile_toggle.active div:nth-child(1) {
+        top: 50%;
+        right: 0;
+        transform: translate(0%, -50%) rotate(-45deg);   
+    }
+    .mobile_toggle.active div:nth-child(2) {
+        width: 30px;
+        opacity: 0;
+    }
+    .mobile_toggle.active div:nth-child(3) {
+        top: 50%;
+        right: 0;
+        transform: translate(0%, -50%) rotate(45deg);   
     }
 }
 
