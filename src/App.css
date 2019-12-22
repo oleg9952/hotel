@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+/* font-family: 'Muli', sans-serif; */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,13 +10,9 @@
 body {
     position: relative;
     min-height: 100%;
+    font-family: 'Muli', sans-serif;
 }
 
-.wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fff;
-}
 
 .content {
     max-width: 1200px;
@@ -21,7 +20,6 @@ body {
     padding-top: 50px;
 }
 
-.rooms,
 .gallery {
     height: 150vh;
     text-align: center;
