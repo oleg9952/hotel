@@ -1,7 +1,8 @@
 /*********** ROOMS ***********/
 
 .rooms {
-    min-height: 150vh;
+    /* min-height: 150vh; */
+    padding-bottom: 30px;
 }
 
 .rooms .content {
@@ -22,7 +23,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    transform: translate(-15px, 100px);
+    transform: translate(-15px, 150px);
     background-color: #fff;
     z-index: 2;
     padding-left: 25px;
@@ -459,10 +460,12 @@
         overflow: hidden;
         position: fixed;
         z-index: 2;
-        transform: translateX(0%);
+        top: 0;
+        left: 0;
+        transform: translateX(0%) !;
         visibility: hidden;
         opacity: 0;
-        transition: .3s;
+        transition: .3s ;
     }
     .filters_bg.active {
         visibility: visible;
@@ -471,11 +474,11 @@
 
     .rooms_column .filters_holder {
         width: 180px;
+        padding-top: 65px;
         position: absolute;
         transform: translateX(-100%);
         background-color: #fff;
         transition: .3s;
-        
     }
     .rooms_column .filters_holder.active {
         transform: translateX(0%);
