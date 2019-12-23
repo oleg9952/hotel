@@ -454,7 +454,6 @@
 
     .filters_bg {
         background-color: rgba(0, 0, 0, 0.6);
-        border: 1px solid black;
         width: 100vw;
         min-height: 100vh;
         overflow: hidden;
