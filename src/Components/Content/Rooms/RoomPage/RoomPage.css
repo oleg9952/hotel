@@ -1,0 +1,224 @@
+/************* GENERAL *************/
+
+.room_page {
+    min-height: 150vh;
+    font-size: 18px;
+}
+
+.room_page .room_header {
+    padding-top: 90px;
+    background-color: #eeeef0;
+    padding-bottom: 100px;
+    border: 1px solid red;
+}
+
+.room_header .content {
+    padding-top: 0;
+    border: 1px solid #000;
+    display: grid;
+    grid-template-columns: 60% 1fr;
+}
+
+/************* HEADER *************/
+
+.room_header .header_column {
+    border: 1px solid black;
+    min-height: 500px;
+}
+
+
+/**************************/
+
+
+.room_header .room_booking > * {
+    margin-bottom: 20px;
+}
+
+.room_booking .room_title {
+    font-size: 30px;
+    color: red;
+}
+
+.room_booking .room_calendar {
+    width: 300px;
+    height: 250px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 25px -3px rgba(68, 68, 68, 0.4);
+    border-radius: 10px;
+}
+
+.room_booking .room_guests {
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+}
+
+.room_guests .guests_number {
+    height: 100%;
+    outline: none;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+.room_guests .guests_number:focus {
+    border: 2px solid orange;
+}
+
+.room_booking .book_btn {
+    padding: 15px 50px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    outline: none;
+    transition: .3s;
+}
+
+.room_booking .book_btn:hover {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.room_booking .book_btn:focus {
+    border: 2px solid orange;
+}
+
+/************* BODY *************/
+
+.room_page .room_body {
+    background-color: #fff;
+}
+
+.room_body .content {
+    padding-top: 0;
+}
+
+.room_body .body_nav {
+    height: 50px;
+    border: 1px solid green;
+    display: flex;
+    position: relative;
+}
+
+.room_body .nav_item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 150px;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.room_body .nav_item.active {
+    font-weight: bold;
+}
+
+.room_body .nav_underline {
+    height: 3px;
+    background-color: violet;
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.room_body .body_pages {
+    min-height: 100vh;
+    border: 2px solid orange;
+    position: relative;
+    overflow: hidden;
+}
+
+.room_body .body_pages > div {
+    background-color: #fff;
+    display: none;
+    padding: 20px;
+    animation: transitionTabs .3s forwards;
+}
+
+.room_body .body_pages h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.room_body .details.active,
+.room_body .reviews.active {
+    opacity: 1;
+    display: block;
+}
+
+@keyframes transitionTabs {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.room_body .feedback_card {
+    margin-bottom: 55px;
+}
+
+.room_body .card {
+    padding: 40px 20px 20px 20px;
+}
+
+.room_body .feedback_message  {
+    font-size: 18px;
+}
+
+.new_review .feedback_card {
+    width: 80%;
+    margin: 0 auto 15px;
+}
+
+.new_review .card {
+    height: 200px;
+}
+
+.new_review .card_img {
+    background-color: orange;
+}
+
+.new_review .new_message {
+    width: 100%;
+    resize: none;
+    height: 100%;
+    padding: 20px;
+    font-size: 18px;
+    font-style: italic;
+    outline: none;
+    border: none;
+}
+
+.new_review .customer_details {
+    position: absolute;
+    top: 0;
+    padding-left: 90px;
+    padding-top: 15px;
+    height: 30px;
+}
+
+.new_review .review_btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background-color: orange;
+    box-shadow: 0 5px 15px -5px rgba(68, 68, 68, 0.8);
+    cursor: pointer;
+}
+
+
+
+
+
+

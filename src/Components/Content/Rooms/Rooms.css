@@ -31,10 +31,6 @@
     transition: .3s;
 }
 
-.rooms .rooms_column {
-    /* border: 2px solid orange; */
-}
-
 .rooms .rooms_column:nth-child(2) {
     padding: 10px;
 }
