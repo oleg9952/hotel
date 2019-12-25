@@ -25,7 +25,6 @@ const RoomSlider = () => {
         slidesToScroll: 1
     }
     
-
     return (
         <Slider
             className="room_slider"

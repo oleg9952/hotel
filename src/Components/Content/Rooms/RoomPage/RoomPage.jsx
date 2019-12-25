@@ -17,26 +17,29 @@ const RoomPage = () => {
                         <RoomSlider />
                     </div>
                     <form className="header_column room_booking">
-                        <h1 className="room_title">
-                            Room Title And so On
-                        </h1>
-                        <div className="room_rating">
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="far fa-star"></i>
-                            </span>
+                        <div className="title_rating">
+                            <h1 className="room_title">
+                                Room Title And so On
+                            </h1>
+                            <div className="room_rating">
+                                <span>
+                                    <i className="fas fa-star"></i>
+                                </span>
+                                <span>
+                                    <i className="fas fa-star"></i>
+                                </span>
+                                <span>
+                                    <i className="fas fa-star"></i>
+                                </span>
+                                <span>
+                                    <i className="fas fa-star"></i>
+                                </span>
+                                <span>
+                                    <i className="far fa-star"></i>
+                                </span>
+                            </div>
                         </div>
+                        
                         <div className="room_calendar">
                             <h2>Booking Calendar</h2>
                         </div>
@@ -74,6 +77,13 @@ const RoomPage = () => {
                         <div className={`reviews ${!toggleBody ? 'active' : ''}`}>
                             <h2>Reviews</h2>
                             <div className="customer_reviews">
+                                <ReviewComment />
+                                <ReviewComment />
+                                <ReviewComment />
+                                <ReviewComment />
+                                <ReviewComment />
+                                <ReviewComment />
+                                <ReviewComment />
                                 <ReviewComment />
                                 <ReviewComment />
                                 <ReviewComment />

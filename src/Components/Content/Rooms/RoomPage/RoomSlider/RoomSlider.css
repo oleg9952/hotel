@@ -1,6 +1,6 @@
 .room_slider {
     height: 80%;
-    width: 80%;
+    max-width: 90%;
     position: relative;
     margin: 0 auto;
 }
@@ -12,6 +12,7 @@
 
 .room_slider .slick-slide div {
     height: 100%;
+    outline: none;
 }
 
 .room_slider .slide {
