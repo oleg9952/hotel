@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "name": "name...",
+        "type": "type...",
+        "price": 25,
+        "imgBaseUrl": "/Assets/RoomPage/",
+        "img": [
+            "/Assets/RoomPage/1.jpg",
+            "/Assets/RoomPage/2.jpg",
+            "/Assets/RoomPage/3.jpg",
+            "/Assets/RoomPage/4.jpg"
+        ]
+    }
+]

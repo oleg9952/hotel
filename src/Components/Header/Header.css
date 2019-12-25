@@ -65,13 +65,13 @@
     position: relative;
 }
 .header_slider .slide-one {
-    background-image: url(../../Assets/Header/header_bg1.jpg);
+    background-image: url(/Assets/Header/header_bg1.jpg);
 }
 .header_slider .slide-two {
-    background-image: url(../../Assets/Header/header_bg2.jpg);
+    background-image: url(/Assets/Header/header_bg2.jpg);
 }
 .header_slider .slide-three {
-    background-image: url(../../Assets/Header/header_bg3.jpg);
+    background-image: url(/Assets/Header/header_bg3.jpg);
 }
 
 

@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import ReviewComment from './ReviewComment'
+import RoomSlider from './RoomSlider/RoomSlider'
 import './RoomPage.css'
 
 const RoomPage = () => {
     const [ toggleBody, setToggleBody ] = useState(true)
 
-    const handleToggleBody = () => setToggleBody(!toggleBody)
+    const switchToDetails = () => setToggleBody(true)
+    const switchToReviews = () => setToggleBody(false)
 
     return (
         <div className="room_page">
             <div className="room_header">
                 <div className="content">
                     <div className="header_column room_preview">
+                        <RoomSlider />
                     </div>
                     <form className="header_column room_booking">
                         <h1 className="room_title">
@@ -54,10 +57,10 @@ const RoomPage = () => {
                 <div className="content">
                     <div className="body_nav">
                         <div className={`nav_item ${toggleBody ? 'active' : ''}`}
-                            onClick={handleToggleBody}
+                            onClick={switchToDetails}
                         >Description</div>
                         <div className={`nav_item ${!toggleBody ? 'active' : ''}`}
-                            onClick={handleToggleBody}
+                            onClick={switchToReviews}
                         >Reviews</div>
                     </div>
                     <div className="body_pages">
