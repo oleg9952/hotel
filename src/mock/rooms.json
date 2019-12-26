@@ -299,19 +299,6 @@
         ]
     },
     {
-        "id": 23,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
-        "imgBaseUrl": "/Assets/RoomPage/room_",
-        "img": [
-            "1.jpg",
-            "2.jpg",
-            "3.jpg",
-            "4.jpg"
-        ]
-    },
-    {
         "id": 24,
         "name": "name...",
         "type": "type...",

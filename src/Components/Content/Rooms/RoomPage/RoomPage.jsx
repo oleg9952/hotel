@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
 import './RoomPage.css'
 
-const RoomPage = () => {
+const RoomPage = (props) => {
+    const { rooms } = useSelector(state => state.roomsReducers)
+    const room = rooms[props.match.params.id - 1]
+
     const [ toggleBody, setToggleBody ] = useState(true)
 
     const switchToDetails = () => setToggleBody(true)
@@ -14,12 +18,21 @@ const RoomPage = () => {
             <div className="room_header">
                 <div className="content">
                     <div className="header_column room_preview">
-                        <RoomSlider />
+                        {
+                            room !== undefined ? (
+                                <RoomSlider
+                                    room={room}
+                                />
+                            ) : ''
+                        }
                     </div>
                     <form className="header_column room_booking">
                         <div className="title_rating">
                             <h1 className="room_title">
-                                Room Title And so On
+                                { 
+                                    room !== undefined ?
+                                    room.name : '' 
+                                }
                             </h1>
                             <div className="room_rating">
                                 <span>

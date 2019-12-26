@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
-const Card = () => {
-    const [ details, setDetails ] = useState(false)
+import { Link } from 'react-router-dom'
 
+
+const Card = (props) => {
+    const { id, name, type, price, imgBaseUrl, img } = props.room
+    const [ details, setDetails ] = useState(false)
+    
     const handleDetailsToggle = () => setDetails(!details)
 
     return (
         <div className="room_card">
-            <div className="card_img">
+            <div className="card_img"
+                style={{ backgroundImage: `url(${imgBaseUrl + id}/${img[0]})` }}
+            >
                 <div className="card_info" onClick={handleDetailsToggle}>
                     {details ? (
                         <>
@@ -21,7 +27,9 @@ const Card = () => {
                 </div>
             </div>
             <div className="card_details">
-                <p className="card_title">Queen Room</p>
+                <Link to={`/rooms/${id}`}>
+                    <p className="card_title">{ name }</p>
+                </Link>
                 <div className="card_rating">
                     <span>
                         <i className="fas fa-star"></i>
@@ -41,14 +49,14 @@ const Card = () => {
                 </div>
                 <p className="card_reviews">16 Reviews</p>
                 <div className="card_price">
-                    <p>75$</p>
+                    <p>{ price }$</p>
                     <p>night</p>
                 </div>
             </div>
             <div className={`card_info--toggle ${details ? 'active' : ''}`}>
                 <p className="info_title">Details</p>
                 <p className="info_number">Rooms: 3</p>
-                <p className="info_type">Type: VIP</p>
+                <p className="info_type">Type: { type }</p>
                 <p className="info_status">Status: avaliable</p>
             </div>
         </div>

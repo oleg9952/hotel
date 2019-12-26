@@ -3,14 +3,16 @@ import Slider from 'react-slick'
 import data from '../../../../../mock/rooms.json'
 import './RoomSlider.css'
 
-const RoomSlider = () => {
+const RoomSlider = (props) => {
+    const { id, imgBaseUrl, img } = props.room
+
     const settings = {
         customPaging: function(i) {
             return (
                 <div 
                     className="slide_thumb"
                     style={{
-                        backgroundImage: `url(${data[0].imgBaseUrl + data[0].id}/${i + 1}.jpg)`
+                        backgroundImage: `url(${imgBaseUrl + id}/${i + 1}.jpg)`
                     }}
                 >
                 </div>
@@ -31,11 +33,11 @@ const RoomSlider = () => {
             {...settings}
         >  
             {
-                data[0].img.map(item => (
+                img.map(item => (
                     <div className="slide" key={item.length}>
                         <div className="slide_img"
                             style={{
-                                backgroundImage: `url(${data[0].imgBaseUrl + data[0].id}/${item})`
+                                backgroundImage: `url(${imgBaseUrl + id}/${item})`
                             }}
                         >
                         </div>

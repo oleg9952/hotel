@@ -14,7 +14,7 @@ const Content = () => {
                 <Route path="/rooms" exact component={Rooms} />
                 <Route path="/gallery" exact component={Gallery} />
                 <Route path="/contact" exact component={Contact} />
-                <Route path="/rooms/roompage" exact component={RoomPage} />
+                <Route path="/rooms/:id" exact component={RoomPage} />
             </Switch>
         </div>
     )

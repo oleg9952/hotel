@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Card from './Card'
 import Filter from './Filter'
 import Sort from './Sort'
 import './Rooms.css'
 
 const Rooms = () => {
+    const { rooms } = useSelector(state => state.roomsReducers)
     const [toggleFilters, setToggleFilters] = useState(false)
+
 
     const handleFiltersMobile = () => setToggleFilters(!toggleFilters)
 
@@ -20,16 +23,16 @@ const Rooms = () => {
                 <div className="rooms_column">
                     <Sort />
                     <div className="cards_holder">
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                        {
+                            rooms.length !== 0 ?
+                            rooms.map(room => (
+                                <Card 
+                                    key={room.id}
+                                    room={room}
+                                />
+                            )) : ''
+                        }
+                        {/* <Card /> */}
                     </div>
                 </div>
                 <div className={`filter_toggle ${toggleFilters ? 'active' : ''}`}
