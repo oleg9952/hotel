@@ -10,7 +10,7 @@ const RoomSlider = () => {
                 <div 
                     className="slide_thumb"
                     style={{
-                        backgroundImage: `url(${data[0].imgBaseUrl}${i + 1}.jpg)`
+                        backgroundImage: `url(${data[0].imgBaseUrl + data[0].id}/${i + 1}.jpg)`
                     }}
                 >
                 </div>
@@ -35,7 +35,7 @@ const RoomSlider = () => {
                     <div className="slide" key={item.length}>
                         <div className="slide_img"
                             style={{
-                                backgroundImage: `url(${item})`
+                                backgroundImage: `url(${data[0].imgBaseUrl + data[0].id}/${item})`
                             }}
                         >
                         </div>
