@@ -238,13 +238,12 @@
 /*********** CARD ***********/
 
 .rooms_column .cards_holder {
-    /* border: 1px solid black; */
     min-height: 200px;
     width: 795px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px 20px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 
 .cards_holder .room_card {
@@ -401,6 +400,40 @@
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 5px;
+}
+
+/*********** PAGINATION ***********/
+
+.pagination {
+    width: 315px;
+    margin: 0 auto;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+}
+
+.pagination .pagin_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.pagination .pagin_btn:hover,
+.pagination .pagin_numbers > p:hover {
+    color: orange;
+}
+
+.pagination .pagin_numbers {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagin_numbers > p {
+    cursor: pointer;
+    font-size: 18px;
 }
 
 

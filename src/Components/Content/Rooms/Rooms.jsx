@@ -3,12 +3,20 @@ import { useSelector } from 'react-redux'
 import Card from './Card'
 import Filter from './Filter'
 import Sort from './Sort'
+import Pagination from './Pagination'
 import './Rooms.css'
 
 const Rooms = () => {
-    const { rooms } = useSelector(state => state.roomsReducers)
     const [toggleFilters, setToggleFilters] = useState(false)
+    const { 
+        rooms, 
+        currentPage, 
+        roomsPerPage 
+    } = useSelector(state => state.roomsReducers)
 
+    const indexOfLastRoom = currentPage * roomsPerPage
+    const indexOfFirstRoom = indexOfLastRoom - roomsPerPage
+    const currentRooms = rooms.slice(indexOfFirstRoom, indexOfLastRoom)    
 
     const handleFiltersMobile = () => setToggleFilters(!toggleFilters)
 
@@ -24,16 +32,20 @@ const Rooms = () => {
                     <Sort />
                     <div className="cards_holder">
                         {
-                            rooms.length !== 0 ?
-                            rooms.map(room => (
+                            currentRooms.length !== 0 ?
+                            currentRooms.map(room => (
                                 <Card 
                                     key={room.id}
                                     room={room}
                                 />
                             )) : ''
                         }
-                        {/* <Card /> */}
                     </div>
+                    <Pagination 
+                        currentPage={currentPage}
+                        roomsPerPage={roomsPerPage}
+                        totalOfRooms={rooms.length}
+                    />
                 </div>
                 <div className={`filter_toggle ${toggleFilters ? 'active' : ''}`}
                     onClick={handleFiltersMobile}

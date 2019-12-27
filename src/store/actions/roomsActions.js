@@ -6,3 +6,23 @@ export const fetchRooms = () => dispatch => {
         payload: data.default
     }))
 }
+
+export const switchPage = page => {
+    return {
+        type: 'SWITCH_PAGE',
+        payload: page
+    }
+}
+
+export const switchNextPage = page => {
+    return {
+        type: 'SWITCH_NEXT',
+        payload: page
+    }
+}
+
+export const switchPrevPage = () => {
+    return {
+        type: 'SWITCH_PREV'    
+    }
+}
