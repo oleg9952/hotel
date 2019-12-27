@@ -1,0 +1,266 @@
+.booking_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+
+.booking_bg.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.booking_modal {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0px 6px 30px -10px rgba(0,0,0,0.83);
+    border-radius: 25px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    /* display: none; */
+}
+
+.booking_modal .modal_header {
+    background-color: #ccc;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.booking_modal .modal_title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #747474;
+}
+
+.booking_modal .modal_close {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.booking_modal .modal_close:hover {
+    animation: animateBtnClose .5s forwards;
+}
+
+.modal_close > div {
+    width: 25px;
+    height: 4px;
+    background-color: #747474;
+    position: absolute;
+}
+.modal_close > div:nth-child(1) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.modal_close > div:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.booking_modal .modal_body {
+    position: relative;
+    display: grid;
+    grid-template-columns: 60% 1fr;
+}
+
+.booking_modal .body_column:nth-child(1) {
+    position: relative;
+}
+
+/*************** OVERWRITING STYLES FOR SLIDER ***************/
+
+.booking_modal .room_slider {
+    max-width: 360px;
+    /* border: 1px solid black; */
+}
+
+.booking_modal .slick-dots {
+    bottom: -5px;
+}
+
+.booking_modal .slick-dots > li {
+    width: 50px;
+    height: 50px;
+}
+
+/*************** BOOKING STEPS ***************/
+
+.booking_modal .steps {
+    position: relative;
+    overflow: hidden;
+}
+
+/*----- STEP-1 -----*/
+
+.booking_modal .booking_date {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    transform: translateX(0%);
+    transition: .5s;
+}
+
+.booking_modal .booking_date.active {
+    transform: translateX(-100%);
+}
+
+.booking_modal .booking_title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.booking_modal .booking_calendar {
+    width: 100%;
+    height: 50%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.booking_modal .booking_guests {
+    height: 30px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.booking_guests select {
+    height: 100%;
+    border: none;
+    background-color: orange;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.booking_modal .modal_btn {
+    display: block;
+    padding: 8px 35px;
+    font-size: 18px;
+    border: none;
+    background-color: orange;
+    color: #fff;
+    outline: none;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+/*----- STEP-2 -----*/
+
+.booking_services {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    transition: .5s;
+    transform: translateX(100%);
+}
+
+.booking_services.active {
+    transform: translateX(0%);
+}
+
+.booking_services .services_title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.services_options {
+    margin-bottom: 35px;
+}
+
+.services_options .service_item {
+    width: 150px;
+    height: 30px;
+    background-color: #fff;
+    margin: 0 auto 10px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px -7px #000000;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.services_options .service_name {
+    padding-left: 15px;
+}
+
+.services_options .service_select {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: orange;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.service_select > div {
+    width: 15px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.service_select > div:last-child {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.booking_services .booking_price {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 48px;
+}
+
+
+
+/*************** ANIMATIONS ***************/
+
+@keyframes animateBtnClose {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}

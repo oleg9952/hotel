@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setCurrentBooking } from '../../../store/actions/bookingActions'
 import { Link } from 'react-router-dom'
 
 
 const Card = (props) => {
+    const dispatch = useDispatch()
+
     const { id, name, type, price, imgBaseUrl, img } = props.room
     const [ details, setDetails ] = useState(false)
     
@@ -21,7 +25,9 @@ const Card = (props) => {
                         </>
                     ) : 'i'}
                 </div>
-                <div className="card_select">
+                <div className="card_select"
+                    onClick={() => dispatch(setCurrentBooking(props.room))}
+                >
                     <div></div>
                     <div></div>
                 </div>

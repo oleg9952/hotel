@@ -1,6 +1,5 @@
 import React from 'react'
 import Slider from 'react-slick'
-import data from '../../../../../mock/rooms.json'
 import './RoomSlider.css'
 
 const RoomSlider = (props) => {
