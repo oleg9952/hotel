@@ -5,7 +5,6 @@ const initState = {
 export default (state = initState, action) => {
     switch(action.type) {
         case 'SET_CURRENT_BOOKING':
-            // console.log(action.payload)
             return {
                 ...state,
                 currentBooking: action.payload
