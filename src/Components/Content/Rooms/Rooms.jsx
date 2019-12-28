@@ -4,7 +4,7 @@ import Card from './Card'
 import Filter from './Filter'
 import Sort from './Sort'
 import Pagination from './Pagination'
-import BookingModal from './BookingModal/BookingModal'
+import BookingModal from '../../Modals/BookingModal/BookingModal'
 import './Rooms.css'
 
 const Rooms = () => {

@@ -8,6 +8,7 @@
 .room_slider .slick-list,
 .room_slider .slick-track {
     height: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .room_slider .slick-slide div {
@@ -38,6 +39,7 @@
     width: 80px;
     opacity: .6;
     transition: .3s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .room_slider .slick-dots > li.slick-active {

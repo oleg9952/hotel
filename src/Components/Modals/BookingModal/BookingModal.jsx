@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { resetCurrentBooking } from '../../../../store/actions/bookingActions'
-import RoomSlider from '../RoomPage/RoomSlider/RoomSlider'
+import { resetCurrentBooking } from '../../../store/actions/bookingActions'
+import RoomSlider from '../../Content/Rooms/RoomPage/RoomSlider/RoomSlider'
 import './BookingModal.css'
 
 const BookingModal = () => {

@@ -22,10 +22,6 @@
 
 /************* HEADER *************/
 
-.room_header .header_column {
-    /* border: 1px solid black; */
-}
-
 .room_header .room_preview {
     width: 100%;
 }
@@ -56,8 +52,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-shadow: 0 5px 25px -3px rgba(68, 68, 68, 0.4);
-            box-shadow: 0 5px 25px -3px rgba(68, 68, 68, 0.4);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     border-radius: 10px;
 }
 
@@ -93,6 +88,7 @@
     -webkit-transition: .3s;
     transition: .3s;
     border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .room_booking .book_btn:hover {
@@ -107,7 +103,7 @@
 /************* BODY *************/
 
 .room_page .room_body {
-    background-color: #fff;
+    background-color: #fafafa;
 }
 
 .room_body .content {
@@ -146,7 +142,6 @@
 }
 
 .room_body .body_pages > div {
-    background-color: #fff;
     display: none;
     padding: 20px 20px 80px 20px;
     -webkit-animation: transitionTabs .3s forwards;
@@ -190,6 +185,8 @@
 .room_body .card {
     padding: 40px 20px 20px 20px;
     height: auto;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .room_body .feedback_message  {
@@ -199,10 +196,12 @@
 .new_review .feedback_card {
     width: 80%;
     margin: 0 auto 15px;
+    
 }
 
 .new_review .card {
     height: 200px;
+    background-color: #fff;
 }
 
 .new_review .card_img {
@@ -218,6 +217,7 @@
     font-style: italic;
     outline: none;
     border: none;
+    background: #fff;
 }
 
 .new_review .customer_details {

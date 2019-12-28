@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
 import Footer from './Components/Footer/Footer'
+import BookingCart from './Components/Modals/BookingCart/BookingCart'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -17,9 +18,10 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {/* <Header /> */}
+        <Header />
         <Content />
         <Footer />
+        <BookingCart />
       </div>
     </Router>
   );
