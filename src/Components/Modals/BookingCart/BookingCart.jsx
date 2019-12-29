@@ -1,107 +1,85 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleCart } from '../../../store/actions/bookingActions'
+import OverviewItem from './OverviewItem'
 import './BookingCart.css'
 
 const BookingCart = () => {
+    const dispatch = useDispatch()
+    const { cartToggle } = useSelector(state => state.bookingReducers)
+
     return (
-        <div className="booking_cart">
-            <div className="cart_close">
+        <div className={`booking_cart ${cartToggle ? 'active' : ''}`}>
+            <div className="cart_close"
+                onClick={() => dispatch(toggleCart())}
+            >
                 <div></div>
                 <div></div>
-            </div>
-            <div className="cart_open hide">
-                <i className="fas fa-shopping-cart"></i>
             </div>
             <h2 className="cart_title">Your booking overview</h2>
             <div className="cart_overview">
-                <div className="overview_item">
-                    <div className="item_column">k</div>
-                    <div className="item_column">
-                        <p className="item_title">Classic Room</p>
-                        <div className="room_rating">
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="far fa-star"></i>
-                            </span>
-                        </div>
-                        <p className="overview_check">Check in: 28.12.2019</p>
-                        <p className="overview_check">Check out: 31.12.2019</p>
-                    </div>
-                    <div className="item_column">
-                        <p className="overview_check">Rooms: 02</p>
-                        <p className="overview_check">Guests: 03</p>
-                        <div className="price_holder">
-                            <p>Price</p>
-                            <p>$157</p>
-                        </div>
-                    </div>
-                    <div className="item_column">
-                        <div className="price_holder">
-                            <p>Price</p>
-                            <p>$157</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div className="overview_item">
-                    <div className="item_column">k</div>
-                    <div className="item_column">
-                        <p className="item_title">Classic Room</p>
-                        <div className="room_rating">
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-star"></i>
-                            </span>
-                            <span>
-                                <i className="far fa-star"></i>
-                            </span>
-                        </div>
-                        <p className="overview_check">Check in: 28.12.2019</p>
-                        <p className="overview_check">Check out: 31.12.2019</p>
-                    </div>
-                    <div className="item_column">
-                        <p className="overview_check">Rooms: 02</p>
-                        <p className="overview_check">Guests: 03</p>
-                        <div className="price_holder">
-                            <p>Price</p>
-                            <p>$157</p>
-                        </div>
-                    </div>
-                    <div className="item_column">
-                        <div className="price_holder">
-                            <p>Price</p>
-                            <p>$157</p>
-                        </div>
-                        
-                    </div>
-                </div>
+                <OverviewItem />
+                <OverviewItem />
                 <div className="overview_item final">
                     <div className="final_holder">
                         <p>Totla Price</p>
                         <p>$333</p>
                     </div>
                 </div>
+                <div className="overview_item confirmation">
+                    <button className="confirmation_btn">Confirmation</button>
+                </div>
             </div>
+            <h2 className="cart_title">Confirm your reservation</h2>
             <div className="cart_confirmation">
-                
+                <div className="confirmation_inputs">
+                    <input 
+                        type="text" 
+                        name="first_name"
+                        placeholder="First Name"
+                    />
+                    <input 
+                        type="text" 
+                        name="last_name"
+                        placeholder="Last Name"
+                    />
+                    <input 
+                        type="email" 
+                        name="email"
+                        placeholder="Email Address"
+                    />
+                    <input 
+                        type="tel" 
+                        name="phone_number" 
+                        placeholder="Phone Number"
+                    />
+                    <input 
+                        type="text" 
+                        name="country"
+                        placeholder="Country"
+                    />
+                    <input 
+                        type="number" 
+                        name="zip_code"
+                        placeholder="Zip Code"
+                    />
+                </div>
+                <textarea name="order_notes" placeholder="Order Notes"></textarea>
+                <div className="payment_options">
+                    <div className="option">
+                        <label>
+                            <input type="radio" name="payment" />
+                            <span>Payment directly at Hotel</span>
+                        </label>
+                    </div>
+                    <div className="option">
+                        <label>
+                            <input type="radio" name="payment" />
+                            <span>Payment online</span>
+                        </label>
+                    </div>
+                </div>
+                <button className="confirmation_btn">Confirmation</button>
             </div>
         </div>
     )

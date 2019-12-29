@@ -10,3 +10,9 @@ export const resetCurrentBooking = () => {
         type: 'RESET_BOOKING'
     }
 }
+
+export const toggleCart = () => {
+    return {
+        type: 'TOGGLE_CART'
+    }
+}

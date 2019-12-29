@@ -1,5 +1,6 @@
 const initState = {
-    currentBooking: null
+    currentBooking: null,
+    cartToggle: false
 }
 
 export default (state = initState, action) => {
@@ -13,6 +14,11 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 currentBooking: null
+            }
+        case 'TOGGLE_CART':
+            return {
+                ...state,
+                cartToggle: !state.cartToggle
             }
         default:
             return state
