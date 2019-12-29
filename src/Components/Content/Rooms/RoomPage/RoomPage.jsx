@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
 import './RoomPage.css'
 
 const RoomPage = (props) => {
+    const dispatch = useDispatch()
     const { rooms } = useSelector(state => state.roomsReducers)
 
     const room = () => {
@@ -17,6 +18,11 @@ const RoomPage = (props) => {
 
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
+
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     console.log(1)
+    // }
 
     return (
         <div className="room_page">

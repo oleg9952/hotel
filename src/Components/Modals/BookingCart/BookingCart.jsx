@@ -4,7 +4,8 @@ import { toggleCart } from '../../../store/actions/bookingActions'
 import OverviewItem from './OverviewItem'
 import './BookingCart.css'
 
-const BookingCart = () => {
+const BookingCart = (props) => {
+    const cart = props.cart
     const dispatch = useDispatch()
     const { cartToggle } = useSelector(state => state.bookingReducers)
 
@@ -18,12 +19,20 @@ const BookingCart = () => {
             </div>
             <h2 className="cart_title">Your booking overview</h2>
             <div className="cart_overview">
-                <OverviewItem />
-                <OverviewItem />
+                {
+                    cart.map(room => (
+                        <OverviewItem 
+                            key={room.id}
+                            room={room}
+                        />
+                    ))
+                }
                 <div className="overview_item final">
                     <div className="final_holder">
                         <p>Totla Price</p>
-                        <p>$333</p>
+                        <p>
+                            $
+                        </p>
                     </div>
                 </div>
                 <div className="overview_item confirmation">

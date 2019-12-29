@@ -1,10 +1,14 @@
 const initState = {
+    //-------- BOOKING MODAL --------
     currentBooking: null,
-    cartToggle: false
+    //-------- BOOKING CART --------
+    cartToggle: false,
+    cart: []
 }
 
 export default (state = initState, action) => {
     switch(action.type) {
+        //-------- BOOKING MODAL --------
         case 'SET_CURRENT_BOOKING':
             return {
                 ...state,
@@ -15,10 +19,18 @@ export default (state = initState, action) => {
                 ...state,
                 currentBooking: null
             }
+        //-------- BOOKING CART --------
         case 'TOGGLE_CART':
             return {
                 ...state,
                 cartToggle: !state.cartToggle
+            }
+        case 'ADD_TO_CART':
+            console.log('added')
+            return {
+                ...state,
+                cart: [...state.cart, state.currentBooking],
+                currentBooking: null
             }
         default:
             return state

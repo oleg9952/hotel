@@ -10,6 +10,7 @@ import BookingCart from './Components/Modals/BookingCart/BookingCart'
 import CartOpenBtn from './Components/Modals/BookingCart/CartOpenBtn'
 
 const App = () => {
+  const { cart } = useSelector(state => state.bookingReducers)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const App = () => {
         {/* <Header /> */}
         <Content />
         <Footer />
-        <BookingCart />
+        { cart.length !== 0 ? <BookingCart cart={cart} /> : '' }
         <CartOpenBtn />
       </div>
     </Router>

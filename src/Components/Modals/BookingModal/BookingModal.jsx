@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { resetCurrentBooking } from '../../../store/actions/bookingActions'
+import { resetCurrentBooking, addToCart } from '../../../store/actions/bookingActions'
 import RoomSlider from '../../Content/Rooms/RoomPage/RoomSlider/RoomSlider'
 import './BookingModal.css'
 
@@ -19,9 +19,15 @@ const BookingModal = () => {
         dispatch(resetCurrentBooking())
         setTimeout(() => setStepTwo(false), 500)
     }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        dispatch(addToCart())
+        setTimeout(() => setStepTwo(false), 500)
+    }
         
     return (
-        <div className={`booking_bg ${currentBooking !== null ? 'active' : ''}`}>
+        <div className={`booking_bg ${currentBooking ? 'active' : ''}`}>
             <div className="booking_modal">
                 <div className="modal_header">
                     <p className="modal_title">Confirm your booking</p>
@@ -45,7 +51,7 @@ const BookingModal = () => {
                             }
                         </div>
                     
-                        <form className="body_column steps">
+                        <form className="body_column steps" onSubmit={handleSubmit}>
                             <div className={`booking_date ${stepTwo ? 'active' : ''}`}>
                                 <p className="booking_title">Title...</p>
                                 <div className="booking_calendar">
@@ -98,7 +104,7 @@ const BookingModal = () => {
                                 <button 
                                     type="submit" 
                                     className="modal_btn"
-                                    onClick={handleModalClose}
+                                    // onClick={handleSubmit}
                                 >Add to cart</button>
                             </div>
                         </form>

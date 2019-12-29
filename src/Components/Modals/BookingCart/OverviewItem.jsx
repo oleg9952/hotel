@@ -1,13 +1,17 @@
 import React from 'react'
 
-const OverviewItem = () => {
+const OverviewItem = (props) => {
+    const {id, name, price, imgBaseUrl, img } = props.room
+
     return (
         <div className="overview_item">
             <div className="item_column">
-                <div className="room_img"></div>
+                <div className="room_img"
+                    style={{ backgroundImage: `url(${imgBaseUrl + id}/${img[0]})` }}
+                ></div>
             </div>
             <div className="item_column">
-                <p className="item_title">Classic Room</p>
+                <p className="item_title">{ name }</p>
                 <div className="room_rating">
                     <span>
                         <i className="fas fa-star"></i>
@@ -33,13 +37,13 @@ const OverviewItem = () => {
                 <p className="overview_check">Guests: 03</p>
                 <div className="price_holder">
                     <p>Price</p>
-                    <p>$157</p>
+                    <p>${ price }</p>
                 </div>
             </div>
             <div className="item_column">
                 <div className="price_holder">
                     <p>Price</p>
-                    <p>$157</p>
+                    <p>${ price }</p>
                 </div>
                 
             </div>

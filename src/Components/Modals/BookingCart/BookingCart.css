@@ -63,6 +63,22 @@
     cursor: pointer;
 }
 
+.cart_open .cart_counter {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: red;
+    top: -12px;
+    left: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cart_open.hide {
     display: none;
 }
@@ -115,7 +131,7 @@
 }
 
 .overview_item .room_img {
-    background-image: url(/Assets/RoomPage/room_10/1.jpg);
+    /* background-image: url(/Assets/RoomPage/room_10/1.jpg); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
