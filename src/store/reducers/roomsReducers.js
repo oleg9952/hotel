@@ -4,6 +4,30 @@ const initState = {
     roomsPerPage: 12
 }
 
+const sortAscending = selector => {
+    return (a, b) => {
+        if (a[selector] < b[selector]) {
+          return -1;
+        }
+        if (a[selector] > b[selector]) {
+          return 1;
+        }
+        return 0;
+    }
+}
+
+const sortDescending = selector => {
+    return (a, b) => {
+        if (a[selector] > b[selector]) {
+          return -1;
+        }
+        if (a[selector] < b[selector]) {
+          return 1;
+        }
+        return 0;
+    }
+}
+
 export default (state = initState, action) => {
     switch(action.type) {
         case 'FETCH_ROOMS':
@@ -25,6 +49,18 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 currentPage: state.currentPage !== 1 ? state.currentPage - 1 : 1
+            }
+        // ------- SORTING -------
+        case 'PRICE_ASCENDING':
+            console.log('ascending')
+            return {
+                ...state,
+                rooms: state.rooms.sort(sortAscending('price'))
+            }
+        case 'PRICE_DESCENDING':
+            return {
+                ...state,
+                rooms: state.rooms.sort(sortDescending('price'))
             }
         default:
             return state

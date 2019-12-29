@@ -1,10 +1,18 @@
-const roomsData = import('../../mock/rooms.json')
+// const roomsData = import('../../mock/rooms.json')
+import roomsData from '../../mock/rooms.json'
 
-export const fetchRooms = () => dispatch => {
-    roomsData.then(data => dispatch({
+// export const fetchRooms = () => dispatch => {
+//     roomsData.then(data => dispatch({
+//         type: 'FETCH_ROOMS',
+//         payload: data.default
+//     }))
+// }
+
+export const fetchRooms = () => {
+    return {
         type: 'FETCH_ROOMS',
-        payload: data.default
-    }))
+        payload: roomsData
+    }
 }
 
 export const switchPage = page => {
@@ -24,5 +32,19 @@ export const switchNextPage = page => {
 export const switchPrevPage = () => {
     return {
         type: 'SWITCH_PREV'    
+    }
+}
+
+// ------- SORTING -------
+
+export const sortPriceUp = () => {
+    return {
+        type: 'PRICE_ASCENDING'
+    }
+}
+
+export const sortPriceDown = () => {
+    return {
+        type: 'PRICE_DESCENDING'
     }
 }
