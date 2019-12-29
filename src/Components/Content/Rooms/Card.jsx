@@ -11,7 +11,7 @@ const Card = (props) => {
     const [ details, setDetails ] = useState(false)
     
     const handleDetailsToggle = () => setDetails(!details)
-
+    
     return (
         <div className="room_card">
             <div className="card_img"

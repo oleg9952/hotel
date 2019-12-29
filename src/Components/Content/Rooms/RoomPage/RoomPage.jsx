@@ -6,7 +6,12 @@ import './RoomPage.css'
 
 const RoomPage = (props) => {
     const { rooms } = useSelector(state => state.roomsReducers)
-    const room = rooms[props.match.params.id - 1]
+
+    const room = () => {
+        if(rooms.length !== 0) {
+            return rooms.find(item => item.id == props.match.params.id)
+        }
+    }
 
     const [ toggleBody, setToggleBody ] = useState(true)
 
@@ -19,9 +24,9 @@ const RoomPage = (props) => {
                 <div className="content">
                     <div className="header_column room_preview">
                         {
-                            room !== undefined ? (
+                            rooms.length !== 0 ? (
                                 <RoomSlider
-                                    room={room}
+                                    room={room()}
                                 />
                             ) : ''
                         }
@@ -29,10 +34,8 @@ const RoomPage = (props) => {
                     <form className="header_column room_booking">
                         <div className="title_rating">
                             <h1 className="room_title">
-                                { 
-                                    room !== undefined ?
-                                    room.name : '' 
-                                }
+                                { room().name }
+                                
                             </h1>
                             <div className="room_rating">
                                 <span>

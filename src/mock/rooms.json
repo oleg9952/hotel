@@ -118,7 +118,7 @@
     },
     {
         "id": 10,
-        "name": "name...",
+        "name": "Test object 1",
         "type": "type...",
         "price": 98,
         "imgBaseUrl": "/Assets/RoomPage/room_",
@@ -144,7 +144,7 @@
     },
     {
         "id": 12,
-        "name": "name...",
+        "name": "Test object 2",
         "type": "type...",
         "price": 34,
         "imgBaseUrl": "/Assets/RoomPage/room_",

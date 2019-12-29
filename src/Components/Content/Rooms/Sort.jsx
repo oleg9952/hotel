@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sortPriceUp, sortPriceDown } from '../../../store/actions/roomsActions'
 
 const Sort = () => {
     const dispatch = useDispatch()
+    const { sortAscending, sortDescending } = useSelector(state => state.roomsReducers)
     const [ relevance, setRelevance ] = useState(false)
 
     const handleRelevance = () => setRelevance(!relevance)
@@ -13,11 +14,11 @@ const Sort = () => {
             <div className="sort_price">
                 <p className="price_title">Price</p>
                 <p className="price_options">
-                    <span className="sort_option"
+                    <span className={`sort_option ${sortAscending ? 'active' : ''}`}
                         onClick={() => dispatch(sortPriceUp())}
                     >Low to High</span>
                     <span className="price_divider">|</span>
-                    <span className="sort_option"
+                    <span className={`sort_option ${sortDescending ? 'active' : ''}`}
                         onClick={() => dispatch(sortPriceDown())}
                     >High to Low</span>
                 </p>

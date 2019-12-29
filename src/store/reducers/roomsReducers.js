@@ -1,7 +1,10 @@
 const initState = {
     rooms: [],
     currentPage: 1,
-    roomsPerPage: 12
+    roomsPerPage: 12,
+    // ------- SORTING -------
+    sortAscending: false,
+    sortDescending: false
 }
 
 const sortAscending = selector => {
@@ -55,11 +58,15 @@ export default (state = initState, action) => {
             console.log('ascending')
             return {
                 ...state,
+                sortAscending: true,
+                sortDescending: false,
                 rooms: state.rooms.sort(sortAscending('price'))
             }
         case 'PRICE_DESCENDING':
             return {
                 ...state,
+                sortAscending: false,
+                sortDescending: true,
                 rooms: state.rooms.sort(sortDescending('price'))
             }
         default:
