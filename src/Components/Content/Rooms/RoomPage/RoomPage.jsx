@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingActions'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
 import './RoomPage.css'
@@ -19,10 +20,11 @@ const RoomPage = (props) => {
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
 
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     console.log(1)
-    // }
+    const handleSubmit = e => {
+        e.preventDefault()
+        dispatch(setCurrentBooking(room()))
+        dispatch(addToCart())
+    }
 
     return (
         <div className="room_page">
@@ -37,10 +39,13 @@ const RoomPage = (props) => {
                             ) : ''
                         }
                     </div>
-                    <form className="header_column room_booking">
+                    <form className="header_column room_booking" onSubmit={handleSubmit}>
                         <div className="title_rating">
                             <h1 className="room_title">
-                                { room().name }
+                                { 
+                                    rooms.length !== 0 ? 
+                                    room().name : ''
+                                }
                                 
                             </h1>
                             <div className="room_rating">

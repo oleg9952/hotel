@@ -9,6 +9,12 @@ const BookingCart = (props) => {
     const dispatch = useDispatch()
     const { cartToggle } = useSelector(state => state.bookingReducers)
 
+    let totalPrice = 0
+
+    for(let i = 0; i < cart.length; i++) {
+        totalPrice += cart[i].price
+    }
+
     return (
         <div className={`booking_cart ${cartToggle ? 'active' : ''}`}>
             <div className="cart_close"
@@ -29,10 +35,8 @@ const BookingCart = (props) => {
                 }
                 <div className="overview_item final">
                     <div className="final_holder">
-                        <p>Totla Price</p>
-                        <p>
-                            $
-                        </p>
+                        <p>Total Price</p>
+                        <p>${ totalPrice }</p>
                     </div>
                 </div>
                 <div className="overview_item confirmation">

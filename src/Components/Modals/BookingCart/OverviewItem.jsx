@@ -1,6 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleCart } from '../../../store/actions//bookingActions'
+import { Link } from 'react-router-dom'
 
 const OverviewItem = (props) => {
+    const dispatch = useDispatch()
     const {id, name, price, imgBaseUrl, img } = props.room
 
     return (
@@ -11,7 +15,9 @@ const OverviewItem = (props) => {
                 ></div>
             </div>
             <div className="item_column">
-                <p className="item_title">{ name }</p>
+                <Link to={`/rooms/${id}`} onClick={() => dispatch(toggleCart())}>
+                    <p className="item_title">{ name }</p>
+                </Link>
                 <div className="room_rating">
                     <span>
                         <i className="fas fa-star"></i>
