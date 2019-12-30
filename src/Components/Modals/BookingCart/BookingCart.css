@@ -103,6 +103,10 @@
     /* display: none; */
 }
 
+.cart_overview > h2 {
+    text-align: center;
+}
+
 .cart_overview .overview_item {
     /* border: 1px solid red; */
     border-bottom: 2px solid #ccc;

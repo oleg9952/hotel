@@ -23,7 +23,7 @@ const App = () => {
         {/* <Header /> */}
         <Content />
         <Footer />
-        { cart.length !== 0 ? <BookingCart cart={cart} /> : '' }
+        <BookingCart cart={cart} />
         <CartOpenBtn />
       </div>
     </Router>

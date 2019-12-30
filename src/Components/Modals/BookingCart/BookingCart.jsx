@@ -15,6 +15,8 @@ const BookingCart = (props) => {
         totalPrice += cart[i].price
     }
 
+    console.log(cart.length)
+
     return (
         <div className={`booking_cart ${cartToggle ? 'active' : ''}`}>
             <div className="cart_close"
@@ -26,12 +28,15 @@ const BookingCart = (props) => {
             <h2 className="cart_title">Your booking overview</h2>
             <div className="cart_overview">
                 {
+                    cart.length !== 0 ?
                     cart.map(room => (
                         <OverviewItem 
                             key={room.id}
                             room={room}
                         />
-                    ))
+                    )) : (
+                        <h2>You haven't shosen anything yet!</h2>
+                    )
                 }
                 <div className="overview_item final">
                     <div className="final_holder">
