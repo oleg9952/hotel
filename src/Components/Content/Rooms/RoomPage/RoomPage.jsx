@@ -8,6 +8,8 @@ import './RoomPage.css'
 const RoomPage = (props) => {
     const dispatch = useDispatch()
     const { rooms } = useSelector(state => state.roomsReducers)
+    const { cart } = useSelector(state => state.bookingReducers)
+
 
     const room = () => {
         if(rooms.length !== 0) {
@@ -24,6 +26,14 @@ const RoomPage = (props) => {
         e.preventDefault()
         dispatch(setCurrentBooking(room()))
         dispatch(addToCart())
+    }
+
+    const bookingStatus = currentId => {
+        let status = []
+        for(let i = 0; i < cart.length; i++) {
+            status.push(cart[i].id)
+        }
+        return status.indexOf(currentId) === -1
     }
 
     return (
@@ -79,7 +89,12 @@ const RoomPage = (props) => {
                                 <option value="4">Four</option>
                             </select>
                         </div>
-                        <button type="submit" className="book_btn">Book now</button>
+                        {
+                            bookingStatus(Number(props.match.params.id)) ? (
+                                <button type="submit" className="book_btn">Book now</button>
+                            ) : ''
+                        }
+                        
                     </form>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleCart } from '../../../store/actions//bookingActions'
+import { toggleCart, removeCart } from '../../../store/actions//bookingActions'
 import { Link } from 'react-router-dom'
 
 const OverviewItem = (props) => {
@@ -12,7 +12,11 @@ const OverviewItem = (props) => {
             <div className="item_column">
                 <div className="room_img"
                     style={{ backgroundImage: `url(${imgBaseUrl + id}/${img[0]})` }}
-                ></div>
+                >
+                    <div className="remove_item" onClick={() => dispatch(removeCart(id))}>
+                        <div></div>
+                    </div>
+                </div>
             </div>
             <div className="item_column">
                 <Link to={`/rooms/${id}`} onClick={() => dispatch(toggleCart())}>

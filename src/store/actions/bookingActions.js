@@ -26,3 +26,10 @@ export const addToCart = () => {
         type: 'ADD_TO_CART'
     }
 }
+
+export const removeCart = id => {
+    return {
+        type: 'REMOVE_CART',
+        payload: id
+    }
+}

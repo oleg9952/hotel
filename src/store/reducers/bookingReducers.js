@@ -32,6 +32,11 @@ export default (state = initState, action) => {
                 cart: [...state.cart, state.currentBooking],
                 currentBooking: null
             }
+        case 'REMOVE_CART':
+            return {
+                ...state,
+                cart: state.cart.filter(item => item.id !== action.payload)
+            }
         default:
             return state
     }

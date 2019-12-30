@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentBooking } from '../../../store/actions/bookingActions'
 import { Link } from 'react-router-dom'
 
 
 const Card = (props) => {
     const dispatch = useDispatch()
+    const { cart } = useSelector(state => state.bookingReducers)
 
     const { id, name, type, price, imgBaseUrl, img } = props.room
     const [ details, setDetails ] = useState(false)
     
     const handleDetailsToggle = () => setDetails(!details)
-    
+
+    const bookingStatus = currentId => {
+        let status = []
+        for(let i = 0; i < cart.length; i++) {
+            status.push(cart[i].id)
+        }
+        return status.indexOf(currentId) === -1
+    }
+
+    console.log(bookingStatus(id))
+
+
+        
     return (
         <div className="room_card">
             <div className="card_img"
@@ -25,12 +38,17 @@ const Card = (props) => {
                         </>
                     ) : 'i'}
                 </div>
-                <div className="card_select"
-                    onClick={() => dispatch(setCurrentBooking(props.room))}
-                >
-                    <div></div>
-                    <div></div>
-                </div>
+                {
+                    bookingStatus(id) ? (
+                        <div className="card_select"
+                            onClick={() => dispatch(setCurrentBooking(props.room))}
+                        >
+                            <div></div>
+                            <div></div>
+                        </div>
+                    ) : ''
+                }
+                
             </div>
             <div className="card_details">
                 <Link to={`/rooms/${id}`}>
