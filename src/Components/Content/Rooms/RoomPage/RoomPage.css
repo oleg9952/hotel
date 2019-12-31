@@ -65,6 +65,7 @@
             align-items: center;
     width: 200px;
     height: 40px;
+    margin-bottom: 10px;
 }
 
 .room_guests .guests_number {
@@ -76,6 +77,12 @@
 
 .room_guests .guests_number:focus {
     border: 2px solid orange;
+}
+
+.room_booking .room_price {
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
 }
 
 .room_booking .book_btn {

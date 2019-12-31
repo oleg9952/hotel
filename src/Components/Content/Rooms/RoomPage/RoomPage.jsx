@@ -99,6 +99,12 @@ const RoomPage = (props) => {
                                 <option value="4">Four</option>
                             </select>
                         </div>
+                        <p className="room_price">
+                            { 
+                                rooms.length !== 0 ? 
+                                `$${room().price}` : ''
+                            }
+                        </p>
                         {
                             bookingStatus(Number(props.match.params.id)) ? (
                                 <button type="submit" className="book_btn">Book now</button>
