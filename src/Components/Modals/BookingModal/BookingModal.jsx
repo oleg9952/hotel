@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { resetCurrentBooking, addToCart } from '../../../store/actions/bookingActions'
 import RoomSlider from '../../Content/Rooms/RoomPage/RoomSlider/RoomSlider'
@@ -20,15 +20,36 @@ const BookingModal = () => {
         setTimeout(() => setStepTwo(false), 500)
     }
 
+
+    let numberOfGuests = useRef(0)
     // services
     const [ food, setFood ] = useState(false)
     const [ pool, setPool ] = useState(false)
     const [ gym, setGym ] = useState(false)
 
+    const addFood = () => setFood(!food)
+    const addPool = () => setPool(!pool)
+    const addGym = () => setGym(!gym)
+
     const handleSubmit = e => {
         e.preventDefault()
-        dispatch(addToCart([food, pool, gym]))
-        setTimeout(() => setStepTwo(false), 500)
+        dispatch(addToCart(
+            [food, pool, gym], 
+            numberOfGuests.current.value)
+        )
+        numberOfGuests.current.value = '1'
+        setTimeout(() => {
+            setStepTwo(false)
+            setFood(false)
+            setPool(false)
+            setGym(false)
+        }, 500)
+    }
+
+    let servicesTotal = 0
+
+    for(let i = 0; i < [food, pool, gym].filter(Boolean).length; i++) {
+        servicesTotal += 10
     }
         
     return (
@@ -71,7 +92,7 @@ const BookingModal = () => {
                                     <label>
                                         Guests
                                     </label>
-                                    <select name="guests">
+                                    <select name="guests" ref={numberOfGuests}>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
@@ -88,23 +109,35 @@ const BookingModal = () => {
                             <div className={`booking_services ${stepTwo ? 'active' : ''}`}>
                                 <p className="services_title">Services</p>
                                 <div className="services_options">
-                                    <div className="service_item">
-                                        <p className="service_name">Service</p>
-                                        <div className="service_select">
+                                    <div className="service_item"
+                                        style={{
+                                            backgroundColor: food ? 'green' : ''
+                                        }}
+                                    >
+                                        <p className="service_name">Food</p>
+                                        <div className="service_select" onClick={addFood}>
                                             <div></div>
                                             <div></div>
                                         </div>
                                     </div>
-                                    <div className="service_item">
-                                        <p className="service_name">Service</p>
-                                        <div className="service_select">
+                                    <div className="service_item"
+                                        style={{
+                                            backgroundColor: pool ? 'green' : ''
+                                        }}
+                                    >
+                                        <p className="service_name">Pool</p>
+                                        <div className="service_select" onClick={addPool}>
                                             <div></div>
                                             <div></div>
                                         </div>
                                     </div>
-                                    <div className="service_item">
-                                        <p className="service_name">Service</p>
-                                        <div className="service_select">
+                                    <div className="service_item"
+                                        style={{
+                                            backgroundColor: gym ? 'green' : ''
+                                        }}
+                                    >
+                                        <p className="service_name">Gym</p>
+                                        <div className="service_select" onClick={addGym}>
                                             <div></div>
                                             <div></div>
                                         </div>
@@ -113,7 +146,7 @@ const BookingModal = () => {
                                 <p className="booking_price">
                                     {
                                         currentBooking !== null ?
-                                        `$${currentBooking.price}` : ''
+                                        `$${currentBooking.price + servicesTotal}` : ''
                                     }
                                 </p>
                                 <button 

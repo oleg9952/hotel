@@ -21,10 +21,10 @@ export const toggleCart = () => {
 
 //-------- BOOKING CART --------
 
-export const addToCart = services => {
+export const addToCart = (services, guests) => {
     return {
         type: 'ADD_TO_CART',
-        payload: services
+        payload: [services, guests]
     }
 }
 

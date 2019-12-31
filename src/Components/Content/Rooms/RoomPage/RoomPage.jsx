@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingActions'
 import ReviewComment from './ReviewComment'
@@ -9,7 +9,6 @@ const RoomPage = (props) => {
     const dispatch = useDispatch()
     const { rooms } = useSelector(state => state.roomsReducers)
     const { cart } = useSelector(state => state.bookingReducers)
-
 
     const room = () => {
         if(rooms.length !== 0) {
@@ -22,10 +21,23 @@ const RoomPage = (props) => {
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
 
+    let numberOfGuests = useRef(null)
+    // services
+    const [ food, setFood ] = useState(false)
+    const [ pool, setPool ] = useState(false)
+    const [ gym, setGym ] = useState(false)
+
+    const addFood = () => setFood(!food)
+    const addPool = () => setPool(!pool)
+    const addGym = () => setGym(!gym)
+
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(setCurrentBooking(room()))
-        dispatch(addToCart())
+        dispatch(addToCart(
+            [food, pool, gym],
+            numberOfGuests.current.value
+        ))
     }
 
     const bookingStatus = currentId => {
@@ -56,7 +68,6 @@ const RoomPage = (props) => {
                                     rooms.length !== 0 ? 
                                     room().name : ''
                                 }
-                                
                             </h1>
                             <div className="room_rating">
                                 <span>
@@ -76,13 +87,12 @@ const RoomPage = (props) => {
                                 </span>
                             </div>
                         </div>
-                        
                         <div className="room_calendar">
                             <h2>Booking Calendar</h2>
                         </div>
                         <div className="room_guests">
                             <label>Guests: </label>
-                            <select name="guests_number" className="guests_number">
+                            <select name="guests_number" className="guests_number" ref={numberOfGuests}>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>

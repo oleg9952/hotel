@@ -6,24 +6,6 @@ const initState = {
     cart: []
 }
 
-class BookingItem {
-    constructor(id, name, type, price, imgBaseUrl, img) {
-        this.id = id
-        this.name = name
-        this.type = type
-        this.price = price
-        this.imgBaseUrl = imgBaseUrl
-        this.img = img
-    }
-    addServices() {
-        let servicesTotal = 0
-        for(let i = 0; action.payload.filter(Boolean).length; i++) {
-            servicesTotal += 10
-        }
-        return this.price + servicesTotal
-    }
-}
-
 export default (state = initState, action) => {
     switch(action.type) {
         //-------- BOOKING MODAL --------
@@ -44,17 +26,26 @@ export default (state = initState, action) => {
                 cartToggle: !state.cartToggle
             }
         case 'ADD_TO_CART':
-            let booking = {
+        
+            let servicesTotal = 0
+
+            for(let i = 0; i < action.payload[0].filter(Boolean).length; i++) {
+                servicesTotal += 10
+            }
+
+            let bookingItem = {
                 id: state.currentBooking.id,
                 name: state.currentBooking.name,
                 type: state.currentBooking.type,
-                set price() {
-                    
-                }
+                price: state.currentBooking.price + servicesTotal,
+                imgBaseUrl: state.currentBooking.imgBaseUrl,
+                img: state.currentBooking.img,
+                guests: action.payload[1]            
             }
+
             return {
                 ...state,
-                cart: [...state.cart, state.currentBooking],
+                cart: [...state.cart, bookingItem],
                 currentBooking: null
             }
         case 'REMOVE_CART':

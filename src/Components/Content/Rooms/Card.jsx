@@ -44,7 +44,6 @@ const Card = (props) => {
                         </div>
                     ) : ''
                 }
-                
             </div>
             <div className="card_details">
                 <Link to={`/rooms/${id}`}>
