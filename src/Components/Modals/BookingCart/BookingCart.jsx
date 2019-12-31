@@ -15,8 +15,6 @@ const BookingCart = (props) => {
         totalPrice += cart[i].price
     }
 
-    console.log(cart.length)
-
     return (
         <div className={`booking_cart ${cartToggle ? 'active' : ''}`}>
             <div className="cart_close"
@@ -35,7 +33,7 @@ const BookingCart = (props) => {
                             room={room}
                         />
                     )) : (
-                        <h2>You haven't shosen anything yet!</h2>
+                        <h2>You haven't chosen anything yet!</h2>
                     )
                 }
                 <div className="overview_item final">

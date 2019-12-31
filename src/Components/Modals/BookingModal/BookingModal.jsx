@@ -20,9 +20,14 @@ const BookingModal = () => {
         setTimeout(() => setStepTwo(false), 500)
     }
 
+    // services
+    const [ food, setFood ] = useState(false)
+    const [ pool, setPool ] = useState(false)
+    const [ gym, setGym ] = useState(false)
+
     const handleSubmit = e => {
         e.preventDefault()
-        dispatch(addToCart())
+        dispatch(addToCart([food, pool, gym]))
         setTimeout(() => setStepTwo(false), 500)
     }
         
@@ -53,7 +58,12 @@ const BookingModal = () => {
                     
                         <form className="body_column steps" onSubmit={handleSubmit}>
                             <div className={`booking_date ${stepTwo ? 'active' : ''}`}>
-                                <p className="booking_title">Title...</p>
+                                <p className="booking_title">
+                                    {
+                                        currentBooking !== null ?
+                                        currentBooking.name : ''
+                                    }
+                                </p>
                                 <div className="booking_calendar">
                                     Calendar
                                 </div>
@@ -100,11 +110,15 @@ const BookingModal = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <p className="booking_price">134$</p>
+                                <p className="booking_price">
+                                    {
+                                        currentBooking !== null ?
+                                        `$${currentBooking.price}` : ''
+                                    }
+                                </p>
                                 <button 
                                     type="submit" 
                                     className="modal_btn"
-                                    // onClick={handleSubmit}
                                 >Add to cart</button>
                             </div>
                         </form>

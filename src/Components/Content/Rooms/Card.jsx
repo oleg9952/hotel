@@ -20,10 +20,6 @@ const Card = (props) => {
         }
         return status.indexOf(currentId) === -1
     }
-
-    console.log(bookingStatus(id))
-
-
         
     return (
         <div className="room_card">
@@ -73,7 +69,7 @@ const Card = (props) => {
                 </div>
                 <p className="card_reviews">16 Reviews</p>
                 <div className="card_price">
-                    <p>{ price }$</p>
+                    <p>${ price }</p>
                     <p>night</p>
                 </div>
             </div>
