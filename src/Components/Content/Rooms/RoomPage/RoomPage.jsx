@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Calendar from 'react-calendar'
 import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingActions'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
@@ -21,6 +22,12 @@ const RoomPage = (props) => {
 
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
+
+    // Calendar
+    const [ date, setDate ] = useState(new Date())
+    const [ reservationDate, setReservationDate ] = useState(null)
+
+    const setReservationDates = reservDate => setReservationDate(reservDate)
 
     let numberOfGuests = useRef(null)
     // services
@@ -44,8 +51,10 @@ const RoomPage = (props) => {
         dispatch(setCurrentBooking(room()))
         dispatch(addToCart(
             [food, pool, gym],
-            numberOfGuests.current.value
+            numberOfGuests.current.value,
+            reservationDate
         ))
+        setDate(new Date)
         setServicesModal(false)
         setTimeout(() => {
             setFood(false)
@@ -107,9 +116,13 @@ const RoomPage = (props) => {
                                 </span>
                             </div>
                         </div>
-                        <div className="room_calendar">
-                            <h2>Booking Calendar</h2>
-                        </div>
+                        <Calendar
+                            className="room_calendar"
+                            onChange={setReservationDates}
+                            value={date}
+                            selectRange
+                            minDate={new Date()}
+                        />
                         <div className="room_guests">
                             <label>Guests: </label>
                             <select name="guests_number" className="guests_number" ref={numberOfGuests}>

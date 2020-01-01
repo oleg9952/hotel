@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Calendar from 'react-calendar'
 import { resetCurrentBooking, addToCart } from '../../../store/actions/bookingActions'
 import RoomSlider from '../../Content/Rooms/RoomPage/RoomSlider/RoomSlider'
 import './BookingModal.css'
@@ -20,6 +21,12 @@ const BookingModal = () => {
         setTimeout(() => setStepTwo(false), 500)
     }
 
+    // Calendar
+    const [ date, setDate ] = useState(new Date())
+    const [ reservationDate, setReservationDate ] = useState(null)
+
+    const setReservationDates = reservDate => setReservationDate(reservDate)
+
 
     let numberOfGuests = useRef(0)
     // services
@@ -35,8 +42,10 @@ const BookingModal = () => {
         e.preventDefault()
         dispatch(addToCart(
             [food, pool, gym], 
-            numberOfGuests.current.value)
-        )
+            numberOfGuests.current.value,
+            reservationDate
+        ))
+        setDate(new Date)
         numberOfGuests.current.value = '1'
         setTimeout(() => {
             setStepTwo(false)
@@ -85,9 +94,13 @@ const BookingModal = () => {
                                         currentBooking.name : ''
                                     }
                                 </p>
-                                <div className="booking_calendar">
-                                    Calendar
-                                </div>
+                                <Calendar 
+                                    className="booking_calendar"
+                                    onChange={setReservationDates}
+                                    value={date}
+                                    selectRange
+                                    minDate={new Date()}
+                                />
                                 <div className="booking_guests">
                                     <label>
                                         Guests

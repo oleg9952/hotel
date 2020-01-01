@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const OverviewItem = (props) => {
     const dispatch = useDispatch()
-    const {id, name, price, imgBaseUrl, img, guests } = props.room
+    const {id, name, price, imgBaseUrl, img, guests, bookingDates } = props.room
 
     return (
         <div className="overview_item">
@@ -39,8 +39,8 @@ const OverviewItem = (props) => {
                         <i className="far fa-star"></i>
                     </span>
                 </div>
-                <p className="overview_check">Check in: 28.12.2019</p>
-                <p className="overview_check">Check out: 31.12.2019</p>
+                <p className="overview_check">Check in: { bookingDates.checkIn }</p>
+                <p className="overview_check">Check out: { bookingDates.checkOut }</p>
             </div>
             <div className="item_column">
                 <p className="overview_check">Rooms: 02</p>
