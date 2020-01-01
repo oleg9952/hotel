@@ -43,8 +43,8 @@ const OverviewItem = (props) => {
                 <p className="overview_check">Check out: 31.12.2019</p>
             </div>
             <div className="item_column">
-                <p className="overview_check">Rooms: 0{ guests }</p>
-                <p className="overview_check">Guests: 03</p>
+                <p className="overview_check">Rooms: 02</p>
+                <p className="overview_check">Guests: 0{ guests }</p>
                 <div className="price_holder">
                     <p>Price</p>
                     <p>${ price }</p>

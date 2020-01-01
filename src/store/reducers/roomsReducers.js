@@ -55,7 +55,6 @@ export default (state = initState, action) => {
             }
         // ------- SORTING -------
         case 'PRICE_ASCENDING':
-            console.log('ascending')
             return {
                 ...state,
                 sortAscending: true,

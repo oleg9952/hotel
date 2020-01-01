@@ -17,6 +17,7 @@ const RoomPage = (props) => {
     }
 
     const [ toggleBody, setToggleBody ] = useState(true)
+    const [ servicesModal, setServicesModal ] = useState(false)
 
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
@@ -31,6 +32,13 @@ const RoomPage = (props) => {
     const addPool = () => setPool(!pool)
     const addGym = () => setGym(!gym)
 
+    const openServicesModal = e => {
+        e.preventDefault()
+        setServicesModal(true)
+    }
+
+    const closeServicesModal = () => setServicesModal(false)
+
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(setCurrentBooking(room()))
@@ -38,6 +46,12 @@ const RoomPage = (props) => {
             [food, pool, gym],
             numberOfGuests.current.value
         ))
+        setServicesModal(false)
+        setTimeout(() => {
+            setFood(false)
+            setPool(false)
+            setGym(false)
+        }, 500)
     }
 
     const bookingStatus = currentId => {
@@ -46,6 +60,12 @@ const RoomPage = (props) => {
             status.push(cart[i].id)
         }
         return status.indexOf(currentId) === -1
+    }
+
+    let servicesTotal = 0
+
+    for(let i = 0; i < [food, pool, gym].filter(Boolean).length; i++) {
+        servicesTotal += 10
     }
 
     return (
@@ -61,7 +81,7 @@ const RoomPage = (props) => {
                             ) : ''
                         }
                     </div>
-                    <form className="header_column room_booking" onSubmit={handleSubmit}>
+                    <form className="header_column room_booking" onSubmit={openServicesModal}>
                         <div className="title_rating">
                             <h1 className="room_title">
                                 { 
@@ -167,8 +187,53 @@ const RoomPage = (props) => {
                         </div>
                     </div>
                 </div>
-                
-            </div>            
+            </div>  
+            <div className={`services_selector ${servicesModal ? 'active' : ''}`}>
+                <form className={`services_holder ${servicesModal ? 'active' : ''}`}>
+                    <div className="services_close" onClick={closeServicesModal}>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <h2 className="services_title">Services</h2>
+                    <div className="services_item">
+                        Food
+                        <div className="item_selector" onClick={addFood}>
+                            {
+                                food ?
+                                <i className="fas fa-clipboard-check"></i> :
+                                <i className="fas fa-cart-plus"></i>
+                            }
+                        </div>
+                    </div>
+                    <div className="services_item">
+                        Pool
+                        <div className="item_selector" onClick={addPool}>
+                            {
+                                pool ?
+                                <i className="fas fa-clipboard-check"></i> :
+                                <i className="fas fa-cart-plus"></i>
+                            }
+                        </div>
+                    </div>
+                    <div className="services_item">
+                        Gym
+                        <div className="item_selector" onClick={addGym}>
+                            {
+                                gym ?
+                                <i className="fas fa-clipboard-check"></i> :
+                                <i className="fas fa-cart-plus"></i>
+                            }
+                        </div>
+                    </div>
+                    <p className="total_price">
+                        { 
+                            rooms.length !== 0 ? 
+                            `$${room().price + servicesTotal}` : ''
+                        }
+                    </p>
+                    <button type="submit" onClick={handleSubmit}>Confirm</button>
+                </form>
+            </div>          
         </div>
     )
 }
