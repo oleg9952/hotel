@@ -54,7 +54,7 @@ const BookingModal = () => {
         
     return (
         <div className={`booking_bg ${currentBooking ? 'active' : ''}`}>
-            <div className="booking_modal">
+            <div className={`booking_modal ${currentBooking ? 'active' : ''}`}>
                 <div className="modal_header">
                     <p className="modal_title">Confirm your booking</p>
                     <div className="modal_close"
@@ -109,37 +109,34 @@ const BookingModal = () => {
                             <div className={`booking_services ${stepTwo ? 'active' : ''}`}>
                                 <p className="services_title">Services</p>
                                 <div className="services_options">
-                                    <div className="service_item"
-                                        style={{
-                                            backgroundColor: food ? 'green' : ''
-                                        }}
-                                    >
+                                    <div className="service_item">
                                         <p className="service_name">Food</p>
                                         <div className="service_select" onClick={addFood}>
-                                            <div></div>
-                                            <div></div>
+                                            {
+                                                food ?
+                                                <i className="fas fa-clipboard-check"></i> :
+                                                <i className="fas fa-cart-plus"></i>
+                                            }
                                         </div>
                                     </div>
-                                    <div className="service_item"
-                                        style={{
-                                            backgroundColor: pool ? 'green' : ''
-                                        }}
-                                    >
+                                    <div className="service_item">
                                         <p className="service_name">Pool</p>
                                         <div className="service_select" onClick={addPool}>
-                                            <div></div>
-                                            <div></div>
+                                            {
+                                                pool ?
+                                                <i className="fas fa-clipboard-check"></i> :
+                                                <i className="fas fa-cart-plus"></i>
+                                            }
                                         </div>
                                     </div>
-                                    <div className="service_item"
-                                        style={{
-                                            backgroundColor: gym ? 'green' : ''
-                                        }}
-                                    >
+                                    <div className="service_item">
                                         <p className="service_name">Gym</p>
                                         <div className="service_select" onClick={addGym}>
-                                            <div></div>
-                                            <div></div>
+                                            {
+                                                gym ?
+                                                <i className="fas fa-clipboard-check"></i> :
+                                                <i className="fas fa-cart-plus"></i>
+                                            }
                                         </div>
                                     </div>
                                 </div>
