@@ -12,7 +12,6 @@ const BookingModal = () => {
 
     let numberOfGuests = useRef(0)
 
-    
     const handleModalClose = e => {
         e.preventDefault()
         dispatch(resetCurrentBooking())

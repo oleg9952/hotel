@@ -11,6 +11,8 @@ const RoomPage = (props) => {
     const { rooms } = useSelector(state => state.roomsReducers)
     const { cart } = useSelector(state => state.bookingReducers)
 
+    let numberOfGuests = useRef(null)
+
     const room = () => {
         if(rooms.length !== 0) {
             return rooms.find(item => item.id == props.match.params.id)
@@ -23,14 +25,25 @@ const RoomPage = (props) => {
     const switchToDetails = () => setToggleBody(true)
     const switchToReviews = () => setToggleBody(false)
 
-    // Calendar
+    // ------ CALENDAR ------
     const [ date, setDate ] = useState(new Date())
     const [ reservationDate, setReservationDate ] = useState(null)
+    const [ bookingDuration, setBookingDuration ] = useState(1)
 
     const setReservationDates = reservDate => setReservationDate(reservDate)
-
-    let numberOfGuests = useRef(null)
-    // services
+    
+    const calcBookingDuration = (checkIn, checkOut) => {
+        const oneDay = 1000 * 60 * 60 * 24
+        
+        let checkInMs = checkIn.getTime()
+        let checkOutMs = checkOut.getTime()
+        
+        let differenceMs = Math.abs(checkInMs - checkOutMs)
+        
+        return Math.round(differenceMs / oneDay)
+    }
+    
+    // ------ SERVICES ------
     const [ food, setFood ] = useState(false)
     const [ pool, setPool ] = useState(false)
     const [ gym, setGym ] = useState(false)
@@ -42,6 +55,12 @@ const RoomPage = (props) => {
     const openServicesModal = e => {
         e.preventDefault()
         setServicesModal(true)
+        if(reservationDate !== null) {
+            setBookingDuration(calcBookingDuration(reservationDate[0], reservationDate[1]))
+        } else {
+            setBookingDuration(1)
+        }
+        
     }
 
     const closeServicesModal = () => setServicesModal(false)
@@ -241,7 +260,7 @@ const RoomPage = (props) => {
                     <p className="total_price">
                         { 
                             rooms.length !== 0 ? 
-                            `$${room().price + servicesTotal}` : ''
+                            `$${(room().price * bookingDuration) + servicesTotal}` : ''
                         }
                     </p>
                     <button type="submit" onClick={handleSubmit}>Confirm</button>
