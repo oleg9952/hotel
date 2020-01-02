@@ -33,7 +33,11 @@ export default (state = initState, action) => {
                 servicesTotal += 10
             }
 
+            
+
             if(action.payload[2] !== null) {
+
+                // ------ checkIn / checkOut Dates ------ 
                 let checkIn = action.payload[2][0]
                 let checkOut = action.payload[2][1]
 
@@ -43,18 +47,29 @@ export default (state = initState, action) => {
                 let checkOutDay = checkOut.getDate() < 10 ? `0${checkOut.getDate()}` : checkOut.getDate()
                 let checkOutMonth = checkOut.getMonth() < 10 ? `0${checkOut.getMonth() + 1}` : checkOut.getMonth() + 1
 
+                // ------ BOOKING DURATION ------ 
+
+                const calcBookingDuration = (checkIn, checkOut) => {
+                    const oneDay = 1000 * 60 * 60 * 24
+
+                    let checkInMs = checkIn.getTime()
+                    let checkOutMs = checkOut.getTime()
+
+                    let differenceMs = Math.abs(checkInMs - checkOutMs)
+
+                    return Math.round(differenceMs / oneDay)
+                }
+
+                // ------ BOOKING ITEM ------ 
+
                 let bookingItem = {
-                    id: state.currentBooking.id,
-                    name: state.currentBooking.name,
-                    type: state.currentBooking.type,
-                    price: state.currentBooking.price + servicesTotal,
-                    imgBaseUrl: state.currentBooking.imgBaseUrl,
-                    img: state.currentBooking.img,
+                    ...state.currentBooking,
+                    price: (state.currentBooking.price * calcBookingDuration(checkIn, checkOut)) + servicesTotal,
                     guests: action.payload[1],
                     bookingDates: {
                         checkIn: `${checkInDay}.${checkInMonth}.${checkIn.getFullYear()}`,
                         checkOut: `${checkOutDay}.${checkOutMonth}.${checkOut.getFullYear()}`
-                    }         
+                    }
                 }
 
                 return {
@@ -64,12 +79,8 @@ export default (state = initState, action) => {
                 }
             } else {
                 alert('You forgot to choose booking dates!')
-            }
-            
-            
-            
-
-            
+                
+            }    
         case 'REMOVE_CART':
             return {
                 ...state,

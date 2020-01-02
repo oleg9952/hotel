@@ -10,26 +10,44 @@ const BookingModal = () => {
     const [ stepTwo, setStepTwo ] = useState(false)
     const { currentBooking } = useSelector(state => state.bookingReducers)
 
-    const handleStepSwitch = e => {
-        e.preventDefault()
-        setStepTwo(true)
-    }
+    let numberOfGuests = useRef(0)
 
+    
     const handleModalClose = e => {
         e.preventDefault()
         dispatch(resetCurrentBooking())
         setTimeout(() => setStepTwo(false), 500)
     }
-
-    // Calendar
+    
+    // ------ CALENDAR ------
     const [ date, setDate ] = useState(new Date())
     const [ reservationDate, setReservationDate ] = useState(null)
-
+    const [ bookingDuration, setBookingDuration ] = useState(1)
+    
     const setReservationDates = reservDate => setReservationDate(reservDate)
+    
+    const calcBookingDuration = (checkIn, checkOut) => {
+        const oneDay = 1000 * 60 * 60 * 24
+        
+        let checkInMs = checkIn.getTime()
+        let checkOutMs = checkOut.getTime()
+        
+        let differenceMs = Math.abs(checkInMs - checkOutMs)
+        
+        return Math.round(differenceMs / oneDay)
+    }
+    
+    const handleStepSwitch = e => {
+        e.preventDefault()
+        setStepTwo(true)
+        if(reservationDate !== null) {
+            setBookingDuration(calcBookingDuration(reservationDate[0], reservationDate[1]))
+        } else {
+            setBookingDuration(1)
+        }
+    }
 
-
-    let numberOfGuests = useRef(0)
-    // services
+    // ------ SERVICES ------
     const [ food, setFood ] = useState(false)
     const [ pool, setPool ] = useState(false)
     const [ gym, setGym ] = useState(false)
@@ -45,8 +63,9 @@ const BookingModal = () => {
             numberOfGuests.current.value,
             reservationDate
         ))
+        setBookingDuration(1)
         setDate(new Date)
-        numberOfGuests.current.value = '1'
+        setReservationDate(null)
         setTimeout(() => {
             setStepTwo(false)
             setFood(false)
@@ -154,9 +173,10 @@ const BookingModal = () => {
                                     </div>
                                 </div>
                                 <p className="booking_price">
+                                    
                                     {
                                         currentBooking !== null ?
-                                        `$${currentBooking.price + servicesTotal}` : ''
+                                        `$${(currentBooking.price * bookingDuration) + servicesTotal}` : ''
                                     }
                                 </p>
                                 <button 
