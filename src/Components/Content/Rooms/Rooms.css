@@ -32,6 +32,22 @@
     transition: .3s;
 }
 
+.rooms .rooms_search {
+    height: 40px;
+    /* background-color: orange; */
+    /* display: none; */
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.rooms .rooms_search:hover {
+    color: orange;
+}
+
 .rooms .rooms_column:nth-child(2) {
     padding-top: 10px;
 }
@@ -513,7 +529,7 @@
 
     .rooms_column .filters_holder {
         width: 180px;
-        padding-top: 65px;
+        padding-top: 20px;
         position: absolute;
         transform: translateX(-100%);
         background-color: #fff;

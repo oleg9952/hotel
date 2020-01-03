@@ -73,7 +73,7 @@ const RoomPage = (props) => {
             numberOfGuests.current.value,
             reservationDate
         ))
-        setDate(new Date)
+        setDate(new Date())
         setServicesModal(false)
         setTimeout(() => {
             setFood(false)

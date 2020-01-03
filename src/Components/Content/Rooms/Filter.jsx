@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleSearch } from '../../../store/actions/searchActions'
 
 const Filter = ({toggleFilters}) => {
+    const dispatch = useDispatch()
     const [ collections, setCollections ] = useState(true)
     
     const handleCollections = () => setCollections(!collections)
@@ -8,6 +11,12 @@ const Filter = ({toggleFilters}) => {
     return (
         <div className={`filters_bg ${toggleFilters ? 'active' : ''}`}>
             <div className={`filters_holder ${toggleFilters ? 'active' : ''}`}>
+                <div className="rooms_search" onClick={() => dispatch(toggleSearch())}>
+                    <div className="search_column">Search...</div>
+                    <div className="search_column">
+                        <i className="fas fa-search"></i>
+                    </div>
+                </div>
                 <div className="filters_header">
                     <p className="filters_title">Filters</p>
                     <button className="filters_reset">Reset</button>

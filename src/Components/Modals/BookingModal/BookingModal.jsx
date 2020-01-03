@@ -63,7 +63,7 @@ const BookingModal = () => {
             reservationDate
         ))
         setBookingDuration(1)
-        setDate(new Date)
+        setDate(new Date())
         setReservationDate(null)
         setTimeout(() => {
             setStepTwo(false)

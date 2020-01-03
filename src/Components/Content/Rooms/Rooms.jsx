@@ -5,6 +5,7 @@ import Filter from './Filter'
 import Sort from './Sort'
 import Pagination from './Pagination'
 import BookingModal from '../../Modals/BookingModal/BookingModal'
+import Search from './Search/Search'
 import './Rooms.css'
 
 const Rooms = () => {
@@ -55,6 +56,7 @@ const Rooms = () => {
                 </div>
             </div>
             <BookingModal />
+            <Search />
         </div>
     )
 }
