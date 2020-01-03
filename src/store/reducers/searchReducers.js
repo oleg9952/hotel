@@ -11,7 +11,6 @@ export default (state = initState, action) => {
             console.log('searching...')
             return state
         case 'TOGGLE_SEARCH':
-            console.log(1)
             return {
                 ...state,
                 search: !state.search
