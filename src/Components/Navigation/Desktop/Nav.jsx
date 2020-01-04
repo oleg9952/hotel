@@ -49,7 +49,11 @@ const Nav = () => {
                                 <li 
                                     className="options_item" 
                                     onClick={() => dispatch(toggleAdmin())}
-                                >Account</li>
+                                > 
+                                    <Link to="/admin/home">
+                                        Account
+                                    </Link>
+                                </li>
                                 <li className="options_item">Log out</li>
                             </ul>
                         </div>

@@ -197,6 +197,10 @@
     margin-bottom: 10px;
 }
 
+.options_item a {
+    color: orange;
+}
+
 .logged_out {
     height: 80px;
     width: 100%;
