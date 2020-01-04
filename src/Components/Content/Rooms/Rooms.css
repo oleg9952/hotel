@@ -529,7 +529,7 @@
 
     .rooms_column .filters_holder {
         width: 180px;
-        padding-top: 20px;
+        padding-top: 60px;
         position: absolute;
         transform: translateX(-100%);
         background-color: #fff;

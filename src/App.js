@@ -9,7 +9,10 @@ import Footer from './Components/Footer/Footer'
 import BookingCart from './Components/Modals/BookingCart/BookingCart'
 import CartOpenBtn from './Components/Modals/BookingCart/CartOpenBtn'
 
+import Admin from './Components/Admin/Admin'
+
 const App = () => {
+  const { adminPage } = useSelector(state => state.adminReducers)
   const { cart } = useSelector(state => state.bookingReducers)
   const dispatch = useDispatch()
 
@@ -20,11 +23,17 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {/* <Header /> */}
-        <Content />
-        <Footer />
-        <BookingCart cart={cart} />
-        <CartOpenBtn />
+        {
+          adminPage ? <Admin /> : (
+            <div className="main">
+              <Header />
+              <Content />
+              <Footer />
+              <BookingCart cart={cart} />
+              <CartOpenBtn />
+            </div>
+          )
+        }
       </div>
     </Router>
   );

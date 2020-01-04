@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
+import { toggleAdmin } from '../../../store/actions/adminActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
@@ -39,21 +40,24 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="nav_column">
-                {/* <div className="logged_in">
+                <div className="logged_in">
                     <div className="profile_circle">
                         S
                         <div className="hover_holder">
                             <ul className="profile_options">
                                 <div className="options_triangle"></div>
-                                <li className="options_item">Account</li>
+                                <li 
+                                    className="options_item" 
+                                    onClick={() => dispatch(toggleAdmin())}
+                                >Account</li>
                                 <li className="options_item">Log out</li>
                             </ul>
                         </div>
                     </div>
-                </div> */}
-                <div className="logged_out">
-                    <button className="log_in">Log in</button>
                 </div>
+                {/* <div className="logged_out">
+                    <button className="log_in">Log in</button>
+                </div> */}
                 <div className={`mobile_toggle ${mobileNav ? 'active' : ''}`} onClick={() => dispatch(toggleMobileNav())}>
                     <div></div>
                     <div></div>
