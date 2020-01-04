@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
+import { toggleAdmin } from '../../../store/actions/adminActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
@@ -31,11 +32,19 @@ const Nav = () => {
                             </span>
                             My Bookings
                         </li>
-                        <li className="nav_item">
+                        <li 
+                            className="nav_item"
+                            onClick={() => dispatch(toggleAdmin())}
+                        >
                             <span>
                                 <i className="fas fa-user-circle"></i>
                             </span>
-                            Account
+                            <Link 
+                                to="/admin/user"
+                                onClick={() => dispatch(toggleMobileNav())}
+                            >
+                                Account
+                            </Link>
                         </li>
                         <li className="nav_item">
                             <span>

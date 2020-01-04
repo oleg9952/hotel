@@ -8,6 +8,26 @@ const Admin = () => {
     const [ toggleNav, setToggleNav ] = useState(false)
     const dispatch = useDispatch()
 
+    // ---- NAV MARKERS ----
+    const [ activeNavItem, setActiveNavItem ] = useState('info')
+
+    const handleLinkMarker = e => {
+        switch(e.target.innerText) {
+            case 'User Info':
+                setActiveNavItem('info')
+                return
+            case 'Dashboard':
+                setActiveNavItem('dash')
+                return
+            case 'Favorites':
+                setActiveNavItem('fav')
+                return
+            default:
+                setActiveNavItem('info')
+                return
+        }
+    }
+
     const handleNavToggle = () => setToggleNav(!toggleNav)
 
     return (
@@ -28,14 +48,43 @@ const Admin = () => {
             </div>
             <div className={`${style.admin_body} ${toggleNav ? style.active : ''}`}>
                 <div className={style.nav}>
+                    <div className={style.nav_header}>
+                        <div className={style.profile_img} />
+                        <p className={style.user_name}>Alex Brand</p>
+                        <p className={style.user_email}>alex.brand@gmail.com</p>
+                    </div>
                     {/* ------- USER NAV ------- */}
-                    <ul className={style.user_nav}>
-                        <li>
+                    <ul className={style.nav_holder}>
+                        <li onClick={handleLinkMarker}>
+                            <i className="fas fa-hotel"></i>
                             <Link to="/" onClick={() => dispatch(toggleAdmin())}>
                                 Home
                             </Link>
                         </li>
-                        <li>Test</li>
+                        <li onClick={handleLinkMarker}
+                            className={`${activeNavItem === 'info' ? style.active : ''}`}
+                        >
+                            <i className="fas fa-user"></i>
+                            <Link to="/admin/user">
+                                User Info
+                            </Link>
+                        </li>
+                        <li onClick={handleLinkMarker}
+                            className={`${activeNavItem === 'dash' ? style.active : ''}`}
+                        >
+                            <i className="fas fa-tachometer-alt"></i>
+                            <Link to="/admin/dashboard">
+                                Dashboard
+                            </Link>
+                        </li>
+                        <li onClick={handleLinkMarker}
+                            className={`${activeNavItem === 'fav' ? style.active : ''}`}
+                        >
+                            <i className="far fa-heart"></i>
+                            <Link to="/admin/favorites">
+                                Favorites
+                            </Link>
+                        </li>
                     </ul>
                     {/* ------- ADMIN NAV ------- */}
                     {/* <ul className={style.admin_nav}>
@@ -49,8 +98,14 @@ const Admin = () => {
                 </div>
                 <div className={style.content}>
                     <Switch>
-                        <Route exact path="/admin/home">
-                            <h1>home</h1>
+                        <Route exact path="/admin/user">
+                            <h1>User</h1>
+                        </Route>
+                        <Route exact path="/admin/dashboard">
+                            <h1>Dashboard</h1>
+                        </Route>
+                        <Route exact path="/admin/favorites">
+                            <h1>Favorites</h1>
                         </Route>
                     </Switch>
                 </div>

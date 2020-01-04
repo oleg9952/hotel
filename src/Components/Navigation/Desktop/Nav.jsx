@@ -50,7 +50,7 @@ const Nav = () => {
                                     className="options_item" 
                                     onClick={() => dispatch(toggleAdmin())}
                                 > 
-                                    <Link to="/admin/home">
+                                    <Link to="/admin/user">
                                         Account
                                     </Link>
                                 </li>
