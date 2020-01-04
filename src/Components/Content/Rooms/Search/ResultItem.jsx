@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ResultItem = (props) => {
     const { id, name, price, imgBaseUrl, img, animDelay } = props.item
+    const handleSearchClose = props.handleSearchClose
 
     return (
         <div className="result_item"
@@ -15,7 +16,7 @@ const ResultItem = (props) => {
             <div className="result_item-body">
                 <div className="body_main">
                     <p className="result_name">
-                        <Link to={`/rooms/${id}`}>
+                        <Link to={`/rooms/${id}`} onClick={handleSearchClose}>
                             { name }
                         </Link>
                     </p>

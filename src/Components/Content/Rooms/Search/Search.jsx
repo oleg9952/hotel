@@ -49,6 +49,7 @@ const Search = () => {
                         <ResultItem 
                             key={item.id}
                             item={item}
+                            handleSearchClose={handleSearchClose}
                         />
                     )) : ''
                 }
