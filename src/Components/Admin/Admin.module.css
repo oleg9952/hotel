@@ -106,11 +106,13 @@
     width: 170px;
     height: calc(100vh - 60px);
     background-color: #fff;
+    overflow-y: scroll;
     top: 60px;
     left: 0;
     transform: translateX(0%);
     box-shadow: 1px 0 3px rgba(0,0,0,0.12), 1px 0 2px rgba(0,0,0,0.24);
     transition: .5s;
+    padding-bottom: 20px;
 }
 
 .admin_body.active {
