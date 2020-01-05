@@ -5,6 +5,7 @@ import { toggleAdmin } from '../../store/actions/adminActions'
 import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
+import Dashboard from './Dashboard/Dashboard'
 
 const Admin = () => {
     const [ toggleNav, setToggleNav ] = useState(false)
@@ -101,9 +102,7 @@ const Admin = () => {
                 <div className={style.content}>
                     <Switch>
                         <Route exact path="/admin/user" component={UserInfo} />
-                        <Route exact path="/admin/dashboard">
-                            <h1>Dashboard</h1>
-                        </Route>
+                        <Route exact path="/admin/dashboard" component={Dashboard} />
                         <Route exact path="/admin/favorites">
                             <h1>Favorites</h1>
                         </Route>
