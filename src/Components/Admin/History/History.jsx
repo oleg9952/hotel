@@ -8,22 +8,22 @@ const History = () => {
         <div className={style.history}>
             <h1 className={style.history_title}>My Booking History</h1>
             <div className={style.history_table}>
-                <table className="table table-striped table-hover" id={style.history_table}>
+                <table className={style.table}>
                     <thead>
                         <tr>
                             <th scope="col">Booking ID</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Status</th>
+                            <th scope="col" className={style.status}>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">
+                            <td scope="row">
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
-                            </th>
+                            </td>
                             <td>03.01.2020</td>
                             <td>$432</td>
                             <td>
@@ -31,11 +31,11 @@ const History = () => {
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">
+                            <td scope="row">
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
-                            </th>
+                            </td>
                             <td>03.01.2020</td>
                             <td>$432</td>
                             <td>
@@ -43,11 +43,11 @@ const History = () => {
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">
+                            <td scope="row">
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
-                            </th>
+                            </td>
                             <td>03.01.2020</td>
                             <td>$432</td>
                             <td>

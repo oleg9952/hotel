@@ -16,15 +16,49 @@
     height: 400px;
 }
 
-#history_table {
+/*--------- TABLE ---------*/ 
+
+.table {
     background-color: #fff;
+    width: 100%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-collapse: collapse;
+}
+
+.table a {
+    color: #218eff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.table th {
+    text-align: left;
+}
+
+.table th,
+.table td {
+    line-height: 50px;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #ebe8e8;
+}
+
+.table .status {
+    text-align: center;
 }
 
 .status_indicator {
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    margin: 0 auto;
 }
 
 .status_indicator.confirmed {
