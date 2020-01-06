@@ -78,3 +78,128 @@
 .booking_details {
     text-align: center;
 }
+
+.booking_details .page_title {
+    margin-bottom: 10px;
+}
+
+.details_bookings {
+    /* border: 1px solid black; */
+    min-height: 50px;
+    padding: 5px;
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.details_bookings .item_img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.details_bookings .booking_item {
+    min-height: 180px;
+    display: grid;
+    grid-template-columns: 250px 1fr 100px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    margin-bottom: 20px;
+}
+
+.details_bookings .booking_item:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* .booking_item > div {
+    border: 1px solid black;
+} */
+
+.booking_item .item_details {
+    padding: 5px;
+}
+
+.booking_item .item_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item_details .order_info {
+    max-width: 450px;
+    /* height: 100px; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.order_info .info_column {
+    font-size: 18px;
+}
+
+.info_column p {
+    margin-bottom: 10px;
+}
+
+.info_column ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.info_column ul li {
+    line-height: 30px;
+}
+
+.booking_item .item_price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.booking_details .total_price_title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.booking_details .total_price {
+    text-align: center;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/*--------- MEDIA QUERIES ---------*/ 
+
+@media screen and (max-width: 992px) {
+    .details_bookings {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+    
+    .details_bookings .booking_item {
+        /* width: 280px; */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .details_bookings {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .details_bookings {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
