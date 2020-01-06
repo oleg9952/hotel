@@ -1,8 +1,8 @@
-export const animateIntro = () => {
-    return {
-        type: 'ANIMATE_INTRO'
-    }
-}
+// export const animateIntro = () => {
+//     return {
+//         type: 'ANIMATE_INTRO'
+//     }
+// }
 
 export const toggleMobileNav = () => {
     return {

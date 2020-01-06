@@ -10,7 +10,8 @@ const Nav = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className="header_nav" style={{display: intro ? 'grid' : 'none'}}>
+        // style={{display: intro ? 'grid' : 'none'}}
+        <div className="header_nav" >
             <div className="nav_column">
                 <div className="nav_logo"></div>
             </div>

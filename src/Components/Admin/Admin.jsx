@@ -6,6 +6,7 @@ import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
 import History from './History/History'
+import BookingDetails from './History/BookingDetails'
 
 const Admin = () => {
     const [ toggleNav, setToggleNav ] = useState(false)
@@ -106,9 +107,7 @@ const Admin = () => {
                         <Route exact path="/admin/favorites">
                             <h1>Favorites</h1>
                         </Route>
-                        <Route exact path="/admin/history/:bookingID">
-                            <h1>History Item</h1>
-                        </Route>
+                        <Route exact path="/admin/history/:bookingID" component={BookingDetails} />
                     </Switch>
                 </div>
             </div>

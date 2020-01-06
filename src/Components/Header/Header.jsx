@@ -7,7 +7,7 @@ import MobileNav from '../Navigation/Mobile/Nav'
 import { animateIntro } from '../../store/actions/navActions'
 
 const Header = () => {
-    const animIntro = useSelector(state => state.navReducers.intro)
+    // const animIntro = useSelector(state => state.navReducers.intro)
     const dispatch = useDispatch()
     const settings = {
         dots: true,
@@ -21,24 +21,24 @@ const Header = () => {
         swipe: false
     }
 
-    const delayHeaderBody = (delay) => {
-        setTimeout(() => {
-            dispatch(animateIntro())
-        }, delay)
-    }
+    // const delayHeaderBody = (delay) => {
+    //     setTimeout(() => {
+    //         dispatch(animateIntro())
+    //     }, delay)
+    // }
     
-    useEffect(() => {
-        delayHeaderBody(4500)
-    }, [])
+    // useEffect(() => {
+    //     delayHeaderBody(4500)
+    // }, [])
 
     return (
         <div className="header">
-            
-            <div className="header_intro">
+            {/* <div className="header_intro">
                 <p className="intro_title">Welcome to Hotel</p>
                 <p className="intro_subtitle">Some title below</p>
-            </div>
-            <div className="header_body" style={{display: animIntro ? 'block' : 'none'}}>
+            </div> */}
+            {/* style={{display: animIntro ? 'block' : 'none'}} */}
+            <div className="header_body">
                 <Slider className="header_slider" {...settings}>
                     <div className="slide-one">
                         <div className="slide_title">
