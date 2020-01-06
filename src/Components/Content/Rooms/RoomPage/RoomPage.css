@@ -48,6 +48,7 @@
     border-radius: 10px;
     overflow: hidden;
     border: none;
+    font-size: 12px;
 }
 
 .room_booking .room_guests {

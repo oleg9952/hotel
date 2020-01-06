@@ -1,0 +1,42 @@
+/********** GENERAL **********/
+
+.history {
+    /* border: 1px solid black; */
+    min-height: 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.history .history_title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.history .history_table {
+    height: 400px;
+}
+
+#history_table {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.status_indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.status_indicator.confirmed {
+    background-color: green;
+}
+
+.status_indicator.in_progress {
+    background-color: orange;
+}
+
+.status_indicator.canceled {
+    background-color: red;
+}

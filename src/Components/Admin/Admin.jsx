@@ -5,7 +5,7 @@ import { toggleAdmin } from '../../store/actions/adminActions'
 import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
-import Dashboard from './Dashboard/Dashboard'
+import History from './History/History'
 
 const Admin = () => {
     const [ toggleNav, setToggleNav ] = useState(false)
@@ -19,8 +19,8 @@ const Admin = () => {
             case 'User Info':
                 setActiveNavItem('info')
                 return
-            case 'Dashboard':
-                setActiveNavItem('dash')
+            case 'History':
+                setActiveNavItem('hist')
                 return
             case 'Favorites':
                 setActiveNavItem('fav')
@@ -58,36 +58,36 @@ const Admin = () => {
                     </div>
                     {/* ------- USER NAV ------- */}
                     <ul className={style.nav_holder}>
-                        <li onClick={handleLinkMarker}>
-                            <i className="fas fa-hotel"></i>
-                            <Link to="/" onClick={() => dispatch(toggleAdmin())}>
-                                Home
-                            </Link>
-                        </li>
-                        <li onClick={handleLinkMarker}
-                            className={`${activeNavItem === 'info' ? style.active : ''}`}
-                        >
-                            <i className="fas fa-user"></i>
-                            <Link to="/admin/user">
-                                User Info
-                            </Link>
-                        </li>
-                        <li onClick={handleLinkMarker}
-                            className={`${activeNavItem === 'dash' ? style.active : ''}`}
-                        >
-                            <i className="fas fa-tachometer-alt"></i>
-                            <Link to="/admin/dashboard">
-                                Dashboard
-                            </Link>
-                        </li>
-                        <li onClick={handleLinkMarker}
-                            className={`${activeNavItem === 'fav' ? style.active : ''}`}
-                        >
-                            <i className="far fa-heart"></i>
-                            <Link to="/admin/favorites">
-                                Favorites
-                            </Link>
-                        </li>
+                        <Link to="/" onClick={() => dispatch(toggleAdmin())}>
+                            <li onClick={handleLinkMarker}>
+                                <i className="fas fa-hotel"></i>
+                                    Home
+                            </li>
+                        </Link>
+                        <Link to="/admin/user">
+                            <li onClick={handleLinkMarker}
+                                className={`${activeNavItem === 'info' ? style.active : ''}`}
+                            >
+                                <i className="fas fa-user"></i>
+                                    User Info
+                            </li>
+                        </Link>
+                        <Link to="/admin/history">
+                            <li onClick={handleLinkMarker}
+                                className={`${activeNavItem === 'hist' ? style.active : ''}`}
+                            >
+                                <i className="fas fa-history"></i>
+                                    History
+                            </li>
+                        </Link>
+                        <Link to="/admin/favorites">
+                            <li onClick={handleLinkMarker}
+                                className={`${activeNavItem === 'fav' ? style.active : ''}`}
+                            >
+                                <i className="far fa-heart"></i>
+                                    Favorites
+                            </li>
+                        </Link>
                     </ul>
                     {/* ------- ADMIN NAV ------- */}
                     {/* <ul className={style.admin_nav}>
@@ -102,9 +102,12 @@ const Admin = () => {
                 <div className={style.content}>
                     <Switch>
                         <Route exact path="/admin/user" component={UserInfo} />
-                        <Route exact path="/admin/dashboard" component={Dashboard} />
+                        <Route exact path="/admin/history" component={History} />
                         <Route exact path="/admin/favorites">
                             <h1>Favorites</h1>
+                        </Route>
+                        <Route exact path="/admin/history/:bookingID">
+                            <h1>History Item</h1>
                         </Route>
                     </Switch>
                 </div>

@@ -26,7 +26,7 @@ const App = () => {
         {
           adminPage ? <Admin /> : (
             <div className="main">
-              {/* <Header /> */}
+              <Header />
               <Content />
               <Footer />
               <BookingCart cart={cart} />
