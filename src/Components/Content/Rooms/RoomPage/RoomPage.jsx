@@ -19,7 +19,7 @@ const RoomPage = (props) => {
         }
     }
 
-    const [ toggleBody, setToggleBody ] = useState(true)
+    const [ toggleBody, setToggleBody ] = useState(false)
     const [ servicesModal, setServicesModal ] = useState(false)
 
     const switchToDetails = () => setToggleBody(true)
@@ -187,6 +187,7 @@ const RoomPage = (props) => {
                         <div className={`reviews ${!toggleBody ? 'active' : ''}`}>
                             <h2>Reviews</h2>
                             <div className="customer_reviews">
+                                {/* <ReviewComment />
                                 <ReviewComment />
                                 <ReviewComment />
                                 <ReviewComment />
@@ -195,26 +196,31 @@ const RoomPage = (props) => {
                                 <ReviewComment />
                                 <ReviewComment />
                                 <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
+                                <ReviewComment /> */}
                             </div>
-                            <form className="new_review">
-                                <div className="feedback_card">
-                                    <div className="card">
-                                        <div className="card_img"></div>
-                                        <textarea 
-                                            name="review" 
-                                            placeholder="Enter your feedbeack here..."
-                                            className="new_message"
-                                        >
-                                        </textarea>
-                                        <div className="customer_details">
-                                            <p className="customer_name">James Anderson</p>
-                                            <p className="feedback_date">30.12.2019</p>
-                                        </div>
-                                    </div>
+                            {/*---------- LOGGED IN ----------*/}
+                            {/* <form className="customer_review auth-true">
+                                <div className="profile_pic" />
+                                <p className="user_name">Alex Brand</p>
+                                <textarea name="message"
+                                    placeholder="Message..."
+                                ></textarea>
+                                <button type="submit">Send</button>
+                            </form> */}
+                            {/*---------- LOGGED OUT ----------*/}
+                            <form className="customer_review">
+                                <div className="review_head">
+                                    <input type="text"
+                                        placeholder="First Name"
+                                    />
+                                    <input type="text"
+                                        placeholder="Last Name"
+                                    />
                                 </div>
-                                <button type="submit" className="review_btn">Add Review</button>
+                                <textarea name="message"
+                                    placeholder="Message..."
+                                ></textarea>
+                                <button type="submit">Send</button>
                             </form>
                         </div>
                     </div>
