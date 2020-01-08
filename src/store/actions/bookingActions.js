@@ -34,3 +34,9 @@ export const removeCart = id => {
         payload: id
     }
 }
+
+export const confirmBooking = () => {
+    return {
+        type: 'CONFIRM_BOOKING'
+    }
+}

@@ -33,8 +33,6 @@ export default (state = initState, action) => {
                 servicesTotal += 10
             }
 
-            
-
             if(action.payload[2] !== null) {
 
                 // ------ checkIn / checkOut Dates ------ 
@@ -69,6 +67,11 @@ export default (state = initState, action) => {
                     bookingDates: {
                         checkIn: `${checkInDay}.${checkInMonth}.${checkIn.getFullYear()}`,
                         checkOut: `${checkOutDay}.${checkOutMonth}.${checkOut.getFullYear()}`
+                    },
+                    services: {
+                        food: action.payload[0][0],
+                        pool: action.payload[0][1],
+                        gym: action.payload[0][2]
                     }
                 }
 
@@ -86,6 +89,9 @@ export default (state = initState, action) => {
                 ...state,
                 cart: state.cart.filter(item => item.id !== action.payload)
             }
+        case 'CONFIRM_BOOKING':
+            console.log('confirmed')
+            return state
         default:
             return state
     }
