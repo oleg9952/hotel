@@ -10,6 +10,7 @@ import BookingCart from './Components/Modals/BookingCart/BookingCart'
 import CartOpenBtn from './Components/Modals/BookingCart/CartOpenBtn'
 
 import Admin from './Components/Admin/Admin'
+import AuthForm from './Components/AuthForm/AuthForm'
 
 const App = () => {
   const { adminPage } = useSelector(state => state.adminReducers)
@@ -31,6 +32,7 @@ const App = () => {
               <Footer />
               <BookingCart cart={cart} />
               <CartOpenBtn />
+              <AuthForm />
             </div>
           )
         }

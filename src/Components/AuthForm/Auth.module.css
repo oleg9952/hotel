@@ -1,0 +1,232 @@
+.auth {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #04c571;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+
+.auth.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth.active .auth_holder {
+    display: block;
+}
+
+.auth_close {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.auth_close > div {
+    width: 35px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.auth_close > div:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.auth_close > div:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.auth_holder {
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    background-color: #fff;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    /* border: 5px solid red; */
+    padding-top: 40px;
+    font-size: 18px;
+    animation: animateForms .5s forwards;
+    display: none;
+    /* overflow: hidden; */
+}
+
+@keyframes animateForms {
+    from {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.5);
+    }
+    to {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.profile_img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgb(75, 75, 75);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    border: 5px solid #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    transition-delay: .5s;
+}
+
+.profile_img.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth_tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* border: 1px solid red; */
+    width: 80%;
+    margin: 0 auto 25px;
+}
+
+.auth_tabs .tab_item {
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+.auth_tabs .tab_item.active {
+    border-bottom: 4px solid #04c571;
+}
+
+.forms_holder {
+    width: 100%;
+    height: 230px;
+    padding: 0 35px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.forms_holder.active {
+    height: 470px;
+}
+
+.forms_holder .auth_login,
+.forms_holder .auth_signup {
+    /* border: 1px solid black; */
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-170%);
+    transition: .5s;
+}
+
+.forms_holder .auth_signup {
+    transform: translateX(70%);
+}
+.forms_holder .auth_signup.active {
+    transform: translateX(-50%);
+}
+
+.forms_holder .auth_login.active {
+    transform: translateX(-50%);
+}
+
+.forms_holder .input_item {
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
+}
+
+.input_item p {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.input_item input {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: 2px solid #04c571;
+    padding: 0 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.input_item input:focus {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.forms_holder button {
+    padding: 7px 30px;
+    font-size: 18px;
+    background-color: #04c571;
+    border: none;
+    display: block;
+    color: #fff;
+    margin: 0 auto 40px;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+}
+.forms_holder button:hover,
+.forms_holder button:focus {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #fff;
+    color: #04c571;
+}
+
+/*********** MEDIA QUERIES ***********/
+
+@media screen and (max-height: 500px) {
+
+    
+
+    .auth_holder {
+        width: 80%;
+        height: 95%;
+        overflow-y: scroll;
+    }
+
+    .profile_img {
+        display: none;
+    }
+
+
+
+}
+
+@media screen and (max-width: 375px) { 
+   
+    .auth_holder {
+        width: 95%;
+        height: 80%;
+        overflow-y: scroll;
+    }
+    .profile_img {
+        display: none;
+    }
+
+  
+}

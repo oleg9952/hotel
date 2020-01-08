@@ -162,3 +162,27 @@
         transform: scale(1);
     }
 }
+
+/************* MEDIA QUERIES *************/
+
+@media screen and (max-width: 1024px) {
+    .slide_title p {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slide_title p {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-width: 578px) {
+    .header_slider div .slide_title {
+        width: 80%;
+    }
+
+    .slide_title p {
+        font-size: 30px;
+    }
+}

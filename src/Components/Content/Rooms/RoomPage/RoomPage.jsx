@@ -10,6 +10,7 @@ const RoomPage = (props) => {
     const dispatch = useDispatch()
     const { rooms } = useSelector(state => state.roomsReducers)
     const { cart } = useSelector(state => state.bookingReducers)
+    const { authorized, user } = useSelector(state => state.authReducers)
 
     let numberOfGuests = useRef(null)
 
@@ -19,7 +20,7 @@ const RoomPage = (props) => {
         }
     }
 
-    const [ toggleBody, setToggleBody ] = useState(false)
+    const [ toggleBody, setToggleBody ] = useState(true)
     const [ servicesModal, setServicesModal ] = useState(false)
 
     const switchToDetails = () => setToggleBody(true)
@@ -198,30 +199,40 @@ const RoomPage = (props) => {
                                 <ReviewComment />
                                 <ReviewComment /> */}
                             </div>
+                            {
+                                authorized ? (
+                                    <form className="customer_review auth-true">
+                                        <div className="profile_pic" />
+                                        <p className="user_name">
+                                            {`${user.firstName} ${user.lastName}` }
+                                        </p>
+                                        <textarea name="message"
+                                            placeholder="Message..."
+                                        ></textarea>
+                                        <button type="submit">Send</button>
+                                    </form>
+                                ) : (
+                                    <form className="customer_review">
+                                        <div className="review_head">
+                                            <input type="text"
+                                                placeholder="First Name"
+                                            />
+                                            <input type="text"
+                                                placeholder="Last Name"
+                                            />
+                                        </div>
+                                        <textarea name="message"
+                                            placeholder="Message..."
+                                        ></textarea>
+                                        <button type="submit">Send</button>
+                                    </form>
+                                )
+                            }
+
                             {/*---------- LOGGED IN ----------*/}
-                            {/* <form className="customer_review auth-true">
-                                <div className="profile_pic" />
-                                <p className="user_name">Alex Brand</p>
-                                <textarea name="message"
-                                    placeholder="Message..."
-                                ></textarea>
-                                <button type="submit">Send</button>
-                            </form> */}
+                            
                             {/*---------- LOGGED OUT ----------*/}
-                            <form className="customer_review">
-                                <div className="review_head">
-                                    <input type="text"
-                                        placeholder="First Name"
-                                    />
-                                    <input type="text"
-                                        placeholder="Last Name"
-                                    />
-                                </div>
-                                <textarea name="message"
-                                    placeholder="Message..."
-                                ></textarea>
-                                <button type="submit">Send</button>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>

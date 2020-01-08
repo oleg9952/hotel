@@ -2,11 +2,13 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
+import { toggleAuthForms } from '../../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
     const { intro, mobileNav } = useSelector(state => state.navReducers)
+    const { authorized } = useSelector(state => state.authReducers)
     const dispatch = useDispatch()
 
     return (
@@ -41,28 +43,33 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="nav_column">
-                <div className="logged_in">
-                    <div className="profile_circle">
-                        S
-                        <div className="hover_holder">
-                            <ul className="profile_options">
-                                <div className="options_triangle"></div>
-                                <li 
-                                    className="options_item" 
-                                    onClick={() => dispatch(toggleAdmin())}
-                                > 
-                                    <Link to="/admin/user">
-                                        Account
-                                    </Link>
-                                </li>
-                                <li className="options_item">Log out</li>
-                            </ul>
+                {
+                    authorized ? (
+                        <div className="logged_in">
+                            <div className="profile_circle">
+                                S
+                                <div className="hover_holder">
+                                    <ul className="profile_options">
+                                        <div className="options_triangle"></div>
+                                        <li 
+                                            className="options_item" 
+                                            onClick={() => dispatch(toggleAdmin())}
+                                        > 
+                                            <Link to="/admin/user">
+                                                Account
+                                            </Link>
+                                        </li>
+                                        <li className="options_item">Log out</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                {/* <div className="logged_out">
-                    <button className="log_in">Log in</button>
-                </div> */}
+                    ) : (
+                        <div className="logged_out">
+                            <button className="log_in" onClick={() => dispatch(toggleAuthForms())}>Log in</button>
+                        </div>
+                    )
+                }
                 <div className={`mobile_toggle ${mobileNav ? 'active' : ''}`} onClick={() => dispatch(toggleMobileNav())}>
                     <div></div>
                     <div></div>

@@ -2,12 +2,19 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
+import { toggleAuthForms } from '../../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
     const mobileNav = useSelector(state => state.navReducers.mobileNav)
+    const { authorized, user } = useSelector(state => state.authReducers)
     const dispatch = useDispatch()
+
+    const handleLogIn = () => {
+        dispatch(toggleMobileNav())
+        dispatch(toggleAuthForms())
+    }
 
     return (
         <div className={`mobile_nav ${mobileNav ? 'active' : ''}`}>
@@ -18,41 +25,60 @@ const Nav = () => {
                         <p className="header_title">Sections</p>
                         <div className="title_underline"></div>
                     </div>
-                    <div className="logged_in--mobile">
-                        <div className="profile_img"></div>
-                        <p className="user_name">Alex Brand</p>
-                        <p className="user_email">alex.brand@gmail.com</p>
-                    </div>
+
+                    {
+                        authorized ? (
+                            <div className="logged_in--mobile">
+                                <div className="profile_img"></div>
+                                <p className="user_name">
+                                    { `${user.firstName} ${user.lastName}` }
+                                </p>
+                                <p className="user_email">
+                                    { user.email }
+                                </p>
+                            </div>
+                        ) : ''
+                    }
+                    
+                
                 </div>
                 <div className="nav_body">
-                    <ul className="mobile_items">
-                        <li className="nav_item">
-                            <span>
-                            <i className="fas fa-bookmark"></i>
-                            </span>
-                            My Bookings
-                        </li>
-                        <li 
-                            className="nav_item"
-                            onClick={() => dispatch(toggleAdmin())}
-                        >
-                            <span>
-                                <i className="fas fa-user-circle"></i>
-                            </span>
-                            <Link 
-                                to="/admin/user"
-                                onClick={() => dispatch(toggleMobileNav())}
-                            >
-                                Account
-                            </Link>
-                        </li>
-                        <li className="nav_item">
-                            <span>
-                                <i className="fas fa-sign-out-alt"></i>
-                            </span>
-                            Log out
-                        </li>
-                    </ul>
+                    
+                    {
+                        authorized ? (
+                            <ul className="mobile_items">
+                                <li 
+                                    className="nav_item"
+                                    onClick={() => dispatch(toggleAdmin())}
+                                >
+                                    <span>
+                                        <i className="fas fa-user-circle"></i>
+                                    </span>
+                                    <Link 
+                                        to="/admin/user"
+                                        onClick={() => dispatch(toggleMobileNav())}
+                                    >
+                                        Account
+                                    </Link>
+                                </li>
+                                <li className="nav_item">
+                                    <span>
+                                        <i className="fas fa-sign-out-alt"></i>
+                                    </span>
+                                    Sign out
+                                </li>
+                            </ul>
+                        ) : (
+                            <ul className="mobile_items">
+                                <li className="nav_item" onClick={handleLogIn}>
+                                    <span>
+                                        <i className="fas fa-sign-in-alt"></i>
+                                    </span>
+                                    Login
+                                </li>
+                            </ul>
+                        )
+                    }
                     <ul className="mobile_items">
                         <li className="nav_item">
                             <span>
