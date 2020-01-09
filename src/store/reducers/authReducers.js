@@ -1,16 +1,9 @@
 const initState = {
     authForms: false,
     authorized: false,
-    user: {
-        email: 'alex.brand@gmail.com',
-        uid: 'uriuyewh278yqwe',
-        firstName: 'Alex',
-        lastName: 'Brand',
-        location: 'USA',
-        profileImg: 'link',
-        bookingHistory: [],
-        favorite: []
-    }
+    user: null,
+    //-------- ERRORS --------
+    authError: null
 }
 
 export default (state = initState, action) => {
@@ -19,6 +12,19 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 authForms: !state.authForms
+            }
+        case 'SET_USER':
+            return {
+                ...state,
+                authorized: true,
+                user: action.payload
+            }
+        //-------- ERRORS --------
+        case 'AUTH_ERRORS':
+            console.log('error')
+            return {
+                ...state,
+                authError: action.payload
             }
         default:
             return state

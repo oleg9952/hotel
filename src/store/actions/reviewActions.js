@@ -1,11 +1,8 @@
-import Firebase from '../../fb_config'
-
-const db = Firebase.firestore()
-
+import { firestore } from '../../fb_config'
 
 
 export const fetchReviews = () => dispatch => {
-    db.collection('reviews')
+    firestore.collection('reviews')
         .get()
         .then(resp => {
             let reviews = []
@@ -31,7 +28,7 @@ export const fetchReviews = () => dispatch => {
 }
 
 export const addReview = review => () => {
-    db.collection('reviews')
+    firestore.collection('reviews')
         .add(review)
         .catch(error => console.error(error))
 }

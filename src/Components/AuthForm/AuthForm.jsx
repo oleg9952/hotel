@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleAuthForms } from '../../store/actions/authActions'
+import { toggleAuthForms, signUp } from '../../store/actions/authActions'
 import style from './Auth.module.css'
 
 const AuthForm = () => {
@@ -16,6 +16,66 @@ const AuthForm = () => {
     const handleFormClose = () => {
         dispatch(toggleAuthForms())
         handleLogInTab()
+    }
+
+    //-------- SIGN UP --------
+    let firstName = useRef(null)
+    let lastName = useRef(null)
+    let location = useRef(null)
+    let newUserEmail = useRef(null)
+    let newUserPass = useRef(null)
+
+    const handleSignUp = e => {
+        e.preventDefault()        
+        if(
+            firstName.current.value &&
+            lastName.current.value &&
+            location.current.value &&
+            newUserEmail.current.value &&
+            newUserPass.current.value
+        ) {
+
+            let newUserData = {
+                firstName: firstName.current.value,
+                lastName: lastName.current.value,
+                location: location.current.value,
+                email: newUserEmail.current.value,
+                password: newUserPass.current.value
+            }
+
+            dispatch(signUp(newUserData))
+
+            setTimeout(() => {
+                [
+                    firstName,
+                    lastName,
+                    location,
+                    newUserEmail,
+                    newUserPass
+                ].forEach(input => input.current.value = null)
+            }, 500)
+        } else {
+            alert('Make sure you\'ve filled in all fields!')
+        }
+    }
+
+    //-------- SIGN IN --------
+
+    let userEmail = useRef(null)
+    let userPass = useRef(null)
+
+    const handleSignIn = e => {
+        e.preventDefault()
+
+        if(userEmail.current.value && userPass.current.value) {
+
+
+            setTimeout(() => {
+                [userEmail, userPass].forEach(input => input.current.value = null)
+            }, 500)
+        } else {
+            alert('Make sure you\'ve filled in all fields!')
+        }
     }
 
     return (
@@ -37,38 +97,42 @@ const AuthForm = () => {
                     >Sign Up</p>
                 </div>
                 <div className={`${style.forms_holder} ${!formToggle ? style.active : ''}`}>
-                    <form className={`${style.auth_login} ${formToggle ? style.active : ''}`}>
+                    <form className={`${style.auth_login} ${formToggle ? style.active : ''}`}
+                        onSubmit={handleSignIn}
+                    >
                         <div className={style.input_item}>
                             <p className={style.field_title}>Email</p>
-                            <input type="email" />
+                            <input type="email" ref={userEmail} />
                         </div>
                         <div className={style.input_item}>
                             <p className={style.field_title}>Password</p>
-                            <input type="password" />
+                            <input type="password" ref={userPass} />
                         </div>
                         <button type="submit">Login</button>
                     </form>
 
-                    <form className={`${style.auth_signup} ${!formToggle ? style.active : ''}`}>
+                    <form className={`${style.auth_signup} ${!formToggle ? style.active : ''}`}
+                        onSubmit={handleSignUp}
+                    >
                         <div className={style.input_item}>
                             <p className={style.field_title}>First Name</p>
-                            <input type="text" />
+                            <input type="text" ref={firstName} />
                         </div>
                         <div className={style.input_item}>
                             <p className={style.field_title}>Last Name</p>
-                            <input type="text" />
+                            <input type="text" ref={lastName} />
                         </div>
                         <div className={style.input_item}>
                             <p className={style.field_title}>Location</p>
-                            <input type="text" />
+                            <input type="text" ref={location} />
                         </div>
                         <div className={style.input_item}>
                             <p className={style.field_title}>Email</p>
-                            <input type="email" />
+                            <input type="email" ref={newUserEmail} />
                         </div>
                         <div className={style.input_item}>
                             <p className={style.field_title}>Password</p>
-                            <input type="password" />
+                            <input type="password" ref={newUserPass} />
                         </div>
                         <button type="submit">Sign Up</button>
                     </form>

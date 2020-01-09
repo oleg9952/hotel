@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import Firebase from './fb_config'
+import { firestore, auth } from './fb_config'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRooms } from './store/actions/roomsActions'
 import { fetchReviews } from './store/actions/reviewActions'
+import { fetchUserAuthData } from './store/actions/authActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
@@ -15,17 +16,24 @@ import Admin from './Components/Admin/Admin'
 import AuthForm from './Components/AuthForm/AuthForm'
 
 const App = () => {
-  const db = Firebase.firestore()
-  const auth = Firebase.auth()
-
   const { adminPage } = useSelector(state => state.adminReducers)
   const { cart } = useSelector(state => state.bookingReducers)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchRooms())
-    db.collection('reviews').onSnapshot(() => {
+    firestore.collection('reviews').onSnapshot(() => {
       dispatch(fetchReviews())
+    })
+    auth.onAuthStateChanged(user => {
+      if(user) {
+        dispatch(fetchUserAuthData({
+          uid: user.uid,
+          email: user.email
+        }))
+      } else {
+
+      }
     })
   }, [])
 
@@ -35,7 +43,7 @@ const App = () => {
         {
           adminPage ? <Admin /> : (
             <div className="main">
-              {/* <Header /> */}
+              <Header />
               <Content />
               <Footer />
               <BookingCart cart={cart} />

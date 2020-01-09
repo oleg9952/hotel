@@ -19,7 +19,7 @@ const History = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td scope="row">
+                            <td>
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
@@ -31,7 +31,7 @@ const History = () => {
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">
+                            <td>
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
@@ -43,7 +43,7 @@ const History = () => {
                             </td>
                         </tr>
                         <tr>
-                            <td scope="row">
+                            <td>
                                 <Link to="/admin/history/1">
                                     #1302
                                 </Link>
