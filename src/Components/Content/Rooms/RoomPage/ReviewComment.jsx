@@ -1,16 +1,28 @@
 import React from 'react'
 
-const ReviewComment = () => {
+const ReviewComment = (props) => {
+    const { date, name, message, registered } = props.review
+
+    const formatDate = date => {
+        let d = new Date(date)
+        let day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate()
+        let month = (d.getMonth() + 1) < 10 ? `0${(d.getMonth() + 1)}` : (d.getMonth() + 1)
+        let year = d.getFullYear()
+        return `${day}.${month}.${year}`
+    }
+
     return (
         <div className="feedback_card">
             <div className="card">
-                <div className="card_img"></div>
+                <div className="card_img">
+                    { !registered ? name.charAt(0).toUpperCase() : '' }
+                </div>
                 <p className="feedback_message">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
+                    { message }
                 </p>
                 <div className="customer_details">
-                    <p className="customer_name">Alex Brand</p>
-                    <p className="feedback_date">10.12.2019</p>
+                    <p className="customer_name">{ name }</p>
+                    <p className="feedback_date">{ formatDate(date) }</p>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Calendar from 'react-calendar'
 import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingActions'
+import { addReview } from '../../../../store/actions/reviewActions'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
 import './RoomPage.css'
@@ -11,6 +12,35 @@ const RoomPage = (props) => {
     const { rooms } = useSelector(state => state.roomsReducers)
     const { cart } = useSelector(state => state.bookingReducers)
     const { authorized, user } = useSelector(state => state.authReducers)
+    const { reviews } = useSelector(state => state.reviewReducers)
+
+    const compare = (a, b) => {
+        const orderA = a.date
+        const orderB = b.date
+
+        if(orderA < orderB) {
+            return -1
+        } else if(orderA > orderB) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+
+    const currentReviews = () => {
+        if(reviews !== null) {
+            let rev = []
+            reviews.forEach(item => {
+                if(item.id == props.match.params.id) {
+                    rev.push(item)
+                }
+            })
+
+            rev.sort(compare)
+
+            return rev            
+        }
+    }
 
     let numberOfGuests = useRef(null)
 
@@ -95,6 +125,39 @@ const RoomPage = (props) => {
 
     for(let i = 0; i < [food, pool, gym].filter(Boolean).length; i++) {
         servicesTotal += 10
+    }
+
+    //----- ADD REVIEW -----
+    let firstName = useRef(null)
+    let lastName = useRef(null)
+    let reviewText = useRef(null)
+
+    const handleNewReview = e => {
+        e.preventDefault()
+
+        let id = room().id
+
+        if(authorized) {
+            // use data from auth + revieText + date
+        } else {
+            let inputs = [
+                firstName,
+                lastName,
+                reviewText
+            ]
+
+            let review = {
+                id: id,
+                date: new Date().getTime(),
+                name: `${firstName.current.value} ${lastName.current.value}`,
+                message: reviewText.current.value,
+                registered: authorized
+            }
+
+            dispatch(addReview(review))
+
+            inputs.forEach(input => input.current.value = null)
+        }
     }
 
     return (
@@ -188,16 +251,19 @@ const RoomPage = (props) => {
                         <div className={`reviews ${!toggleBody ? 'active' : ''}`}>
                             <h2>Reviews</h2>
                             <div className="customer_reviews">
-                                {/* <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment />
-                                <ReviewComment /> */}
+                                {
+                                    reviews !== null ?
+                                    currentReviews().map(review => {
+                                        if(review.id == props.match.params.id) {
+                                            return (
+                                                <ReviewComment 
+                                                    key={review.date}
+                                                    review={review}
+                                                />
+                                            )
+                                        }
+                                    }) : ''
+                                }
                             </div>
                             {
                                 authorized ? (
@@ -212,27 +278,25 @@ const RoomPage = (props) => {
                                         <button type="submit">Send</button>
                                     </form>
                                 ) : (
-                                    <form className="customer_review">
+                                    <form className="customer_review" onSubmit={handleNewReview}>
                                         <div className="review_head">
                                             <input type="text"
                                                 placeholder="First Name"
+                                                ref={firstName}
                                             />
                                             <input type="text"
                                                 placeholder="Last Name"
+                                                ref={lastName}
                                             />
                                         </div>
                                         <textarea name="message"
                                             placeholder="Message..."
+                                            ref={reviewText}
                                         ></textarea>
                                         <button type="submit">Send</button>
                                     </form>
                                 )
-                            }
-
-                            {/*---------- LOGGED IN ----------*/}
-                            
-                            {/*---------- LOGGED OUT ----------*/}
-                            
+                            }                            
                         </div>
                     </div>
                 </div>

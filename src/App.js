@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
+import Firebase from './fb_config'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRooms } from './store/actions/roomsActions'
+import { fetchReviews } from './store/actions/reviewActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
@@ -13,12 +15,18 @@ import Admin from './Components/Admin/Admin'
 import AuthForm from './Components/AuthForm/AuthForm'
 
 const App = () => {
+  const db = Firebase.firestore()
+  const auth = Firebase.auth()
+
   const { adminPage } = useSelector(state => state.adminReducers)
   const { cart } = useSelector(state => state.bookingReducers)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchRooms())
+    db.collection('reviews').onSnapshot(() => {
+      dispatch(fetchReviews())
+    })
   }, [])
 
   return (

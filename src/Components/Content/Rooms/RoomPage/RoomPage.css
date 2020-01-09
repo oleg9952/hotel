@@ -164,8 +164,7 @@
 @-webkit-keyframes transitionTabs {
     from {
         opacity: 0;
-    }
-    to {
+    } to {
         opacity: 1;
     }
 }
@@ -173,14 +172,34 @@
 @keyframes transitionTabs {
     from {
         opacity: 0;
-    }
-    to {
+    } to {
         opacity: 1;
     }
 }
 
 .room_body .feedback_card {
     margin-bottom: 55px;
+    opacity: 0;
+    animation: animateReviewCard .6s forwards;
+}
+
+@keyframes animateReviewCard {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.feedback_card .card_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 34px;
 }
 
 .room_body .card {
@@ -245,7 +264,7 @@
     border: none;
     border-bottom: 3px solid #ccc;
     outline: none;
-    color: #ccc;
+    color: #6d6d6d;
     font-weight: bold;
 }
 
@@ -437,6 +456,12 @@
 .services_holder button:hover {
     background-color: #515151;
     color: #fff;
+}
+
+
+
+.room_body .feedback_card .customer_name {
+    text-transform: capitalize;
 }
 
 /************** MEDIA AUERIES **************/
