@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Slider from 'react-slick'
+import Spinner from '../../Spinner/Spinner'
 
 class FeedBack extends Component {
     constructor(props) {
@@ -15,7 +17,23 @@ class FeedBack extends Component {
     previous() {
         this.slider.slickPrev();
     }
-    
+
+    formatDate(date) {
+        let d = new Date(date)
+        let day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate()
+        let month = (d.getMonth() + 1) < 10 ? `0${(d.getMonth() + 1)}` : (d.getMonth() + 1)
+        let year = d.getFullYear()
+        return `${day}.${month}.${year}`
+    }
+
+    recentReviews() {
+        let recent = null
+        if(this.props.reviews !== null) {
+            recent = this.props.reviews.slice(0, 6)
+        }
+        return recent
+    }
+
     render() {
         const settings = {
             dots: false,
@@ -48,85 +66,39 @@ class FeedBack extends Component {
             <div className="feedback">
                 <h2 className="feedback_title">Customer's feedback</h2>
                 <div className="content">
-                    <Slider 
-                        ref={c => (this.slider = c)}
-                        {...settings}
-                        className="feedback_slider"
-                    >
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="feedback_card">
-                            <div className="card">
-                                <div className="card_img"></div>
-                                <p className="feedback_message">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos a quisquam nam. Dignissimos dolorem qui velit aut non?
-                                </p>
-                                <div className="customer_details">
-                                    <p className="customer_name">Alex Brand</p>
-                                    <p className="feedback_date">10.12.2019</p>
-                                </div>
-                            </div>
-                        </div>
+                    {
+                        this.recentReviews() !== null ? (
+                            <Slider 
+                                ref={c => (this.slider = c)}
+                                {...settings}
+                                className="feedback_slider"
+                            >
+                                { this.recentReviews().map(review => (
+                                    <div className="feedback_card" key={review.id}>
+                                        <div className="card">
+                                            <div className="card_img">
+                                                {
+                                                    review.name.charAt(0)
+                                                }
+                                            </div>
+                                            <p className="feedback_message">
+                                                { review.message }
+                                            </p>
+                                            <div className="customer_details">
+                                                <p className="customer_name">
+                                                    { review.name }
+                                                </p>
+                                                <p className="feedback_date">
+                                                    { this.formatDate(review.date) }
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )) }
+                            </Slider>
+                        ) : <Spinner />
                         
-                    </Slider>
+                    }
                     <div className="slider_arrows">
                         <div className="slider_arrow" onClick={this.previous}>
                             <i className="fas fa-chevron-left"></i>
@@ -141,4 +113,10 @@ class FeedBack extends Component {
     } 
 }
 
-export default FeedBack
+function mapStateToProps(state) {
+    return {
+        reviews: state.reviewReducers.reviews
+    }
+}
+
+export default connect(mapStateToProps)(FeedBack)

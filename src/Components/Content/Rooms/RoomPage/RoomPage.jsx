@@ -5,6 +5,7 @@ import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingA
 import { addReview } from '../../../../store/actions/reviewActions'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
+import Spinner from '../../../Spinner/Spinner'
 import './RoomPage.css'
 
 const RoomPage = (props) => {
@@ -253,16 +254,12 @@ const RoomPage = (props) => {
                             <div className="customer_reviews">
                                 {
                                     reviews !== null ?
-                                    currentReviews().map(review => {
-                                        if(review.id == props.match.params.id) {
-                                            return (
-                                                <ReviewComment 
-                                                    key={review.date}
-                                                    review={review}
-                                                />
-                                            )
-                                        }
-                                    }) : ''
+                                    currentReviews().map(review => (
+                                        <ReviewComment 
+                                            key={review.date}
+                                            review={review}
+                                        />
+                                    )) : <Spinner />
                                 }
                             </div>
                             {

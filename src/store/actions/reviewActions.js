@@ -2,6 +2,8 @@ import Firebase from '../../fb_config'
 
 const db = Firebase.firestore()
 
+
+
 export const fetchReviews = () => dispatch => {
     db.collection('reviews')
         .get()
@@ -18,9 +20,11 @@ export const fetchReviews = () => dispatch => {
                 reviews.push(review)
             })
 
+            let sorted = reviews.sort(compare)
+
             dispatch({
                 type: 'FETCH_REVIEWS',
-                payload: reviews
+                payload: sorted
             })
         })
         .catch(error => console.error(error))
@@ -30,4 +34,17 @@ export const addReview = review => () => {
     db.collection('reviews')
         .add(review)
         .catch(error => console.error(error))
+}
+
+function compare(a, b) {
+    const orderA = a.date
+    const orderB = b.date
+
+    if(orderA > orderB) {
+        return -1
+    } else if(orderA < orderB) {
+        return 1
+    } else {
+        return 0
+    }
 }
