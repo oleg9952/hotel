@@ -1,7 +1,4 @@
 import { auth, firestore } from '../../fb_config'
-import { useSelector } from 'react-redux'
-
-// const { uid } = useSelector(state => state.authReducers)
 
 export const toggleAuthForms = () => {
     return {
@@ -50,3 +47,25 @@ export const signUp = data => dispatch => {
 }
 
 //-------- SIGN IN --------
+
+export const signIn = data => dispatch => {
+    auth.signInWithEmailAndPassword(data.email, data.password)
+        .catch(error => {
+            dispatch({
+                type: 'AUTH_ERRORS',
+                payload: error
+            })
+        })
+}
+
+//-------- SIGN OUT --------
+
+export const signOut = () => dispatch => {
+    auth.signOut()
+        .then(() => {
+            dispatch({
+                type: 'CLEAR_USER'
+            })
+        })
+        .catch(error => console.error(error))
+}

@@ -32,7 +32,7 @@ const App = () => {
           email: user.email
         }))
       } else {
-
+        console.log('user out')
       }
     })
   }, [])

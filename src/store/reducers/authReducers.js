@@ -16,12 +16,19 @@ export default (state = initState, action) => {
         case 'SET_USER':
             return {
                 ...state,
+                authForms: false,
                 authorized: true,
                 user: action.payload
             }
+        case 'CLEAR_USER':
+            return {
+                ...state,
+                authorized: false,
+                user: null
+            }
         //-------- ERRORS --------
         case 'AUTH_ERRORS':
-            console.log('error')
+            console.log(action.payload)
             return {
                 ...state,
                 authError: action.payload

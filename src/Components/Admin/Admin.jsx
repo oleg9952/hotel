@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleAdmin } from '../../store/actions/adminActions'
+import { signOut } from '../../store/actions/authActions'
 import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
@@ -9,6 +10,8 @@ import History from './History/History'
 import BookingDetails from './History/BookingDetails'
 
 const Admin = () => {
+    const { firstName, lastName, email } = useSelector(state => state.authReducers.user)
+
     const [ toggleNav, setToggleNav ] = useState(false)
     const dispatch = useDispatch()
 
@@ -34,6 +37,11 @@ const Admin = () => {
 
     const handleNavToggle = () => setToggleNav(!toggleNav)
 
+    const handleSignOut = () => {
+        dispatch(signOut())
+        dispatch(toggleAdmin())
+    }
+
     return (
         <div className={style.admin}>
             <div className={style.admin_header}>
@@ -47,15 +55,21 @@ const Admin = () => {
                     <div></div>
                 </div>
                 <div className={style.log_out}>
-                    <i className="fas fa-power-off"></i>
+                    <Link to="/" onClick={handleSignOut}>
+                        <i className="fas fa-power-off"></i>
+                    </Link>
                 </div>
             </div>
             <div className={`${style.admin_body} ${toggleNav ? style.active : ''}`}>
                 <div className={style.nav}>
                     <div className={style.nav_header}>
                         <div className={style.profile_img} />
-                        <p className={style.user_name}>Alex Brand</p>
-                        <p className={style.user_email}>alex.brand@gmail.com</p>
+                        <p className={style.user_name}>
+                            { `${firstName} ${lastName}` }
+                        </p>
+                        <p className={style.user_email}>
+                            { email }
+                        </p>
                     </div>
                     {/* ------- USER NAV ------- */}
                     <ul className={style.nav_holder}>

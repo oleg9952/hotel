@@ -2,13 +2,13 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
-import { toggleAuthForms } from '../../../store/actions/authActions'
+import { toggleAuthForms, signOut } from '../../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
 const Nav = () => {
     const { intro, mobileNav } = useSelector(state => state.navReducers)
-    const { authorized } = useSelector(state => state.authReducers)
+    const { authorized, user } = useSelector(state => state.authReducers)
     const dispatch = useDispatch()
 
     return (
@@ -47,7 +47,7 @@ const Nav = () => {
                     authorized ? (
                         <div className="logged_in">
                             <div className="profile_circle">
-                                S
+                                { user.firstName.charAt(0) }
                                 <div className="hover_holder">
                                     <ul className="profile_options">
                                         <div className="options_triangle"></div>
@@ -59,7 +59,9 @@ const Nav = () => {
                                                 Account
                                             </Link>
                                         </li>
-                                        <li className="options_item">Log out</li>
+                                        <li className="options_item"
+                                            onClick={() => dispatch(signOut())}
+                                        >Log out</li>
                                     </ul>
                                 </div>
                             </div>

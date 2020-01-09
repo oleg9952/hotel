@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleAuthForms, signUp } from '../../store/actions/authActions'
+import { toggleAuthForms, signUp, signIn } from '../../store/actions/authActions'
 import style from './Auth.module.css'
+import Spinner from '../Spinner/Spinner'
 
 const AuthForm = () => {
     const dispatch = useDispatch()
     const { authForms } = useSelector(state => state.authReducers)
+
+    // const [ useSpinner, setUseSpinner ] = useState(false)
 
     //----- FORM TOGGLERS -----
     const [ formToggle, setFormToggle ] = useState(true)
@@ -19,6 +22,7 @@ const AuthForm = () => {
     }
 
     //-------- SIGN UP --------
+
     let firstName = useRef(null)
     let lastName = useRef(null)
     let location = useRef(null)
@@ -68,7 +72,12 @@ const AuthForm = () => {
         e.preventDefault()
 
         if(userEmail.current.value && userPass.current.value) {
+            let returningUser = {
+                email: userEmail.current.value,
+                password: userPass.current.value
+            }
 
+            dispatch(signIn(returningUser))
 
             setTimeout(() => {
                 [userEmail, userPass].forEach(input => input.current.value = null)
@@ -136,6 +145,9 @@ const AuthForm = () => {
                         </div>
                         <button type="submit">Sign Up</button>
                     </form>
+
+
+                    
 
                 </div>
             </div>

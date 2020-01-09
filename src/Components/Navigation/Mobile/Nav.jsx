@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
-import { toggleAuthForms } from '../../../store/actions/authActions'
+import { toggleAuthForms, signOut } from '../../../store/actions/authActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
@@ -11,9 +11,14 @@ const Nav = () => {
     const { authorized, user } = useSelector(state => state.authReducers)
     const dispatch = useDispatch()
 
-    const handleLogIn = () => {
+    const handleSignIn = () => {
         dispatch(toggleMobileNav())
         dispatch(toggleAuthForms())
+    }
+
+    const handleSignOut = () => {
+        dispatch(toggleMobileNav())
+        dispatch(signOut())
     }
 
     return (
@@ -29,7 +34,9 @@ const Nav = () => {
                     {
                         authorized ? (
                             <div className="logged_in--mobile">
-                                <div className="profile_img"></div>
+                                <div className="profile_img">
+                                    { user.firstName.charAt(0) }
+                                </div>
                                 <p className="user_name">
                                     { `${user.firstName} ${user.lastName}` }
                                 </p>
@@ -43,7 +50,6 @@ const Nav = () => {
                 
                 </div>
                 <div className="nav_body">
-                    
                     {
                         authorized ? (
                             <ul className="mobile_items">
@@ -61,7 +67,7 @@ const Nav = () => {
                                         Account
                                     </Link>
                                 </li>
-                                <li className="nav_item">
+                                <li className="nav_item" onClick={handleSignOut}>
                                     <span>
                                         <i className="fas fa-sign-out-alt"></i>
                                     </span>
@@ -70,7 +76,7 @@ const Nav = () => {
                             </ul>
                         ) : (
                             <ul className="mobile_items">
-                                <li className="nav_item" onClick={handleLogIn}>
+                                <li className="nav_item" onClick={handleSignIn}>
                                     <span>
                                         <i className="fas fa-sign-in-alt"></i>
                                     </span>
