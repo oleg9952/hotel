@@ -136,27 +136,30 @@ const RoomPage = (props) => {
     const handleNewReview = e => {
         e.preventDefault()
 
-        let id = room().id
+        let inputs = [
+            firstName,
+            lastName,
+            reviewText
+        ]
+
+        let newReview = {
+            id: room().id,
+            date: new Date().getTime(),
+            message: reviewText.current.value,
+            registered: authorized
+        }
 
         if(authorized) {
-            // use data from auth + revieText + date
+            dispatch(addReview({
+                ...newReview,
+                name: `${user.firstName} ${user.lastName}`
+            }))
+            inputs[inputs.length - 1].current.value = null
         } else {
-            let inputs = [
-                firstName,
-                lastName,
-                reviewText
-            ]
-
-            let review = {
-                id: id,
-                date: new Date().getTime(),
-                name: `${firstName.current.value} ${lastName.current.value}`,
-                message: reviewText.current.value,
-                registered: authorized
-            }
-
-            dispatch(addReview(review))
-
+            dispatch(addReview({
+                ...newReview,
+                name: `${firstName.current.value} ${lastName.current.value}`
+            }))
             inputs.forEach(input => input.current.value = null)
         }
     }
@@ -264,13 +267,14 @@ const RoomPage = (props) => {
                             </div>
                             {
                                 authorized ? (
-                                    <form className="customer_review auth-true">
+                                    <form className="customer_review auth-true" onSubmit={handleNewReview}>
                                         <div className="profile_pic" />
                                         <p className="user_name">
                                             {`${user.firstName} ${user.lastName}` }
                                         </p>
                                         <textarea name="message"
                                             placeholder="Message..."
+                                            ref={reviewText}
                                         ></textarea>
                                         <button type="submit">Send</button>
                                     </form>
