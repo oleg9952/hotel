@@ -1,3 +1,5 @@
+import { firestore } from '../../fb_config'
+
 //-------- BOOKING MODAL --------
 
 export const setCurrentBooking = room => {
@@ -35,8 +37,35 @@ export const removeCart = id => {
     }
 }
 
-export const confirmBooking = () => {
-    return {
-        type: 'CONFIRM_BOOKING'
-    }
+export const confirmBooking = (booking, cart) => dispatch => {
+    const { uid, bookingID, total } = booking
+
+    firestore.collection('booking_ref')
+        .add({ uid, bookingID, total })
+        .then(() => {
+            cart.forEach(bookingItem => {
+                const {
+                    bookingDates,
+                    services,
+                    ...filtered
+                } = bookingItem
+        
+                firestore.collection('bookings')
+                .add({
+                    ...filtered,
+                    checkIn: bookingItem.bookingDates.checkIn,
+                    checkOut: bookingItem.bookingDates.checkOut,
+                    food: bookingItem.services.food,
+                    pool: bookingItem.services.pool,
+                    gym: bookingItem.services.gym,
+                    bookingID
+                })
+                .catch(error => console.error(error))
+            })
+
+        })
+        .then(() => dispatch({
+            type: 'RESET_CART'
+        }))
+        .catch(error => console.error(error))
 }

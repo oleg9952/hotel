@@ -2,8 +2,8 @@ const initState = {
     //-------- BOOKING MODAL --------
     currentBooking: null,
     //-------- BOOKING CART --------
-    cartToggle: false,
-    cart: []
+    cart: [],
+    cartToggle: false
 }
 
 export default (state = initState, action) => {
@@ -82,16 +82,18 @@ export default (state = initState, action) => {
                 }
             } else {
                 alert('You forgot to choose booking dates!')
-                
             }    
         case 'REMOVE_CART':
             return {
                 ...state,
                 cart: state.cart.filter(item => item.id !== action.payload)
             }
-        case 'CONFIRM_BOOKING':
-            console.log('confirmed')
-            return state
+        case 'RESET_CART':
+            return {
+                ...state,
+                cart: [],
+                cartToggle: false
+            }
         default:
             return state
     }

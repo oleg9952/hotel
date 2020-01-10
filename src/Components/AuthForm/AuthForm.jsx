@@ -38,16 +38,13 @@ const AuthForm = () => {
             newUserEmail.current.value &&
             newUserPass.current.value
         ) {
-
-            let newUserData = {
+            dispatch(signUp({
                 firstName: firstName.current.value,
                 lastName: lastName.current.value,
                 location: location.current.value,
                 email: newUserEmail.current.value,
                 password: newUserPass.current.value
-            }
-
-            dispatch(signUp(newUserData))
+            }))
 
             setTimeout(() => {
                 [

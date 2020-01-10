@@ -8,13 +8,12 @@ const BookingCart = (props) => {
     const cart = props.cart
     const dispatch = useDispatch()
     const { cartToggle } = useSelector(state => state.bookingReducers)
-    const { authorized } = useSelector(state => state.authReducers)
+    const { authorized, user } = useSelector(state => state.authReducers)
 
-
-    let totalPrice = 0
-
-    for(let i = 0; i < cart.length; i++) {
-        totalPrice += cart[i].price
+    const calcTotalPrice = cart => {
+        let counter = 0
+        cart.forEach(item => counter += item.price)
+        return counter
     }
 
     //------- BOOKING CONFIRMATION ------- 
@@ -39,38 +38,17 @@ const BookingCart = (props) => {
             zipCode,
             notes
         ]
+        
+        let booking = {
+            uid: user.uid,
+            bookingID: Math.floor(Math.random() * (9000 - 1000)) + 1000,
+            total: calcTotalPrice(cart),
+        }
 
         if(authorized) {
-            // dispatch action in reducer using auth data
+            dispatch(confirmBooking(booking, cart))
         } else {
-            let bookingIds = []
-            let bookingDates = []
-
-            cart.forEach(room => bookingIds.push(room.id))
-            cart.forEach(room => {
-                let dates = []
-                for(let key in room.bookingDates) {
-                    dates.push(room.bookingDates[key])
-                }
-                bookingDates.push(dates)
-            })
-
-            let bookingDetails = {
-                firstName: firstName.current.value,
-                lastName: lastName.current.value,
-                email: email.current.value,
-                country: country.current.value,
-                ids: bookingIds,
-                registered: authorized,
-                totalPrice: totalPrice
-            }
-
-            bookingIds.forEach((item, i) => {
-                bookingDetails[item] = bookingDates[i]
-            })
-
-            console.log(bookingDetails)
-            
+            alert('Sign in to be able to book rooms!')
             inputs.forEach(input => input.current.value = null)
         }
     }
@@ -99,13 +77,19 @@ const BookingCart = (props) => {
                 <div className="overview_item final">
                     <div className="final_holder">
                         <p>Total Price</p>
-                        <p>${ totalPrice }</p>
+                        <p>${ calcTotalPrice(cart) }</p>
                     </div>
                 </div>
                 {
                     authorized ? (
                         <div className="overview_item confirmation">
-                            <button className="confirmation_btn">Confirmation</button>
+                            {
+                                cart.length !== 0 ? (
+                                    <button className="confirmation_btn"
+                                        onClick={handleConfirmation}
+                                    >Confirmation</button>
+                                ) : ''
+                            }
                         </div>
                     ) : ''
                 }

@@ -73,10 +73,12 @@ const BookingModal = () => {
         }, 500)
     }
 
-    let servicesTotal = 0
-
-    for(let i = 0; i < [food, pool, gym].filter(Boolean).length; i++) {
-        servicesTotal += 10
+    const calcServices = (...args) => {
+        let counter = 0
+        for(let i = 0; i < args.filter(Boolean).length; i++) {
+            counter += 10
+        }
+        return counter
     }
         
     return (
@@ -175,7 +177,7 @@ const BookingModal = () => {
                                     
                                     {
                                         currentBooking !== null ?
-                                        `$${(currentBooking.price * bookingDuration) + servicesTotal}` : ''
+                                        `$${(currentBooking.price * bookingDuration) + calcServices(food, pool, gym)}` : ''
                                     }
                                 </p>
                                 <button 
