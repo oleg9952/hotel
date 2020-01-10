@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentBooking } from '../../../store/actions/bookingActions'
 import { Link } from 'react-router-dom'
 
-
 const Card = (props) => {
     const dispatch = useDispatch()
     const { cart } = useSelector(state => state.bookingReducers)
@@ -19,6 +18,19 @@ const Card = (props) => {
             status.push(cart[i].id)
         }
         return status.indexOf(currentId) === -1
+    }
+
+    //------- NUMBER OF REVIEWS -------
+    const { reviews } = useSelector(state => state.reviewReducers)
+
+    const getNumberOfReviews = (reviews, id) => {
+        let counter = 0
+        reviews.forEach(review => {
+            if(review.id === id) {
+                counter += 1
+            }
+        })
+        return counter
     }
         
     return (
@@ -66,7 +78,13 @@ const Card = (props) => {
                         <i className="far fa-star"></i>
                     </span>
                 </div>
-                <p className="card_reviews">16 Reviews</p>
+                <p className="card_reviews">
+                    {
+                        reviews ?
+                        `${getNumberOfReviews(reviews, id)} ` : 0
+                    }
+                    Reviews
+                </p>
                 <div className="card_price">
                     <p>${ price }</p>
                     <p>night</p>
