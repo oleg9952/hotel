@@ -59,7 +59,6 @@ export const fetchBookingHistory = currentUser => dispatch => {
                     })
                 })
                 .then(() => {
-                    console.log(bookings)
                     dispatch({
                         type: 'FETCH_HISTORY',
                         payload: { refs, bookings, currentUser }

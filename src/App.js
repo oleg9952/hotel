@@ -36,7 +36,6 @@ const App = () => {
         firestore.collection('booking_ref').onSnapshot(() => {
           firestore.collection('bookings').onSnapshot(() => {
             dispatch(fetchBookingHistory(user.uid))
-            console.log(1)
           })
           
         })

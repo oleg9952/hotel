@@ -47,18 +47,6 @@ const History = () => {
                                 </tr>
                             ))
                         }
-                        {/* <tr>
-                            <td>
-                                <Link to="/admin/history/1">
-                                    #1302
-                                </Link>
-                            </td>
-                            <td>03.01.2020</td>
-                            <td>$432</td>
-                            <td>
-                                <div className={`${style.status_indicator} ${style.confirmed}`} />
-                            </td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>

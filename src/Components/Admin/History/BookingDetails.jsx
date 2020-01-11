@@ -10,11 +10,13 @@ const BookingDetails = () => {
     const { bookingID } = useParams()
     
     const retrieveTotalPrice = arg => {
+        let total = 0
         arg.forEach(item => {
             if(item.bookingID == bookingID) {
-                return `${item.totalPrice}`
+                total = item.totalPrice
             }
         })
+        return total
     }
 
     return (
@@ -34,7 +36,6 @@ const BookingDetails = () => {
                         }
                     })
                 }
-                
             </div>
             <p className={style.total_price_title}>Total Price</p>
             <p className={style.total_price}>${ retrieveTotalPrice(bookingHistory) }</p>
