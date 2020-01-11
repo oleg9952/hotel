@@ -1,0 +1,64 @@
+.notification {
+    position: fixed;
+    width: 350px;
+    min-height: 80px;
+    background-color: #15e1c2;
+    bottom: 25px;
+    right: 15px;
+    border-radius: 7px;
+    padding: 10px 20px 10px 80px;
+    display: flex;
+    justify-content: justify;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transform: translateY(calc(100% + 26px));
+    font-size: 16px;
+    animation: animNotification 4s forwards;
+    z-index: 3;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    border: 3px solid #fff;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #fff;
+}
+
+.notification p {
+    text-align: justify;
+    color: #fff;
+}
+
+/******** ANIMATIONS ********/
+
+@keyframes animNotification {
+    from {
+        bottom: 25px;
+        right: 15px;
+        transform: translateY(calc(100% + 26px));
+    }
+    15% {
+        bottom: 25px;
+        right: 15px;
+        transform: translateY(0%);
+    }
+    85% {
+        bottom: 25px;
+        right: 15px;
+        transform: translateY(0%);
+    }
+    to {
+        bottom: 25px;
+        right: 15px;
+        transform: translateY(calc(100% + 26px));
+    }
+}

@@ -2,8 +2,9 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
-import { toggleAuthForms, signOut } from '../../../store/actions/authActions'
+import { toggleAuthForms, signOut, fireNotification } from '../../../store/actions/authActions'
 import { resetHistory } from '../../../store/actions/bookingActions'
+// import { fireNotification } from '../../../store/actions/notificationActions'
 import { Link } from 'react-router-dom'
 import './Nav.css'
 
@@ -15,6 +16,7 @@ const Nav = () => {
     const handleSignOut = () => {
         dispatch(signOut())
         dispatch(resetHistory())
+        dispatch(fireNotification('signOut'))
     }
 
     return (

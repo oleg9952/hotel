@@ -16,13 +16,17 @@ import CartOpenBtn from './Components/Modals/BookingCart/CartOpenBtn'
 import Admin from './Components/Admin/Admin'
 import AuthForm from './Components/AuthForm/AuthForm'
 
+import Notification from './Components/Modals/NotificationModal/Notification'
+
 const App = () => {
   const { adminPage } = useSelector(state => state.adminReducers)
   const { cart } = useSelector(state => state.bookingReducers)
+  const { notifType } = useSelector(state => state.authReducers)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchRooms())
+  
     firestore.collection('reviews').onSnapshot(() => {
       dispatch(fetchReviews())
     })
@@ -43,6 +47,7 @@ const App = () => {
         console.log('logged out...')
       }
     })
+
   }, [])
 
   return (
@@ -59,6 +64,11 @@ const App = () => {
               <AuthForm />
             </div>
           )
+        }
+        {
+          notifType !== null ? (
+            <Notification />
+          ) : ''
         }
       </div>
     </Router>

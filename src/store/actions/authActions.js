@@ -69,3 +69,12 @@ export const signOut = () => dispatch => {
         })
         .catch(error => console.error(error))
 }
+
+//-------- NOTIFICATIONS --------
+
+export const fireNotification = event => {
+    return {
+        type: 'FIRE_NOTIFICATION',
+        payload: event
+    }
+}
