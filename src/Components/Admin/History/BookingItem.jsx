@@ -9,11 +9,14 @@ const BookingItem = (props) => {
         imgBaseUrl,
         img,
         guests,
-        bookingDates,
-        services
+        checkIn,
+        checkOut,
+        food,
+        pool,
+        gym
     } = props.room
 
-    const totalPrice = 537
+    // const totalPrice = 537
 
     return (
         <div className={style.booking_item}>
@@ -28,17 +31,17 @@ const BookingItem = (props) => {
                     <div className={style.info_column}>
                         <p>Details:</p>
                         <ul>
-                            <li>Check in: { bookingDates[0] }</li>
-                            <li>Check out: { bookingDates[1] }</li>
+                            <li>Check in: { checkIn }</li>
+                            <li>Check out: { checkOut }</li>
                             <li>Guests: 0{ guests }</li>
                         </ul>
                     </div>
                     <div className={style.info_column}>
                         <p>Services:</p>
                         <ul>
-                            <li>Food: { services.food ? '+' : '-' }</li>
-                            <li>Pool: { services.pool ? '+' : '-' }</li>
-                            <li>Gym: { services.gym ? '+' : '-' }</li>
+                            <li>Food: { food ? '+' : '-' }</li>
+                            <li>Pool: { pool ? '+' : '-' }</li>
+                            <li>Gym: { gym ? '+' : '-' }</li>
                         </ul>
                     </div>
                 </div>

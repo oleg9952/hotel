@@ -38,14 +38,14 @@ const BookingCart = (props) => {
             zipCode,
             notes
         ]
-        
-        let booking = {
-            uid: user.uid,
-            bookingID: Math.floor(Math.random() * (9000 - 1000)) + 1000,
-            total: calcTotalPrice(cart),
-        }
-
+     
         if(authorized) {
+            let booking = {
+                uid: user.uid,
+                bookingID: Math.floor(Math.random() * (9000 - 1000)) + 1000,
+                total: calcTotalPrice(cart),
+            }
+
             dispatch(confirmBooking(booking, cart))
         } else {
             alert('Sign in to be able to book rooms!')

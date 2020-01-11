@@ -3,6 +3,7 @@ const initState = {
     currentBooking: null,
     //-------- BOOKING CART --------
     cart: [],
+    bookingHistory: null,
     cartToggle: false
 }
 
@@ -93,6 +94,46 @@ export default (state = initState, action) => {
                 ...state,
                 cart: [],
                 cartToggle: false
+            }
+
+        //-------- FIRESTORE --------
+
+        case 'FETCH_HISTORY':
+            class Reservation {
+                constructor(
+                    bookingID,
+                    bookingDate,
+                    totalPrice,
+                    bookings
+                ) {
+                    this.bookingID = bookingID;
+                    this.bookingDate = bookingDate;
+                    this.totalPrice = totalPrice
+                    this.bookings = [...bookings]
+                }
+            }
+
+            let history = []
+            action.payload.refs.forEach(ref => {
+                if(ref.uid == action.payload.currentUser) {
+                    let bookingItems = []
+                    action.payload.bookings.forEach(booking => {
+                        if(booking.bookingID === ref.bookingID) {
+                            bookingItems.push(booking)
+                        }
+                    })
+                    history.push(new Reservation(
+                        ref.bookingID,
+                        ref.bookingDate,
+                        ref.total,
+                        bookingItems
+                    ))
+                }
+            })
+ 
+            return {
+                ...state,
+                bookingHistory: history
             }
         default:
             return state

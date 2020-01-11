@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchRooms } from './store/actions/roomsActions'
 import { fetchReviews } from './store/actions/reviewActions'
 import { fetchUserAuthData } from './store/actions/authActions'
+import { fetchBookingHistory } from './store/actions/bookingActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
@@ -31,6 +32,14 @@ const App = () => {
           uid: user.uid,
           email: user.email
         }))
+
+        firestore.collection('booking_ref').onSnapshot(() => {
+          firestore.collection('bookings').onSnapshot(() => {
+            dispatch(fetchBookingHistory(user.uid))
+            console.log(1)
+          })
+          
+        })
       } else {
         console.log('logged out...')
       }

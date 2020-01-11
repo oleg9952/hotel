@@ -37,11 +37,49 @@ export const removeCart = id => {
     }
 }
 
+//-------- FIRESTORE --------
+
+export const fetchBookingHistory = currentUser => dispatch => {
+    let refs = []
+    let bookings = []
+
+    firestore.collection('booking_ref')
+        .get()
+        .then(resp => {
+            resp.docs.forEach(ref => {
+                refs.push(ref.data())
+            })
+        })
+        .then(() => {
+            firestore.collection('bookings')
+                .get()
+                .then(resp => {
+                    resp.docs.forEach(booking => {
+                        bookings.push(booking.data())
+                    })
+                })
+                .then(() => {
+                    console.log(bookings)
+                    dispatch({
+                        type: 'FETCH_HISTORY',
+                        payload: { refs, bookings, currentUser }
+                    })
+                })
+                .catch(error => console.error(error))
+        })
+        .catch(error => console.error(error))
+}
+
 export const confirmBooking = (booking, cart) => dispatch => {
     const { uid, bookingID, total } = booking
 
     firestore.collection('booking_ref')
-        .add({ uid, bookingID, total })
+        .add({
+            uid, 
+            bookingID, 
+            total,
+            bookingDate: new Date().getTime()
+        })
         .then(() => {
             cart.forEach(bookingItem => {
                 const {
