@@ -92,8 +92,8 @@ export default (state = initState, action) => {
         case 'RESET_CART':
             return {
                 ...state,
-                cart: [],
-                cartToggle: false
+                cartToggle: false,
+                cart: []
             }
 
         //-------- FIRESTORE --------
@@ -114,6 +114,7 @@ export default (state = initState, action) => {
             }
 
             let history = []
+
             action.payload.refs.forEach(ref => {
                 if(ref.uid == action.payload.currentUser) {
                     let bookingItems = []
@@ -127,9 +128,11 @@ export default (state = initState, action) => {
                         ref.bookingDate,
                         ref.total,
                         bookingItems
-                    ))
+                    )) 
                 }
             })
+
+            history.sort(compare)
  
             return {
                 ...state,
@@ -137,5 +140,18 @@ export default (state = initState, action) => {
             }
         default:
             return state
+    }
+}
+
+function compare(a, b) {
+    const orderA = a.bookingDate
+    const orderB = b.bookingDate
+
+    if(orderA > orderB) {
+        return -1
+    } else if(orderA < orderB) {
+        return 1
+    } else {
+        return 0
     }
 }

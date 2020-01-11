@@ -15,6 +15,8 @@ const History = () => {
         return `${day}.${month}.${year}`
     }
 
+    let counter = 0
+
     return (
         <div className={style.history}>
             <h1 className={style.history_title}>My Booking History</h1>
@@ -22,6 +24,7 @@ const History = () => {
                 <table className={style.table}>
                     <thead>
                         <tr>
+                            <th>№</th>
                             <th scope="col">Booking ID</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
@@ -33,6 +36,9 @@ const History = () => {
                             bookings.map(booking => (
                                 <tr key={booking.bookingID}>
                                     <td>
+                                        { counter += 1 }
+                                    </td>
+                                    <td>
                                         <Link to={`/admin/history/${booking.bookingID}`}>
                                             { `${booking.bookingID}` }
                                         </Link>
@@ -42,7 +48,11 @@ const History = () => {
                                     </td>
                                     <td>${ booking.totalPrice }</td>
                                     <td>
-                                        <div className={`${style.status_indicator} ${style.confirmed}`} />
+                                        <div className={`${style.status_indicator} ${style.in_progress}`}>
+                                            <span className={style.status_tooltip}>
+                                                Processing
+                                            </span>
+                                        </div>
                                     </td>
                                 </tr>
                             ))
