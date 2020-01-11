@@ -106,3 +106,9 @@ export const confirmBooking = (booking, cart) => dispatch => {
         }))
         .catch(error => console.error(error))
 }
+
+export const resetHistory = () => {
+    return {
+        type: 'RESET_HISTORY'
+    }
+}

@@ -26,17 +26,16 @@ export default (state = initState, action) => {
                     searchResults: results
                 }
             } else {
-                results = []
                 return{
                     ...state,
                     searchResults: null
                 }
-            }
-            
+            }          
         case 'TOGGLE_SEARCH':
             return {
                 ...state,
-                search: !state.search
+                search: !state.search,
+                searchResults: null
             }
         default:
             return state

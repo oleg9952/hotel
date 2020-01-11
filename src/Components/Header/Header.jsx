@@ -42,17 +42,17 @@ const Header = () => {
                 <Slider className="header_slider" {...settings}>
                     <div className="slide-one">
                         <div className="slide_title">
-                            <p>Slide Title 1</p>
+                            <p>Comfort</p>
                         </div>
                     </div>
                     <div className="slide-two">
                         <div className="slide_title">
-                            <p>Slide Title 2</p>
+                            <p>Service</p>
                         </div>
                     </div>
                     <div className="slide-three">
                         <div className="slide_title">
-                            <p>Slide Title 3</p>
+                            <p>Design</p>
                         </div>
                     </div>
                 </Slider>  

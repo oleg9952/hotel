@@ -138,6 +138,11 @@ export default (state = initState, action) => {
                 ...state,
                 bookingHistory: history
             }
+        case 'RESET_HISTORY':
+            return {
+                ...state,
+                bookingHistory: null
+            }
         default:
             return state
     }

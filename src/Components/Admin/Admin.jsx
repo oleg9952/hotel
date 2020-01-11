@@ -3,6 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAdmin } from '../../store/actions/adminActions'
 import { signOut } from '../../store/actions/authActions'
+import { resetHistory } from '../../store/actions/bookingActions'
 import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
@@ -40,6 +41,7 @@ const Admin = () => {
     const handleSignOut = () => {
         dispatch(signOut())
         dispatch(toggleAdmin())
+        dispatch(resetHistory())
     }
 
     return (
