@@ -13,7 +13,7 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     transform: translateY(calc(100% + 26px));
     font-size: 16px;
-    animation: animNotification 4s forwards;
+    animation: animNotification 6s forwards;
     z-index: 3;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .notification p {
-    text-align: justify;
+    text-align: left;
     color: #fff;
 }
 
@@ -46,12 +46,12 @@
         right: 15px;
         transform: translateY(calc(100% + 26px));
     }
-    15% {
+    10% {
         bottom: 25px;
         right: 15px;
         transform: translateY(0%);
     }
-    85% {
+    90% {
         bottom: 25px;
         right: 15px;
         transform: translateY(0%);

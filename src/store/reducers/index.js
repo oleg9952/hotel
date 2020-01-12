@@ -6,7 +6,6 @@ import searchReducers from './searchReducers'
 import adminReducers from './adminReducers'
 import authReducers from './authReducers'
 import reviewReducers from './reviewReducers'
-import notificationReducers from './notificationReducers'
 
 export default combineReducers({
     navReducers,
@@ -15,6 +14,5 @@ export default combineReducers({
     searchReducers,
     adminReducers,
     authReducers,
-    reviewReducers,
-    notificationReducers
+    reviewReducers
 })

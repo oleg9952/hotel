@@ -6,7 +6,6 @@ const initState = {
     authError: null,
     //----- NOTIFICATION -----
     notifType: null
-
 }
 
 export default (state = initState, action) => {
@@ -21,6 +20,7 @@ export default (state = initState, action) => {
                 ...state,
                 authForms: false,
                 authorized: true,
+                authError: null,
                 user: action.payload
             }
         case 'CLEAR_USER':
@@ -31,13 +31,13 @@ export default (state = initState, action) => {
             }
         //-------- ERRORS --------
         case 'AUTH_ERRORS':
-            console.log(action.payload)
             return {
                 ...state,
                 authError: action.payload
             }
         //-------- NOTIFICATION --------
         case 'FIRE_NOTIFICATION':
+            console.log(action.payload)
             return {
                 ...state,
                 notifType: action.payload

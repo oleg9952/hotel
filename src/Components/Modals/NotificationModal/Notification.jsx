@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import { fireNotification } from '../../../store/actions/notificationActions'
-import { fireNotification } from '../../../store/actions/authActions'
+import { fireNotification, setAuthError } from '../../../store/actions/authActions'
 import styles from './Notification.module.css'
 
 const Notification = () => {
     const dispatch = useDispatch()
 
     //----- sorces of notifications -----
-    // const { notifType } = useSelector(state => state.notificationReducers)
-    const { authError, user, notifType } = useSelector(state => state.authReducers)
-
+    const { authError, notifType, user } = useSelector(state => state.authReducers)
 
     const signInSignOutEvents = () => {
         let color
@@ -19,24 +17,26 @@ const Notification = () => {
         
         const check = (<i className="fas fa-check"></i>)
         const exit = (<i className="fas fa-door-open"></i>)
+        const error = (<i className="fas fa-exclamation-triangle"></i>)
 
-        switch(notifType) {
-            case 'signIn':
-                color = '#38c3ff'
-                message = 'Welcome!'
-                icon = check
-                break
-            case 'signUp':
-                color = '#38c3ff'
-                message = 'Thank you for joining us!'
-                icon = check
-                break
-            case 'signOut':
-                color = '#15e1c2'
-                message = 'Goodbye!'
-                icon = exit
-                break
+        if(notifType === 'signIn' && authError === null) {
+            color = '#38c3ff'
+            message = `Welcome back!`
+            icon = check
+        } else if(notifType === 'signUp' && authError === null) {
+            color = '#38c3ff'
+            message = `Thank you for joining us!`
+            icon = check
+        } else if(notifType === 'signOut' && authError === null) {
+            color = '#15e1c2'
+            message = 'Goodbye!'
+            icon = exit
+        } else if(notifType && authError) {
+            color = 'red'
+            message = authError.message
+            icon = error
         }
+
         return {
             colors: { backgroundColor: color },
             message,
@@ -47,11 +47,12 @@ const Notification = () => {
     const closeNotification = ms => {
         setTimeout(() => {
             dispatch(fireNotification(null))
+            dispatch(setAuthError(null))
         }, ms)
     }
 
     useEffect(() => {
-        closeNotification(4100)
+        closeNotification(6100)
     }, [])
 
     return (

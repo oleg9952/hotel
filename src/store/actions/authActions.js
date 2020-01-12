@@ -25,6 +25,13 @@ export const fetchUserAuthData = data => dispatch => {
         .catch(error => console.error(error))
 }
 
+export const setAuthError = arg => {
+    return {
+        type: 'AUTH_ERRORS',
+        payload: arg
+    }
+}
+
 //-------- SIGN UP --------
 
 export const signUp = data => dispatch => {
@@ -37,11 +44,19 @@ export const signUp = data => dispatch => {
                     location: data.location
                 })
                 .catch(error => console.error(error))
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'signUp'
+            })
         })
         .catch(error => {
             dispatch({
                 type: 'AUTH_ERRORS',
                 payload: error
+            })
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'signUp'
             })
         })
 }
@@ -50,10 +65,20 @@ export const signUp = data => dispatch => {
 
 export const signIn = data => dispatch => {
     auth.signInWithEmailAndPassword(data.email, data.password)
+        .then(resp => {
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'signIn'
+            })
+        })
         .catch(error => {
             dispatch({
                 type: 'AUTH_ERRORS',
                 payload: error
+            })
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'signIn'
             })
         })
 }
@@ -65,6 +90,10 @@ export const signOut = () => dispatch => {
         .then(() => {
             dispatch({
                 type: 'CLEAR_USER'
+            })
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'signOut'
             })
         })
         .catch(error => console.error(error))

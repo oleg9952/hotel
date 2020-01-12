@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRooms } from './store/actions/roomsActions'
 import { fetchReviews } from './store/actions/reviewActions'
-import { fetchUserAuthData } from './store/actions/authActions'
+import { fetchUserAuthData, fireNotification } from './store/actions/authActions'
 import { fetchBookingHistory } from './store/actions/bookingActions'
 import './App.css'
 import Header from './Components/Header/Header'
@@ -21,7 +21,7 @@ import Notification from './Components/Modals/NotificationModal/Notification'
 const App = () => {
   const { adminPage } = useSelector(state => state.adminReducers)
   const { cart } = useSelector(state => state.bookingReducers)
-  const { notifType } = useSelector(state => state.authReducers)
+  const { notifType, authError } = useSelector(state => state.authReducers)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -41,7 +41,6 @@ const App = () => {
           firestore.collection('bookings').onSnapshot(() => {
             dispatch(fetchBookingHistory(user.uid))
           })
-          
         })
       } else {
         console.log('logged out...')
@@ -49,6 +48,16 @@ const App = () => {
     })
 
   }, [])
+
+  const condition = (notif, err) => {
+    if(notif !== null && err === null) {
+      return true
+    } else if(notif && err) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   return (
     <Router>
@@ -66,7 +75,7 @@ const App = () => {
           )
         }
         {
-          notifType !== null ? (
+          condition(notifType, authError) ? (
             <Notification />
           ) : ''
         }

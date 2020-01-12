@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAdmin } from '../../store/actions/adminActions'
-import { signOut, fireNotification } from '../../store/actions/authActions'
+import { signOut } from '../../store/actions/authActions'
 import { resetHistory } from '../../store/actions/bookingActions'
-// import { fireNotification } from '../../store/actions/notificationActions'
 import style from './Admin.module.css'
 
 import UserInfo from './UserInfo/UserInfo'
@@ -43,7 +42,6 @@ const Admin = () => {
         dispatch(signOut())
         dispatch(toggleAdmin())
         dispatch(resetHistory())
-        dispatch(fireNotification('signOut'))
     }
 
     return (

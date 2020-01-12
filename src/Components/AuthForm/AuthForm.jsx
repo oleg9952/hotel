@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAuthForms, signUp, signIn } from '../../store/actions/authActions'
-import { fireNotification } from '../../store/actions/notificationActions'
 import style from './Auth.module.css'
 import Spinner from '../Spinner/Spinner'
 
@@ -55,7 +54,6 @@ const AuthForm = () => {
                     newUserEmail,
                     newUserPass
                 ].forEach(input => input.current.value = null)
-                dispatch(dispatch(fireNotification('signUp')))
             }, 500)
         } else {
             alert('Make sure you\'ve filled in all fields!')
@@ -80,7 +78,6 @@ const AuthForm = () => {
 
             setTimeout(() => {
                 [userEmail, userPass].forEach(input => input.current.value = null)
-                dispatch(fireNotification('signIn'))
             }, 500)
         } else {
             alert('Make sure you\'ve filled in all fields!')
