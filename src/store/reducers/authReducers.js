@@ -5,7 +5,8 @@ const initState = {
     //-------- ERRORS --------
     authError: null,
     //----- NOTIFICATION -----
-    notifType: null
+    notifType: null,
+    userEmail: null
 }
 
 export default (state = initState, action) => {
@@ -37,10 +38,10 @@ export default (state = initState, action) => {
             }
         //-------- NOTIFICATION --------
         case 'FIRE_NOTIFICATION':
-            console.log(action.payload)
             return {
                 ...state,
-                notifType: action.payload
+                notifType: action.payload,
+                userEmail: action.userEmail
             }
         default:
             return state

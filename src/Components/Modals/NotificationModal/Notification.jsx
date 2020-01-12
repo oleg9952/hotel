@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import { fireNotification } from '../../../store/actions/notificationActions'
 import { fireNotification, setAuthError } from '../../../store/actions/authActions'
 import styles from './Notification.module.css'
 
@@ -8,7 +7,7 @@ const Notification = () => {
     const dispatch = useDispatch()
 
     //----- sorces of notifications -----
-    const { authError, notifType, user } = useSelector(state => state.authReducers)
+    const { authError, notifType, user, userEmail } = useSelector(state => state.authReducers)
 
     const signInSignOutEvents = () => {
         let color
@@ -21,16 +20,24 @@ const Notification = () => {
 
         if(notifType === 'signIn' && authError === null) {
             color = '#38c3ff'
-            message = `Welcome back!`
+            message = `Welcome back ${userEmail}!`
             icon = check
         } else if(notifType === 'signUp' && authError === null) {
             color = '#38c3ff'
-            message = `Thank you for joining us!`
+            message = `Thank you for joining us ${userEmail}!`
             icon = check
         } else if(notifType === 'signOut' && authError === null) {
             color = '#15e1c2'
             message = 'Goodbye!'
             icon = exit
+        } else if(notifType === 'book' && authError === null) {
+            color = '#38c3ff'
+            message = 'Thank you for your reservation!'
+            icon = check
+        } else if(notifType === 'emptyField' && authError === null) {
+            color = '#15e1c2'
+            message = `Make sure you've filled in all the fields!`
+            icon = 'i'
         } else if(notifType && authError) {
             color = 'red'
             message = authError.message

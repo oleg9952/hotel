@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleCart, confirmBooking } from '../../../store/actions/bookingActions'
+import { fireNotification } from '../../../store/actions/authActions'
 import OverviewItem from './OverviewItem'
 import './BookingCart.css'
 
@@ -47,6 +48,7 @@ const BookingCart = (props) => {
             }
 
             dispatch(confirmBooking(booking, cart))
+            dispatch(fireNotification('book'))
         } else {
             alert('Sign in to be able to book rooms!')
             inputs.forEach(input => input.current.value = null)

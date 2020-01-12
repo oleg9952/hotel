@@ -46,7 +46,8 @@ export const signUp = data => dispatch => {
                 .catch(error => console.error(error))
             dispatch({
                 type: 'FIRE_NOTIFICATION',
-                payload: 'signUp'
+                payload: 'signUp',
+                userEmail: resp.user.email
             })
         })
         .catch(error => {
@@ -68,7 +69,8 @@ export const signIn = data => dispatch => {
         .then(resp => {
             dispatch({
                 type: 'FIRE_NOTIFICATION',
-                payload: 'signIn'
+                payload: 'signIn',
+                userEmail: resp.user.email
             })
         })
         .catch(error => {

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleAuthForms, signUp, signIn } from '../../store/actions/authActions'
+import { toggleAuthForms, signUp, signIn, fireNotification } from '../../store/actions/authActions'
 import style from './Auth.module.css'
 import Spinner from '../Spinner/Spinner'
 
@@ -56,7 +56,7 @@ const AuthForm = () => {
                 ].forEach(input => input.current.value = null)
             }, 500)
         } else {
-            alert('Make sure you\'ve filled in all fields!')
+            dispatch(fireNotification('emptyField'))
         }
     }
 
@@ -80,7 +80,7 @@ const AuthForm = () => {
                 [userEmail, userPass].forEach(input => input.current.value = null)
             }, 500)
         } else {
-            alert('Make sure you\'ve filled in all fields!')
+            dispatch(fireNotification('emptyField'))
         }
     }
 
