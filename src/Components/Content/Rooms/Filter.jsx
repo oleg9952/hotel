@@ -27,11 +27,14 @@ const Filter = ({toggleFilters}) => {
                         <div className={`accordion_arrow ${!collections ? 'active' : ''}`}></div>
                     </div>
                     <ul className="section_options">
-                        <li className="option_item">VIP (16)</li>
-                        <li className="option_item">Economy (34)</li>
-                        <li className="option_item">Standard (24)</li>
-                        <li className="option_item">Bussines (33)</li>
-                        <li className="option_item">Avaliable (15)</li>
+                        <li className="option_item">Single (16)</li>
+                        <li className="option_item">Double (34)</li>
+                        <li className="option_item">Triple (24)</li>
+                        <li className="option_item">Quad (33)</li>
+                        <li className="option_item">Queen (15)</li>
+                        <li className="option_item">King (24)</li>
+                        <li className="option_item">Twin (33)</li>
+                        <li className="option_item">Studio (15)</li>
                     </ul>
                 </div>
             </div>

@@ -121,6 +121,11 @@
     font-weight: bold;
 }
 
+.result_item-body a {
+    color: #000;
+    text-decoration: none;
+}
+
 .result_item-body .card_rating {
     margin-bottom: 5px;
 }

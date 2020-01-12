@@ -1,9 +1,11 @@
 [
     {
         "id": 1,
-        "name": "name...",
-        "type": "type...",
-        "price": 25,
+        "name": "Grand Renaissance",
+        "type": "Single",
+        "typeDescription": "A room assigned to one person. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 36,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -14,8 +16,10 @@
     },
     {
         "id": 2,
-        "name": "name...",
-        "type": "type...",
+        "name": "Pacific Citadel",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 2,
         "price": 34,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -27,9 +31,11 @@
     },
     {
         "id": 3,
-        "name": "name...",
-        "type": "type...",
-        "price": 38,
+        "name": "Modest Majesty",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 46,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -40,8 +46,10 @@
     },
     {
         "id": 4,
-        "name": "name...",
-        "type": "type...",
+        "name": "Parallel Nebula",
+        "type": "Quad",
+        "typeDescription": "A room assigned to four people. May have two or more beds.",
+        "numberOfRooms": 3,
         "price": 32,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -53,8 +61,10 @@
     },
     {
         "id": 5,
-        "name": "name...",
-        "type": "type...",
+        "name": "Liberty",
+        "type": "Single",
+        "typeDescription": "A room assigned to one person. May have one or more beds.",
+        "numberOfRooms": 1,
         "price": 63,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -66,8 +76,10 @@
     },
     {
         "id": 6,
-        "name": "name...",
-        "type": "type...",
+        "name": "King's Paradise",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
         "price": 71,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -79,8 +91,10 @@
     },
     {
         "id": 7,
-        "name": "name...",
-        "type": "type...",
+        "name": "Nova",
+        "type": "Studio",
+        "typeDescription": "A room with a studio bed – a couch that can be converted into a bed.",
+        "numberOfRooms": 1,
         "price": 54,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -92,8 +106,10 @@
     },
     {
         "id": 8,
-        "name": "name...",
-        "type": "type...",
+        "name": "Mirage",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 2,
         "price": 52,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -105,8 +121,10 @@
     },
     {
         "id": 9,
-        "name": "name...",
-        "type": "type...",
+        "name": "Illustrious Cavern",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
         "price": 70,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
@@ -118,9 +136,11 @@
     },
     {
         "id": 10,
-        "name": "Test object 1",
-        "type": "type...",
-        "price": 98,
+        "name": "Malachite Pier",
+        "type": "Quad",
+        "typeDescription": "A room assigned to four people. May have two or more beds.",
+        "numberOfRooms": 3,
+        "price": 72,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -131,9 +151,11 @@
     },
     {
         "id": 11,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Azure",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 56,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -144,9 +166,11 @@
     },
     {
         "id": 12,
-        "name": "Test object 2",
-        "type": "type...",
-        "price": 34,
+        "name": "Wanderlust",
+        "type": "Studio",
+        "typeDescription": "A room with a studio bed – a couch that can be converted into a bed.",
+        "numberOfRooms": 3,
+        "price": 116,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -157,9 +181,11 @@
     },
     {
         "id": 13,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Royal",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 3,
+        "price": 96,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -170,9 +196,11 @@
     },
     {
         "id": 14,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Sublime Bliss",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 79,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -183,9 +211,11 @@
     },
     {
         "id": 15,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Enigma",
+        "type": "Studio",
+        "typeDescription": "A room with a studio bed – a couch that can be converted into a bed.",
+        "numberOfRooms": 1,
+        "price": 53,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -196,9 +226,11 @@
     },
     {
         "id": 16,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Epitome",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 98,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -209,9 +241,11 @@
     },
     {
         "id": 17,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Traveller",
+        "type": "King",
+        "typeDescription": "A room with a king-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 70,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -222,9 +256,11 @@
     },
     {
         "id": 18,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Noble Plains",
+        "type": "Queen",
+        "typeDescription": "A room with a queen-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 107,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -235,9 +271,11 @@
     },
     {
         "id": 19,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Silver Heights",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 44,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -248,9 +286,11 @@
     },
     {
         "id": 20,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Tranquil Safari",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 1,
+        "price": 95,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -261,9 +301,11 @@
     },
     {
         "id": 21,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Daydream",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 64,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -274,9 +316,11 @@
     },
     {
         "id": 22,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Harborview",
+        "type": "Queen",
+        "typeDescription": "A room with a queen-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 87,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -287,9 +331,11 @@
     },
     {
         "id": 23,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Voyager",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 2,
+        "price": 105,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -300,9 +346,11 @@
     },
     {
         "id": 24,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Twin Square",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 87,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -313,9 +361,11 @@
     },
     {
         "id": 25,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "White Garden",
+        "type": "King",
+        "typeDescription": "A room with a king-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 43,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -326,9 +376,11 @@
     },
     {
         "id": 26,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Paragon",
+        "type": "Twin",
+        "typeDescription": "A room with two beds. May be occupied by one or more people.",
+        "numberOfRooms": 2,
+        "price": 104,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -339,9 +391,11 @@
     },
     {
         "id": 27,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Elysium",
+        "type": "Single",
+        "typeDescription": "A room assigned to one person. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 72,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -352,9 +406,11 @@
     },
     {
         "id": 28,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Peaceful Aurora",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 44,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -365,9 +421,11 @@
     },
     {
         "id": 29,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Winter Vertex",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 3,
+        "price": 57,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -378,9 +436,11 @@
     },
     {
         "id": 30,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Golden Pyramid",
+        "type": "Queen",
+        "typeDescription": "A room with a queen-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 55,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -391,9 +451,11 @@
     },
     {
         "id": 31,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Rainbow",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 102,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -404,9 +466,11 @@
     },
     {
         "id": 32,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Serene Nugget",
+        "type": "Single",
+        "typeDescription": "A room assigned to one person. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 41,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -417,9 +481,11 @@
     },
     {
         "id": 33,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Cerulean Mansion",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 68,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -430,9 +496,11 @@
     },
     {
         "id": 34,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Viridian Dream",
+        "type": "Twin",
+        "typeDescription": "A room with two beds. May be occupied by one or more people.",
+        "numberOfRooms": 1,
+        "price": 75,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -443,9 +511,11 @@
     },
     {
         "id": 35,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Brass Star",
+        "type": "King",
+        "typeDescription": "A room with a king-sized bed. May be occupied by one or more people.",
+        "numberOfRooms": 2,
+        "price": 59,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -456,9 +526,11 @@
     },
     {
         "id": 36,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Courtyard",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 2,
+        "price": 94,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -469,9 +541,11 @@
     },
     {
         "id": 37,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Deluxe",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 61,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -482,9 +556,11 @@
     },
     {
         "id": 38,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Ivory Plains",
+        "type": "Single",
+        "typeDescription": "A room assigned to one person. May have one or more beds.",
+        "numberOfRooms": 1,
+        "price": 82,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -495,9 +571,11 @@
     },
     {
         "id": 39,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Sunrise Dome",
+        "type": "Triple",
+        "typeDescription": "A room assigned to three people. May have two or more beds.",
+        "numberOfRooms": 2,
+        "price": 110,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",
@@ -508,9 +586,11 @@
     },
     {
         "id": 40,
-        "name": "name...",
-        "type": "type...",
-        "price": 34,
+        "name": "Golden Cosmos",
+        "type": "Double",
+        "typeDescription": "A room assigned to two people. May have one or more beds.",
+        "numberOfRooms": 2,
+        "price": 98,
         "imgBaseUrl": "/Assets/RoomPage/room_",
         "img": [
             "1.jpg",

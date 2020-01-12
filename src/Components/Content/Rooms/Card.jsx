@@ -7,7 +7,7 @@ const Card = (props) => {
     const dispatch = useDispatch()
     const { cart } = useSelector(state => state.bookingReducers)
 
-    const { id, name, type, price, imgBaseUrl, img } = props.room
+    const { id, name, type, typeDescription, numberOfRooms, price, imgBaseUrl, img } = props.room
     const [ details, setDetails ] = useState(false)
     
     const handleDetailsToggle = () => setDetails(!details)
@@ -92,9 +92,9 @@ const Card = (props) => {
             </div>
             <div className={`card_info--toggle ${details ? 'active' : ''}`}>
                 <p className="info_title">Details</p>
-                <p className="info_number">Rooms: 3</p>
+                <p className="info_number">Rooms: { numberOfRooms }</p>
                 <p className="info_type">Type: { type }</p>
-                <p className="info_status">Status: avaliable</p>
+                <p className="info_status">{ typeDescription }</p>
             </div>
         </div>
     )

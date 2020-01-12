@@ -291,7 +291,7 @@
     border-radius: 20px;
     top: 0;
     left: 0;
-    padding: 35px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
     visibility: hidden;
     opacity: 0;
     transition: .3s;
@@ -395,6 +395,11 @@
     margin-bottom: 7px;
     font-weight: bold;
     cursor: pointer;
+    color: #000;
+}
+
+.card_details a {
+    text-decoration: none;
 }
 
 .card_details .card_title:hover {

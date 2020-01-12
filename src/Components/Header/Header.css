@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,900&display=swap');
+
 .header {
     width: 100%;
     height: 100vh;
@@ -83,6 +85,7 @@
     backdrop-filter: blur(7px);
     box-shadow: 0 5px 10px #222;
     position: absolute;
+    border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -97,6 +100,7 @@
     mix-blend-mode: screen;
     font-size: 72px;
     text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header_slider .slick-dots {

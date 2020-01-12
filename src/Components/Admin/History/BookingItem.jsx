@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { toggleAdmin } from '../../../store/actions/adminActions'
 import style from './History.module.css'
 
 const BookingItem = (props) => {
+    const dispatch = useDispatch()
+
     const { 
         id,
         name,
@@ -16,8 +21,6 @@ const BookingItem = (props) => {
         gym
     } = props.room
 
-    // const totalPrice = 537
-
     return (
         <div className={style.booking_item}>
             <div className={style.item_img} 
@@ -26,7 +29,11 @@ const BookingItem = (props) => {
                 }}
             />
             <div className={style.item_details}>
-                <p className={style.item_title}>{ name }</p>
+                <p className={style.item_title}>
+                    <Link to={`/rooms/${id}`} onClick={() => dispatch(toggleAdmin())}>
+                        { name }
+                    </Link>
+                </p>
                 <div className={style.order_info}>
                     <div className={style.info_column}>
                         <p>Details:</p>
