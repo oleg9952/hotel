@@ -1,18 +1,36 @@
-// const roomsData = import('../../mock/rooms.json')
+import { firestore } from '../../fb_config'
 import roomsData from '../../mock/rooms.json'
 
-// export const fetchRooms = () => dispatch => {
-//     roomsData.then(data => dispatch({
-//         type: 'FETCH_ROOMS',
-//         payload: data.default
-//     }))
-// }
+export const fetchRooms = () => dispatch => {
 
-export const fetchRooms = () => {
-    return {
-        type: 'FETCH_ROOMS',
-        payload: roomsData
-    }
+    firestore.collection('bookings')
+        .get()
+        .then(resp => {
+            let data = []
+            let reserved = []
+            
+            resp.forEach(room => reserved.push(room.data().id))
+            
+            roomsData.forEach(room => {
+                if(reserved.indexOf(room.id) === -1) {
+                    data.push({
+                        ...room,
+                        reserved: false
+                    })
+                } else {
+                    data.push({
+                        ...room,
+                        reserved: true
+                    })
+                }
+            })
+
+            dispatch({
+                type: 'FETCH_ROOMS',
+                payload: data
+            })
+        })
+        .catch(error => console.log(error))
 }
 
 export const switchPage = page => {

@@ -226,9 +226,10 @@ const RoomPage = (props) => {
                             }
                         </p>
                         {
-                            bookingStatus(Number(props.match.params.id)) ? (
+                            rooms.length !== 0 ?
+                            bookingStatus(Number(props.match.params.id)) && !room().reserved ? (
                                 <button type="submit" className="book_btn">Book now</button>
-                            ) : ''
+                            ) : '' : ''
                         }
                         
                     </form>

@@ -36,11 +36,9 @@ const App = () => {
           uid: user.uid,
           email: user.email
         }))
-
-        firestore.collection('booking_ref').onSnapshot(() => {
-          firestore.collection('bookings').onSnapshot(() => {
-            dispatch(fetchBookingHistory(user.uid))
-          })
+        firestore.collection('bookings').onSnapshot(() => {
+          dispatch(fetchBookingHistory(user.uid))
+          dispatch(fetchRooms())
         })
       } else {
         console.log('logged out...')
@@ -49,7 +47,7 @@ const App = () => {
 
   }, [])
 
-  const condition = (notif, err) => {
+  const displayNotif = (notif, err) => {
     if(notif !== null && err === null) {
       return true
     } else if(notif && err) {
@@ -75,7 +73,7 @@ const App = () => {
           )
         }
         {
-          condition(notifType, authError) ? (
+          displayNotif(notifType, authError) ? (
             <Notification />
           ) : ''
         }

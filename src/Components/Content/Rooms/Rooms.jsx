@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Card from './Card'
 import Filter from './Filter'
 import Sort from './Sort'
@@ -7,9 +7,9 @@ import Pagination from './Pagination'
 import BookingModal from '../../Modals/BookingModal/BookingModal'
 import Search from './Search/Search'
 import './Rooms.css'
+import Spinner from '../../Spinner/Spinner'
 
 const Rooms = () => {
-    const dispatch = useDispatch()
     const [toggleFilters, setToggleFilters] = useState(false)
     const { 
         rooms, 
@@ -125,15 +125,22 @@ const Rooms = () => {
                                     key={room.id}
                                     room={room}
                                 />
-                            )) : ''
+                            )) : (
+                                <div className="loader_holder">
+                                    <Spinner />
+                                </div>
+                            )
                         }
                     </div>
-                    <Pagination 
-                        currentPage={currentPage}
-                        roomsPerPage={roomsPerPage}
-                        totalOfRooms={rooms.length}
-                        filtered={filtered}
-                    />
+                    {
+                        currentRooms.length !== 0 ?
+                        <Pagination 
+                            currentPage={currentPage}
+                            roomsPerPage={roomsPerPage}
+                            totalOfRooms={rooms.length}
+                            filtered={filtered}
+                        /> : ''
+                    }
                 </div>
                 <div className={`filter_toggle ${toggleFilters ? 'active' : ''}`}
                     onClick={handleFiltersMobile}

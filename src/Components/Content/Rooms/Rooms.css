@@ -259,6 +259,7 @@
 
 .rooms_column .cards_holder {
     min-height: 200px;
+    position: relative;
     width: 795px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -385,6 +386,22 @@
     transform: translate(-50%, -50%);
 }
 
+.card_status {
+    position: absolute;
+    background-color: #17ff60;;
+    color: #fff;
+    bottom: 10px;
+    left: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.card_status.reserved {
+    background-color: #ff0000;
+}
+
 .card_details {
     padding: 5px 10px;
     position: relative;
@@ -465,6 +482,12 @@
 .pagin_numbers > p {
     cursor: pointer;
     font-size: 18px;
+}
+
+.loader_holder {
+    position: absolute;
+    width: 100%;
+    padding-top: 50px;
 }
 
 

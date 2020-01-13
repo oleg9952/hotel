@@ -7,12 +7,22 @@ const Card = (props) => {
     const dispatch = useDispatch()
     const { cart } = useSelector(state => state.bookingReducers)
 
-    const { id, name, type, typeDescription, numberOfRooms, price, imgBaseUrl, img } = props.room
+    const {
+        id,
+        name,
+        type,
+        typeDescription,
+        numberOfRooms,
+        price,
+        imgBaseUrl,
+        img,
+        reserved
+     } = props.room
     const [ details, setDetails ] = useState(false)
     
     const handleDetailsToggle = () => setDetails(!details)
 
-    const bookingStatus = currentId => {
+    const bookingStatusCart = currentId => {
         let status = []
         for(let i = 0; i < cart.length; i++) {
             status.push(cart[i].id)
@@ -47,7 +57,7 @@ const Card = (props) => {
                     ) : 'i'}
                 </div>
                 {
-                    bookingStatus(id) ? (
+                    bookingStatusCart(id) && !reserved ? (
                         <div className="card_select"
                             onClick={() => dispatch(setCurrentBooking(props.room))}
                         >
@@ -56,6 +66,9 @@ const Card = (props) => {
                         </div>
                     ) : ''
                 }
+                <div className={`card_status ${reserved ? 'reserved' : ''}`}>
+                    { reserved ? 'Reserved' : 'Available' }
+                </div>
             </div>
             <div className="card_details">
                 <Link to={`/rooms/${id}`}>
