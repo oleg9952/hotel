@@ -1,7 +1,7 @@
 const initState = {
     rooms: [],
     currentPage: 1,
-    roomsPerPage: 12,
+    roomsPerPage: 9,
     // ------- SORTING -------
     sortAscending: false,
     sortDescending: false

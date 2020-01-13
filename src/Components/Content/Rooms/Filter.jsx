@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleSearch } from '../../../store/actions/searchActions'
 
-const Filter = ({toggleFilters}) => {
+const Filter = ({toggleFilters, handleFiltering, resetFilter, getNumberOfFiltered}) => {
     const dispatch = useDispatch()
     const [ collections, setCollections ] = useState(true)
     
@@ -19,7 +19,9 @@ const Filter = ({toggleFilters}) => {
                 </div>
                 <div className="filters_header">
                     <p className="filters_title">Filters</p>
-                    <button className="filters_reset">Reset</button>
+                    <button className="filters_reset"
+                        onClick={resetFilter}
+                    >Reset</button>
                 </div>
                 <div className={`section ${collections ? 'active' : ''}`}>
                     <div className="section_header" onClick={handleCollections}>
@@ -27,14 +29,46 @@ const Filter = ({toggleFilters}) => {
                         <div className={`accordion_arrow ${!collections ? 'active' : ''}`}></div>
                     </div>
                     <ul className="section_options">
-                        <li className="option_item">Single (16)</li>
-                        <li className="option_item">Double (34)</li>
-                        <li className="option_item">Triple (24)</li>
-                        <li className="option_item">Quad (33)</li>
-                        <li className="option_item">Queen (15)</li>
-                        <li className="option_item">King (24)</li>
-                        <li className="option_item">Twin (33)</li>
-                        <li className="option_item">Studio (15)</li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Single</span> ({ getNumberOfFiltered('Single') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Double</span> ({ getNumberOfFiltered('Double') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Triple</span> ({ getNumberOfFiltered('Triple') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Quad</span> ({ getNumberOfFiltered('Quad') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Queen</span> ({ getNumberOfFiltered('Queen') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >King</span> ({ getNumberOfFiltered('King') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Twin</span> ({ getNumberOfFiltered('Twin') })
+                        </li>
+                        <li className="option_item">
+                            <span
+                                onClick={handleFiltering}
+                            >Studio</span> ({ getNumberOfFiltered('Studio') })
+                        </li>
                     </ul>
                 </div>
             </div>
