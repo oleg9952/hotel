@@ -64,6 +64,7 @@ const Gallery = () => {
                     currentView={currentView}
                     view={view}
                     closeView={closeView}
+                    rooms={rooms}
                 /> : ''
             }
         </div>

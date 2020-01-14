@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Gallery.module.css'
 
-const FoolscreenView = ({ currentView, view, closeView }) => {
+const FoolscreenView = ({ currentView, view, closeView, rooms }) => {
     const {
         id,
         imgBaseUrl,
@@ -16,7 +16,7 @@ const FoolscreenView = ({ currentView, view, closeView }) => {
         }
     }
     const handleNext = () => {
-        if(currentImg !== 40) {
+        if(currentImg !== rooms.length) {
             setCurrentImg(currentImg + 1)
         }
     }
