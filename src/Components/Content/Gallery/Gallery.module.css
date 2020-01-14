@@ -1,5 +1,196 @@
+/******** GENERAL ********/
+
 .gallery {
-    height: 150vh;
+    min-height: 400px;
     text-align: center;
     background-color: #fafafa;
+    padding-top: 30px;
+}
+
+.gallery_title {
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+.gallery_holder {
+    max-width: 965px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    position: relative;
+}
+
+.loader_holder {
+    position: absolute;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.gallery button {
+    font-size: 24px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    outline: none;
+    margin-bottom: 50px;
+}
+
+.gallery button:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/******** CARD ********/
+
+.gallery_holder .card {
+    height: 250px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    background-color: #fff;
+    cursor: pointer;
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card .img {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .5s;
+}
+
+.gallery_holder .card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card:hover > .img {
+    transform: scale(1.2);
+}
+
+/******** FOOLSCREEN VIEW ********/
+
+.foolscreen_view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: .5s;
+    visibility: hidden;
+    z-index: 3;
+}
+
+.foolscreen_view.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.close_btn {
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid #fff; */
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close_btn > div {
+    width: 35px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close_btn > div:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.close_btn > div:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.foolscreen_view.active .view_img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.7);
+    opacity: 0;
+    width: 80%;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: animateView .5s forwards;
+    animation-delay: 150ms;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30%;
+}
+
+.view_img > div {
+    cursor: pointer;
+    transition: .4s;
+}
+
+.view_img .next {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+@keyframes animateView {
+    from {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.7);
+        opacity: 0;
+    } to {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+
+/******** MEDIA QUERIES ********/
+
+@media screen and (max-width: 992px) {
+    .gallery_holder {
+        max-width: 630px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .foolscreen_view.active .view_img {
+        height: 75%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .gallery_holder {
+        max-width: 630px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+} 
+
+@media screen and (max-width: 576px) {
+    .foolscreen_view.active .view_img {
+        width: 90%;
+        height: 60%;
+    }
 }

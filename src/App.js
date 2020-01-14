@@ -23,7 +23,7 @@ const App = () => {
   const { cart } = useSelector(state => state.bookingReducers)
   const { notifType, authError } = useSelector(state => state.authReducers)
   const dispatch = useDispatch()
-
+ 
   useEffect(() => {
     dispatch(fetchRooms())
   
