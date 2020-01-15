@@ -5,9 +5,7 @@ import styles from './Notification.module.css'
 
 const Notification = () => {
     const dispatch = useDispatch()
-
-    //----- sorces of notifications -----
-    const { authError, notifType, user, userEmail } = useSelector(state => state.authReducers)
+    const { authError, notifType, userEmail } = useSelector(state => state.authReducers)
 
     const signInSignOutEvents = () => {
         let color

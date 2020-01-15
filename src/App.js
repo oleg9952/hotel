@@ -6,6 +6,7 @@ import { fetchRooms } from './store/actions/roomsActions'
 import { fetchReviews } from './store/actions/reviewActions'
 import { fetchUserAuthData } from './store/actions/authActions'
 import { fetchBookingHistory } from './store/actions/bookingActions'
+import { fetchFavorites } from './store/actions/favoritesActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
@@ -39,6 +40,9 @@ const App = () => {
         firestore.collection('bookings').onSnapshot(() => {
           dispatch(fetchBookingHistory(user.uid))
           dispatch(fetchRooms())
+        })
+        firestore.collection('favorites').onSnapshot(() => {
+          dispatch(fetchFavorites(user.uid))
         })
       } else {
         console.log('logged out...')

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentBooking } from '../../../store/actions/bookingActions'
+import { updateFavorites } from '../../../store/actions/favoritesActions'
 import { Link } from 'react-router-dom'
 
 const Card = (props) => {
     const dispatch = useDispatch()
     const { cart } = useSelector(state => state.bookingReducers)
+    const { authorized, user } = useSelector(state => state.authReducers)   
+    const { favorites } = useSelector(state => state.favoritesReducers)
 
     const {
         id,
@@ -42,7 +45,40 @@ const Card = (props) => {
         })
         return counter
     }
-        
+
+    //------- FAVORITES -------
+    const handleFavorites = () => {
+        if(favorites) {
+            if(favorites.indexOf(id) !== -1) {
+                let filtered = favorites.filter(item => item !== id)
+                dispatch(updateFavorites(
+                    { ids: [...filtered] },
+                    user.uid
+                ))
+            } else {
+                dispatch(updateFavorites(
+                    { ids: [...favorites, id] },
+                    user.uid
+                ))
+            }
+        } else {
+            dispatch(updateFavorites(
+                { ids: [id] },
+                user.uid
+            ))
+        }
+    }    
+
+    const favoritesCheck = id => {
+        if(authorized && favorites) {
+            if(favorites.indexOf(id) === -1) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
     return (
         <div className="room_card">
             <div className="card_img"
@@ -69,6 +105,19 @@ const Card = (props) => {
                 <div className={`card_status ${reserved ? 'reserved' : ''}`}>
                     { reserved ? 'Reserved' : 'Available' }
                 </div>
+                {
+                    
+
+                    authorized ? favoritesCheck(id) ? (
+                        <div className="favorites">
+                            <i className="far fa-heart" onClick={handleFavorites}></i>
+                        </div>
+                    ) : (
+                        <div className="favorites">
+                            <i className="fas fa-heart" onClick={handleFavorites}></i>
+                        </div>
+                    ) : ''
+                }
             </div>
             <div className="card_details">
                 <Link to={`/rooms/${id}`}>

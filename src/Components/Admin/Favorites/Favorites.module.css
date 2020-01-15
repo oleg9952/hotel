@@ -16,19 +16,57 @@
     grid-gap: 20px;
     transform-style: preserve-3d;
     backface-visibility: hidden;  
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .favorites_holder .card {
     height: 250px;
     position: relative;
-    cursor: pointer;
     background-color: #fff;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    background-image: url(/Assets/RoomPage/room_1/1.jpg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card .remove_fav {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    cursor: pointer;
+    transform: translateY(-45px);
+    transition: .4s;
+}
+
+.remove_fav > div {
+    width: 20px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.remove_fav > div:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.remove_fav > div:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.card:hover > .remove_fav {
+    transform: translateY(0px);
 }
 
 .card .card_title {
@@ -43,6 +81,18 @@
     left: 0;
     width: 100%;
     transform: translateY(100%);
+    transition: .4s;
+    cursor: pointer;
+}
+
+.card_title a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.favorites_holder .card:hover > .card_title {
+    transform: translateY(0%);
 }
 
 .status {

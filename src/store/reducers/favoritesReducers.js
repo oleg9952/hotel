@@ -1,12 +1,12 @@
 const initState = {
-    adminPage: false
+    favorites: null
 }
 
 export default (state = initState, action) => {
     switch(action.type) {
-        case 'TOGGLE_ADMIN':
+        case 'FETCH_FAVORITES':
             return {
-                adminPage: !state.adminPage
+                favorites: action.payload
             }
         default:
             return state

@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux'
 import style from './UserInfo.module.css'
 
 const UserInfo = () => {
-    // const {
-    //     firstName,
-    //     lastName,
-    //     location,
-    //     email
-    // } = useSelector(state => state.authReducers.user)
+    const {
+        firstName,
+        lastName,
+        location,
+        email
+    } = useSelector(state => state.authReducers.user)
 
     return (
         <form className={style.info}>
-            {/* <div className={style.info_header}>
+            <div className={style.info_header}>
                 <div className={style.profile_img} />
                 <div className={style.user_details}>
                     <p className={style.user_name}>
@@ -51,7 +51,7 @@ const UserInfo = () => {
             </div>
             <button type="submit" className={style.submit_btn}>
                 Save changes
-            </button> */}
+            </button>
         </form>
     )
 }

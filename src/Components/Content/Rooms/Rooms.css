@@ -1,13 +1,11 @@
 /*********** ROOMS ***********/
 
 .rooms {
-    /* min-height: 150vh; */
     padding-bottom: 30px;
     background-color: #fafafa;
 }
 
 .rooms .content {
-    /* border: 1px solid red; */
     padding-top: 0;
     min-height: 700px;
     display: grid;
@@ -34,8 +32,6 @@
 
 .rooms .rooms_search {
     height: 40px;
-    /* background-color: orange; */
-    /* display: none; */
     display: grid;
     grid-template-columns: 1fr 20px;
     align-items: center;
@@ -89,7 +85,6 @@
 }
 
 .filters_holder .section {
-    /* border: 1px solid black; */
     height: 25px;
     overflow: hidden;
     transition: .3s;
@@ -100,7 +95,6 @@
 }
 
 .section .section_header {
-    /* border: 1px solid black; */
     display: flex;
     justify-content: space-between;
     cursor: pointer;
@@ -271,7 +265,6 @@
     width: 250px;
     height: 200px;
     border-radius: 20px;
-    /* border: 1px solid red; */
     justify-content: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     overflow: hidden;
@@ -318,7 +311,6 @@
     width: 100%;
     height: 65%;
     position: relative;
-    /* background-image: url(/Assets/Rooms/room_1.jpg); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -339,7 +331,7 @@
     cursor: pointer;
     color: #bc6666;
     font-weight: bold;
-    box-shadow: 0px 2px 10px -5px rgba(0,0,0,0.63);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     z-index: 1;
 }
 
@@ -367,7 +359,7 @@
     right: 10px;
     top: 8px;
     cursor: pointer;
-    box-shadow: 0px 2px 22px -4px rgba(0,0,0,0.63);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .card_select > div {
@@ -396,11 +388,33 @@
     border-radius: 10px;
     font-size: 15px;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .card_status.reserved {
     background-color: #ff0000;
 }
+
+
+.favorites {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    /* background-color: #fff; */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding-top: 2px;
+    color: red;
+}
+
+
 
 .card_details {
     padding: 5px 10px;

@@ -59,24 +59,20 @@ const BookingModal = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if(reservationDate) {
-            dispatch(addToCart(
-                [food, pool, gym], 
-                numberOfGuests.current.value,
-                reservationDate
-            ))
-            setBookingDuration(1)
-            setDate(new Date())
-            setReservationDate(null)
-            setTimeout(() => {
-                setStepTwo(false)
-                setFood(false)
-                setPool(false)
-                setGym(false)
-            }, 500)
-        } else {
-            alert('Booking modal, dates have not been set!')
-        }
+        dispatch(addToCart(
+            [food, pool, gym], 
+            numberOfGuests.current.value,
+            reservationDate
+        ))
+        setBookingDuration(1)
+        setDate(new Date())
+        setReservationDate(null)
+        setTimeout(() => {
+            setStepTwo(false)
+            setFood(false)
+            setPool(false)
+            setGym(false)
+        }, 500)
     }
 
     const calcServices = (...args) => {
