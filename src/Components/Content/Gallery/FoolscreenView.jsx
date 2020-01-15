@@ -31,9 +31,7 @@ const FoolscreenView = ({ currentView, view, closeView, rooms }) => {
                 style={{ backgroundImage: `url(${imgBaseUrl + currentImg}/${img[0]})` }}
             >
                 <div className={styles.prev} onClick={handlePrev}></div>
-                <div className={styles.next} onClick={handleNext}>
-                    
-                </div>
+                <div className={styles.next} onClick={handleNext}></div>
             </div>   
         </div>
     )

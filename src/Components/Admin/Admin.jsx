@@ -9,9 +9,10 @@ import style from './Admin.module.css'
 import UserInfo from './UserInfo/UserInfo'
 import History from './History/History'
 import BookingDetails from './History/BookingDetails'
+import Favorites from './Favorites/Favorites'
 
 const Admin = () => {
-    const { firstName, lastName, email } = useSelector(state => state.authReducers.user)
+    // const { firstName, lastName, email } = useSelector(state => state.authReducers.user)
 
     const [ toggleNav, setToggleNav ] = useState(false)
     const dispatch = useDispatch()
@@ -67,10 +68,10 @@ const Admin = () => {
                     <div className={style.nav_header}>
                         <div className={style.profile_img} />
                         <p className={style.user_name}>
-                            { `${firstName} ${lastName}` }
+                            {/* { `${firstName} ${lastName}` } */}
                         </p>
                         <p className={style.user_email}>
-                            { email }
+                            {/* { email } */}
                         </p>
                     </div>
                     {/* ------- USER NAV ------- */}
@@ -120,9 +121,7 @@ const Admin = () => {
                     <Switch>
                         <Route exact path="/admin/user" component={UserInfo} />
                         <Route exact path="/admin/history" component={History} />
-                        <Route exact path="/admin/favorites">
-                            <h1>Favorites</h1>
-                        </Route>
+                        <Route exact path="/admin/favorites" component={Favorites} />
                         <Route exact path="/admin/history/:bookingID" component={BookingDetails} />
                     </Switch>
                 </div>

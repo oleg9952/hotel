@@ -119,12 +119,12 @@
 }
 
 .details_bookings {
-    /* border: 1px solid black; */
+    max-width: 1200px;
     min-height: 50px;
     padding: 5px;
     text-align: left;
     font-size: 18px;
-    margin-bottom: 15px;
+    margin: 0 auto 15px;
 }
 
 .details_bookings .item_img {

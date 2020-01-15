@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Calendar from 'react-calendar'
 import { resetCurrentBooking, addToCart } from '../../../store/actions/bookingActions'
+import { fireNotification } from '../../../store/actions/authActions'
 import RoomSlider from '../../Content/Rooms/RoomPage/RoomSlider/RoomSlider'
 import './BookingModal.css'
 
@@ -38,11 +39,12 @@ const BookingModal = () => {
     
     const handleStepSwitch = e => {
         e.preventDefault()
-        setStepTwo(true)
-        if(reservationDate !== null) {
+        if(reservationDate) {
+            setStepTwo(true)
             setBookingDuration(calcBookingDuration(reservationDate[0], reservationDate[1]))
         } else {
             setBookingDuration(1)
+            dispatch(fireNotification('noDates'))
         }
     }
 
@@ -57,20 +59,24 @@ const BookingModal = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        dispatch(addToCart(
-            [food, pool, gym], 
-            numberOfGuests.current.value,
-            reservationDate
-        ))
-        setBookingDuration(1)
-        setDate(new Date())
-        setReservationDate(null)
-        setTimeout(() => {
-            setStepTwo(false)
-            setFood(false)
-            setPool(false)
-            setGym(false)
-        }, 500)
+        if(reservationDate) {
+            dispatch(addToCart(
+                [food, pool, gym], 
+                numberOfGuests.current.value,
+                reservationDate
+            ))
+            setBookingDuration(1)
+            setDate(new Date())
+            setReservationDate(null)
+            setTimeout(() => {
+                setStepTwo(false)
+                setFood(false)
+                setPool(false)
+                setGym(false)
+            }, 500)
+        } else {
+            alert('Booking modal, dates have not been set!')
+        }
     }
 
     const calcServices = (...args) => {

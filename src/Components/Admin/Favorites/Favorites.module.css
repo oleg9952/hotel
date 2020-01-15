@@ -1,0 +1,84 @@
+.favorites {
+    max-width: 1200px;
+    min-height: 200px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.favorites_title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.favorites_holder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;  
+    border: 1px solid black;
+}
+
+.favorites_holder .card {
+    height: 250px;
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    background-image: url(/Assets/RoomPage/room_1/1.jpg);
+}
+
+.card .card_title {
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+}
+
+.status {
+    font-size: 15px;
+    background-color: #00ba00;
+    position: absolute;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    top: 10px;
+    left: 10px;
+}
+
+.status.reserved {
+    background-color: red;
+}
+
+
+/********** MEDIA QUERIES **********/
+
+@media screen and (max-width: 1200px) {
+    .favorites_holder {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .favorites_holder {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .favorites_holder {
+        width: 290px;
+        margin: 0 auto;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

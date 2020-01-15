@@ -24,7 +24,6 @@ const BookingDetails = () => {
             <h1 className={style.page_title}>
                 Booking ID: { `${bookingID}` }
             </h1>
-
             <div className={style.details_bookings}>
                 {
                     bookingHistory.map(bookingItem => {

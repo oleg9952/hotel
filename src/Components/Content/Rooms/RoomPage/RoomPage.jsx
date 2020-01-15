@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Calendar from 'react-calendar'
 import { addToCart, setCurrentBooking } from '../../../../store/actions/bookingActions'
 import { addReview } from '../../../../store/actions/reviewActions'
+import { fireNotification } from '../../../../store/actions/authActions'
 import ReviewComment from './ReviewComment'
 import RoomSlider from './RoomSlider/RoomSlider'
 import Spinner from '../../../Spinner/Spinner'
@@ -86,11 +87,12 @@ const RoomPage = (props) => {
 
     const openServicesModal = e => {
         e.preventDefault()
-        setServicesModal(true)
-        if(reservationDate !== null) {
+        if(reservationDate) {
+            setServicesModal(true)
             setBookingDuration(calcBookingDuration(reservationDate[0], reservationDate[1]))
         } else {
             setBookingDuration(1)
+            dispatch(fireNotification('noDates'))
         }
         
     }
@@ -304,7 +306,7 @@ const RoomPage = (props) => {
                 </div>
             </div>  
             <div className={`services_selector ${servicesModal ? 'active' : ''}`}>
-                <form className={`services_holder ${servicesModal ? 'active' : ''}`}>
+                <form className={`services_holder ${servicesModal ? 'active' : ''}`} onSubmit={handleSubmit}>
                     <div className="services_close" onClick={closeServicesModal}>
                         <div></div>
                         <div></div>
@@ -346,7 +348,7 @@ const RoomPage = (props) => {
                             `$${(room().price * bookingDuration) + servicesTotal}` : ''
                         }
                     </p>
-                    <button type="submit" onClick={handleSubmit}>Confirm</button>
+                    <button type="submit">Confirm</button>
                 </form>
             </div>          
         </div>

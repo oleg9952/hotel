@@ -38,6 +38,10 @@ const Notification = () => {
             color = '#15e1c2'
             message = `Make sure you've filled in all the fields!`
             icon = 'i'
+        } else if(notifType === 'noDates' && authError === null) {
+            color = '#15e1c2'
+            message = `You forgot to specify the dates of your residence!`
+            icon = 'i'
         } else if(notifType && authError) {
             color = 'red'
             message = authError.message
