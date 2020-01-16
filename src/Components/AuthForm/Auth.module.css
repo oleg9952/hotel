@@ -20,6 +20,14 @@
     display: block;
 }
 
+.auth_holder .auth_body {
+    /* display: none; */
+}
+
+.auth_body.active {
+    display: none;
+}
+
 .auth_close {
     width: 40px;
     height: 40px;
@@ -74,6 +82,97 @@
     }
 }
 
+.auth_holder .auth_reset {
+    display: none;
+    padding: 0 10px 50px 10px;
+    position: relative;
+    opacity: 0;
+    transform: scale(.5);
+    animation: animateReset .5s forwards;
+    cursor: pointer;
+}
+
+.auth_reset .close_reset {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    transform: translateY(-30px);
+    display: none;
+}
+
+.auth_reset.active .close_reset {
+    display: block;
+}
+
+.close_reset > div {
+    width: 20px;
+    height: 3px;
+    background-color: #04c571;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.close_reset > div:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.close_reset > div:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.auth_holder .auth_reset.active {
+    display: block;
+    transform: scale(1);
+}
+
+@keyframes animateReset {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth_reset .reset_title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.auth_reset .input_item {
+    width: 85%;
+    margin: 0 auto 25px;
+}
+
+.auth_reset .field_title {
+    margin-bottom: 5px;
+}
+
+.auth_reset button {
+    margin: 0 auto;
+    padding: 7px 30px;
+    font-size: 18px;
+    background-color: #04c571;
+    border: none;
+    display: block;
+    color: #fff;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+}
+
+.auth_reset button:hover,
+.auth_reset button:focus {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #fff;
+    color: #04c571;
+}
+
 .profile_img {
     width: 80px;
     height: 80px;
@@ -116,7 +215,7 @@
 
 .forms_holder {
     width: 100%;
-    height: 230px;
+    height: 250px;
     padding: 0 35px;
     margin: 0 auto;
     position: relative;
@@ -171,6 +270,17 @@
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.password_input {
+    margin-bottom: 10px;
+}
+
+.password_reset {
+    cursor: pointer;
+}
+.password_reset:hover {
+    text-decoration: underline;
 }
 
 .input_item input:focus {

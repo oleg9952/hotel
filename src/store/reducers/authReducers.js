@@ -1,5 +1,5 @@
 const initState = {
-    authForms: false,
+    authForms: true,
     authorized: false,
     user: null,
     //-------- ERRORS --------

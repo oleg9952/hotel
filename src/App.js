@@ -26,29 +26,29 @@ const App = () => {
   const dispatch = useDispatch()
  
   useEffect(() => {
-    dispatch(fetchRooms())
-    firestore.collection('reviews').onSnapshot(() => {
-      dispatch(fetchReviews())
-    })
-    auth.onAuthStateChanged(user => {
-      if(user) {
-        firestore.collection('users').onSnapshot(() => {
-          dispatch(fetchUserAuthData({
-            uid: user.uid,
-            email: user.email
-          }))
-        })
-        firestore.collection('bookings').onSnapshot(() => {
-          dispatch(fetchBookingHistory(user.uid))
-          dispatch(fetchRooms())
-        })
-        firestore.collection('favorites').onSnapshot(() => {
-          dispatch(fetchFavorites(user.uid))
-        })
-      } else {
-        console.log('logged out...')
-      }
-    })
+    // dispatch(fetchRooms())
+    // firestore.collection('reviews').onSnapshot(() => {
+    //   dispatch(fetchReviews())
+    // })
+    // auth.onAuthStateChanged(user => {
+    //   if(user) {
+    //     firestore.collection('users').onSnapshot(() => {
+    //       dispatch(fetchUserAuthData({
+    //         uid: user.uid,
+    //         email: user.email
+    //       }))
+    //     })
+    //     firestore.collection('bookings').onSnapshot(() => {
+    //       dispatch(fetchBookingHistory(user.uid))
+    //       dispatch(fetchRooms())
+    //     })
+    //     firestore.collection('favorites').onSnapshot(() => {
+    //       dispatch(fetchFavorites(user.uid))
+    //     })
+    //   } else {
+    //     console.log('logged out...')
+    //   }
+    // })
   }, [])
 
   const displayNotif = (notif, err) => {

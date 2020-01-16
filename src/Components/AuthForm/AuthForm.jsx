@@ -12,9 +12,11 @@ const AuthForm = () => {
 
     //----- FORM TOGGLERS -----
     const [ formToggle, setFormToggle ] = useState(true)
+    const [ passwordReset, setPasswordReset ] = useState(false)
 
     const handleLogInTab = () => setFormToggle(true)
     const handleSignUpTab = () => setFormToggle(false)
+    const handlePassResetSwitch = () => setPasswordReset(!passwordReset)
 
     const handleFormClose = () => {
         dispatch(toggleAuthForms())
@@ -91,62 +93,73 @@ const AuthForm = () => {
                 <div></div>
             </div>
             <div className={`${style.auth_holder}`}>
-                <div className={`${style.profile_img} ${!formToggle ? style.active : ''}`}>
+                <div className={`${style.auth_body} ${passwordReset ? style.active : ''}`}>
+                    <div className={`${style.profile_img} ${!formToggle ? style.active : ''}`} />
+                    <div className={style.auth_tabs}>
+                        <p className={`${style.tab_item} ${formToggle ? style.active : ''}`}
+                            onClick={handleLogInTab}
+                        >Login</p>
+                        <p className={`${style.tab_item} ${!formToggle ? style.active : ''}`}
+                            onClick={handleSignUpTab}
+                        >Sign Up</p>
+                    </div>
+                    <div className={`${style.forms_holder} ${!formToggle ? style.active : ''}`}>
+                        <form className={`${style.auth_login} ${formToggle ? style.active : ''}`}
+                            onSubmit={handleSignIn}
+                        >
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Email</p>
+                                <input type="email" ref={userEmail} />
+                            </div>
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Password</p>
+                                <input type="password" className={style.password_input} ref={userPass} />
+                                <p className={style.password_reset} 
+                                    onClick={handlePassResetSwitch}
+                                >Forgot Password</p>
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
 
+                        <form className={`${style.auth_signup} ${!formToggle ? style.active : ''}`}
+                            onSubmit={handleSignUp}
+                        >
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>First Name</p>
+                                <input type="text" ref={firstName} />
+                            </div>
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Last Name</p>
+                                <input type="text" ref={lastName} />
+                            </div>
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Location</p>
+                                <input type="text" ref={location} />
+                            </div>
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Email</p>
+                                <input type="email" ref={newUserEmail} />
+                            </div>
+                            <div className={style.input_item}>
+                                <p className={style.field_title}>Password</p>
+                                <input type="password" ref={newUserPass} />
+                            </div>
+                            <button type="submit">Sign Up</button>
+                        </form>
+                    </div> 
                 </div>
-                <div className={style.auth_tabs}>
-                    <p className={`${style.tab_item} ${formToggle ? style.active : ''}`}
-                        onClick={handleLogInTab}
-                    >Login</p>
-                    <p className={`${style.tab_item} ${!formToggle ? style.active : ''}`}
-                        onClick={handleSignUpTab}
-                    >Sign Up</p>
-                </div>
-                <div className={`${style.forms_holder} ${!formToggle ? style.active : ''}`}>
-                    <form className={`${style.auth_login} ${formToggle ? style.active : ''}`}
-                        onSubmit={handleSignIn}
-                    >
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Email</p>
-                            <input type="email" ref={userEmail} />
-                        </div>
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Password</p>
-                            <input type="password" ref={userPass} />
-                        </div>
-                        <button type="submit">Login</button>
-                    </form>
-
-                    <form className={`${style.auth_signup} ${!formToggle ? style.active : ''}`}
-                        onSubmit={handleSignUp}
-                    >
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>First Name</p>
-                            <input type="text" ref={firstName} />
-                        </div>
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Last Name</p>
-                            <input type="text" ref={lastName} />
-                        </div>
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Location</p>
-                            <input type="text" ref={location} />
-                        </div>
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Email</p>
-                            <input type="email" ref={newUserEmail} />
-                        </div>
-                        <div className={style.input_item}>
-                            <p className={style.field_title}>Password</p>
-                            <input type="password" ref={newUserPass} />
-                        </div>
-                        <button type="submit">Sign Up</button>
-                    </form>
-
-
-                    
-
-                </div>
+                <form className={`${style.auth_reset} ${passwordReset ? style.active : ''}`}>
+                    <div className={style.close_reset} onClick={handlePassResetSwitch}>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <h2 className={style.reset_title}>Password Reset</h2>
+                    <div className={style.input_item}>
+                        <div className={style.field_title}>Email</div>
+                        <input type="email" name="email" />
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </div>
     )
