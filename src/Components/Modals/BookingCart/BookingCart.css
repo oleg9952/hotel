@@ -10,6 +10,8 @@
     overflow-y: scroll;
     padding: 40px 30px;
     transition: .5s;
+    box-sizing: content-box;
+    padding-right: 017px;
 }
 
 .booking_cart.active {
@@ -22,7 +24,7 @@
     /* border: 1px solid black; */
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 37px;
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 8px -3px #333;

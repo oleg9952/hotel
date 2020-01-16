@@ -84,7 +84,9 @@
 
 .booking_modal .modal_body {
     position: relative;
-    overflow-y: scroll;
+    overflow: hidden;
+    box-sizing: content-box;
+    padding-right: 17px;
 }
 
 .booking_modal .body_holder {
@@ -95,7 +97,7 @@
     left: 0;
     display: grid;
     grid-template-columns: 60% 1fr;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .booking_modal .body_column:nth-child(1) {
@@ -137,6 +139,8 @@
     padding: 0px 10px 10px 10px;
     transform: translateX(0%);
     transition: .5s;
+    /* box-sizing: content-box;
+    padding-right: 17px; */
 }
 
 .booking_modal .booking_date.active {
@@ -283,6 +287,11 @@
         height: 100%;
         /* padding-bottom: 15px; */
         border-radius: 0;
+    }
+
+    .booking_modal .modal_body {
+        overflow-y: scroll;
+        padding-right: 0px;
     }
 
     .booking_modal .room_slider {
