@@ -44,6 +44,10 @@ const Notification = () => {
             color = '#38c3ff'
             message = `Your email has been updated. Refresh the page to see the changes.`
             icon = check
+        } else if(notifType === 'passReset' && authError === null) {
+            color = '#15e1c2'
+            message = `Check you email to continue reseting your password!`
+            icon = 'i'
         } else if(notifType && authError) {
             color = 'red'
             message = authError.message

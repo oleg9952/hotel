@@ -145,6 +145,31 @@ export const updateCreds = creds => dispatch => {
     }
 }
 
+//-------- PASSWORD RESET --------
+
+export const resetPassword = email => dispatch => {
+    auth.sendPasswordResetEmail(email)
+        .then(() => {
+            dispatch({
+                type: 'TOGGLE_FORMS'
+            })
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'passReset'
+            })
+        })
+        .catch(error => {
+            dispatch({
+                type: 'AUTH_ERRORS',
+                payload: error
+            })
+            dispatch({
+                type: 'FIRE_NOTIFICATION',
+                payload: 'passReset'
+            })
+        })
+}
+
 //-------- NOTIFICATIONS --------
 
 export const fireNotification = event => {

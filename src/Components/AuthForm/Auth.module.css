@@ -89,7 +89,6 @@
     opacity: 0;
     transform: scale(.5);
     animation: animateReset .5s forwards;
-    cursor: pointer;
 }
 
 .auth_reset .close_reset {
@@ -100,6 +99,7 @@
     top: 0;
     transform: translateY(-30px);
     display: none;
+    cursor: pointer;
 }
 
 .auth_reset.active .close_reset {

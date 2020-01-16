@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleAuthForms, signUp, signIn, fireNotification } from '../../store/actions/authActions'
+import { toggleAuthForms, signUp, signIn, fireNotification, resetPassword } from '../../store/actions/authActions'
 import style from './Auth.module.css'
 import Spinner from '../Spinner/Spinner'
 
@@ -86,6 +86,22 @@ const AuthForm = () => {
         }
     }
 
+    //----- PASSWORD RESET -----
+    let resetPassEmail = useRef(null)
+
+    const handlePasswordReset = e => {
+        e.preventDefault()
+        if(resetPassEmail.current.value.length !== 0 || 
+            resetPassEmail.current.value === null
+        ) {
+            dispatch(resetPassword(resetPassEmail.current.value))
+            setTimeout(() => setPasswordReset(false), 1000)
+        } else {
+            dispatch(fireNotification('emptyField'))
+        }
+        setTimeout(() => resetPassEmail.current.value = null)
+    }
+
     return (
         <div className={`${style.auth} ${authForms ? style.active : ''}`}>
             <div className={style.auth_close} onClick={handleFormClose}>
@@ -148,7 +164,7 @@ const AuthForm = () => {
                         </form>
                     </div> 
                 </div>
-                <form className={`${style.auth_reset} ${passwordReset ? style.active : ''}`}>
+                <form className={`${style.auth_reset} ${passwordReset ? style.active : ''}`} onSubmit={handlePasswordReset}>
                     <div className={style.close_reset} onClick={handlePassResetSwitch}>
                         <div></div>
                         <div></div>
@@ -156,7 +172,7 @@ const AuthForm = () => {
                     <h2 className={style.reset_title}>Password Reset</h2>
                     <div className={style.input_item}>
                         <div className={style.field_title}>Email</div>
-                        <input type="email" name="email" />
+                        <input type="email" name="email" ref={resetPassEmail} />
                     </div>
                     <button type="submit">Submit</button>
                 </form>
