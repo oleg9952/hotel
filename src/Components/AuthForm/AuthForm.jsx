@@ -125,7 +125,7 @@ const AuthForm = () => {
                         >
                             <div className={style.input_item}>
                                 <p className={style.field_title}>Email</p>
-                                <input type="email" ref={userEmail} />
+                                <input type="email" name="email" ref={userEmail} />
                             </div>
                             <div className={style.input_item}>
                                 <p className={style.field_title}>Password</p>
@@ -154,7 +154,7 @@ const AuthForm = () => {
                             </div>
                             <div className={style.input_item}>
                                 <p className={style.field_title}>Email</p>
-                                <input type="email" ref={newUserEmail} />
+                                <input type="email" name="email" ref={newUserEmail} />
                             </div>
                             <div className={style.input_item}>
                                 <p className={style.field_title}>Password</p>
