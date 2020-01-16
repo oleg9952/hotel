@@ -1,5 +1,5 @@
 const initState = {
-    adminPage: true
+    adminPage: false
 }
 
 export default (state = initState, action) => {

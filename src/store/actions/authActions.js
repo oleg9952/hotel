@@ -101,6 +101,50 @@ export const signOut = () => dispatch => {
         .catch(error => console.error(error))
 }
 
+//-------- UPDATE CREDENTIALS --------
+
+export const updateCreds = creds => dispatch => {
+    const {
+        newEmail,
+        ...newDetails
+    } = creds.newCreds
+
+    const {
+        email,
+        ...currentDetails
+    } = creds.currentCreds
+
+    const update = {
+        firstName: newDetails.firstName.length !== 0 ? newDetails.firstName : currentDetails.firstName,
+        lastName: newDetails.lastName.length !== 0 ? newDetails.lastName : currentDetails.lastName,
+        location: newDetails.location.length !== 0 ? newDetails.location : currentDetails.location
+    }
+
+    firestore.collection('users').doc(`${creds.uid}`)
+        .set(update)
+        .catch(error => console.error(error))
+
+    if(newEmail.length !== 0) {
+        auth.currentUser.updateEmail(`${newEmail}`)
+            .then(() => {
+                dispatch({
+                    type: 'FIRE_NOTIFICATION',
+                    payload: 'updateEmail'
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: 'AUTH_ERRORS',
+                    payload: error
+                })
+                dispatch({
+                    type: 'FIRE_NOTIFICATION',
+                    payload: 'updateEmail'
+                })
+            })
+    }
+}
+
 //-------- NOTIFICATIONS --------
 
 export const fireNotification = event => {

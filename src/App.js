@@ -27,16 +27,17 @@ const App = () => {
  
   useEffect(() => {
     dispatch(fetchRooms())
-  
     firestore.collection('reviews').onSnapshot(() => {
       dispatch(fetchReviews())
     })
     auth.onAuthStateChanged(user => {
       if(user) {
-        dispatch(fetchUserAuthData({
-          uid: user.uid,
-          email: user.email
-        }))
+        firestore.collection('users').onSnapshot(() => {
+          dispatch(fetchUserAuthData({
+            uid: user.uid,
+            email: user.email
+          }))
+        })
         firestore.collection('bookings').onSnapshot(() => {
           dispatch(fetchBookingHistory(user.uid))
           dispatch(fetchRooms())
@@ -48,7 +49,6 @@ const App = () => {
         console.log('logged out...')
       }
     })
-
   }, [])
 
   const displayNotif = (notif, err) => {

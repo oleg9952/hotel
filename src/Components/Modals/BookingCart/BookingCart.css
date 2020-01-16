@@ -8,10 +8,9 @@
     z-index: 3;
     transform: translateX(100%);
     overflow-y: scroll;
-    padding: 40px 30px;
     transition: .5s;
     box-sizing: content-box;
-    padding-right: 017px;
+    padding: 40px 32px 40px 0px;
 }
 
 .booking_cart.active {

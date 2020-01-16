@@ -40,6 +40,10 @@ const Notification = () => {
             color = '#15e1c2'
             message = `You forgot to specify the dates of your residence!`
             icon = 'i'
+        } else if(notifType === 'updateEmail' && authError === null) {
+            color = '#38c3ff'
+            message = `Your email has been updated. Refresh the page to see the changes.`
+            icon = check
         } else if(notifType && authError) {
             color = 'red'
             message = authError.message
