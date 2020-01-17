@@ -23,6 +23,19 @@ const AuthForm = () => {
         handleLogInTab()
     }
 
+    //----- PROFILE IMG -----
+    const [ profileImgPreview, setProfileImgPreview ] = useState(null)
+    const [ imgFile, setImgFile ] = useState(null)
+    
+    const handleProfileImgSet = file => {
+        setImgFile(file.target.files[0])
+        let reader = new FileReader()
+        reader.onload = e => {
+            setProfileImgPreview(e.target.result)
+        }
+        reader.readAsDataURL(file.target.files[0])
+    }
+
     //-------- SIGN UP --------
 
     let firstName = useRef(null)
@@ -45,7 +58,8 @@ const AuthForm = () => {
                 lastName: lastName.current.value,
                 location: location.current.value,
                 email: newUserEmail.current.value,
-                password: newUserPass.current.value
+                password: newUserPass.current.value,
+                profileImg: imgFile
             }))
 
             setTimeout(() => {
@@ -110,7 +124,11 @@ const AuthForm = () => {
             </div>
             <div className={`${style.auth_holder}`}>
                 <div className={`${style.auth_body} ${passwordReset ? style.active : ''}`}>
-                    <div className={`${style.profile_img} ${!formToggle ? style.active : ''}`} />
+                    <div className={`${style.profile_img} ${!formToggle ? style.active : ''}`}
+                        style={{ backgroundImage: `url(${profileImgPreview})` }}
+                    >
+                        <input type="file" onChange={handleProfileImgSet} />
+                    </div>
                     <div className={style.auth_tabs}>
                         <p className={`${style.tab_item} ${formToggle ? style.active : ''}`}
                             onClick={handleLogInTab}

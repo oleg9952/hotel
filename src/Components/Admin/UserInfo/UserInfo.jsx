@@ -11,7 +11,8 @@ const UserInfo = () => {
         lastName,
         location,
         email,
-        uid
+        uid,
+        profileImg
     } = useSelector(state => state.authReducers.user)
 
     //------- UPDATE CREDS -------
@@ -54,7 +55,9 @@ const UserInfo = () => {
     return (
         <form className={style.info} onSubmit={handleSublit}>
             <div className={style.info_header}>
-                <div className={style.profile_img} />
+                <div className={style.profile_img} 
+                    style={{ backgroundImage: `url(${profileImg})` }}
+                />
                 <div className={style.user_details}>
                     <p className={style.user_name}>
                         { `${firstName} ${lastName}` }
@@ -82,6 +85,7 @@ const UserInfo = () => {
                 <div className={style.body_item}>
                     <p>Email</p>
                     <input type="email"
+                        name="email"
                         placeholder={email}
                         ref={userEmail}
                     />

@@ -1,4 +1,4 @@
-import { auth, firestore } from '../../fb_config'
+import { auth, firestore, storage } from '../../fb_config'
 
 export const toggleAuthForms = () => {
     return {
@@ -12,15 +12,34 @@ export const fetchUserAuthData = data => dispatch => {
     firestore.collection('users').doc(`${data.uid}`)
         .get()
         .then(resp => {
-            let currentUser = {
-                ...resp.data(),
-                uid: data.uid,
-                email: data.email
+            if(resp.data().picture) {
+                storage.ref().child(`profilePictures/${data.uid}.jpg`)
+                    .getDownloadURL()
+                    .then(url => {
+                        let currentUser = {
+                            ...resp.data(),
+                            uid: data.uid,
+                            email: data.email,
+                            profileImg: url
+                        }
+                        dispatch({
+                            type: 'SET_USER',
+                            payload: currentUser
+                        })
+                    })
+                    .catch(error => console.error(error))
+            } else {
+                let currentUser = {
+                    ...resp.data(),
+                    uid: data.uid,
+                    email: data.email,
+                    profileImg: null
+                }
+                dispatch({
+                    type: 'SET_USER',
+                    payload: currentUser
+                })
             }
-            dispatch({
-                type: 'SET_USER',
-                payload: currentUser
-            })
         })
         .catch(error => console.error(error))
 }
@@ -34,14 +53,50 @@ export const setAuthError = arg => {
 
 //-------- SIGN UP --------
 
+// export const signUp = data => dispatch => {
+//     auth.createUserWithEmailAndPassword(data.email, data.password)
+//         .then(resp => {
+//             firestore.collection('users').doc(`${resp.user.uid}`)
+//                 .set({
+//                     firstName: data.firstName,
+//                     lastName: data.lastName,
+//                     location: data.location
+//                 })
+//                 .catch(error => console.error(error))
+//             dispatch({
+//                 type: 'FIRE_NOTIFICATION',
+//                 payload: 'signUp',
+//                 userEmail: resp.user.email
+//             })
+//         })
+//         .catch(error => {
+//             dispatch({
+//                 type: 'AUTH_ERRORS',
+//                 payload: error
+//             })
+//             dispatch({
+//                 type: 'FIRE_NOTIFICATION',
+//                 payload: 'signUp'
+//             })
+//         })
+// }
+
 export const signUp = data => dispatch => {
     auth.createUserWithEmailAndPassword(data.email, data.password)
         .then(resp => {
+            //----- UPLOAD IMG -----
+            if(data.profileImg !== null) {
+                storage.ref().child(`profilePictures/${resp.user.uid}.jpg`)
+                    .put(data.profileImg)
+                    .catch(error => console.error(error))
+            }
+
             firestore.collection('users').doc(`${resp.user.uid}`)
                 .set({
                     firstName: data.firstName,
                     lastName: data.lastName,
-                    location: data.location
+                    location: data.location,
+                    picture: data.profileImg ? true : false
                 })
                 .catch(error => console.error(error))
             dispatch({

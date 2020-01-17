@@ -11,7 +11,13 @@ export const fetchFavorites = uid => dispatch => {
                 })
             }
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            dispatch({
+                type: 'FETCH_FAVORITES',
+                payload: null
+            })
+            console.error(error)
+        })
 }
 
 export const updateFavorites = (data, uid) => () => {
