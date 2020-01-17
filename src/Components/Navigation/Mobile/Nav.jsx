@@ -35,8 +35,10 @@ const Nav = () => {
                     {
                         authorized ? (
                             <div className="logged_in--mobile">
-                                <div className="profile_img">
-                                    { user.firstName.charAt(0) }
+                                <div className="profile_img"
+                                    style={{ backgroundImage: `url(${user.profileImg})` }}
+                                >
+                                    { !user.profileImg ? user.firstName.charAt(0) : '' }
                                 </div>
                                 <p className="user_name">
                                     { `${user.firstName} ${user.lastName}` }

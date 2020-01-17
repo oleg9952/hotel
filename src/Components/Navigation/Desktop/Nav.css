@@ -142,6 +142,9 @@
     animation: animateLogo 1s forwards;
     opacity: 0;
     animation-delay: 1s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }   
 
 .hover_holder {

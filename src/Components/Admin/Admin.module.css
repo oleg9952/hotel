@@ -147,6 +147,9 @@
     border-radius: 50%;
     border: 8px solid #fff;
     box-shadow: 0 0 3px rgba(0,0,0,0.12), 0 0 2px rgba(0,0,0,0.24);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .nav_header .user_name {

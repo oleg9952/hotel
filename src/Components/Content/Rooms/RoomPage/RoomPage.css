@@ -228,6 +228,16 @@
     position: absolute;
     top: 0;
     transform: translateY(-50%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 38px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .customer_review.auth-true .user_name {
@@ -235,6 +245,7 @@
     font-weight: bold;
     padding-left: 70px;
     margin-bottom: 15px;
+    text-transform: capitalize;
 }
 
 /************ LOGGED OUT ************/

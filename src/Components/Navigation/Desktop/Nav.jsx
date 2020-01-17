@@ -53,8 +53,10 @@ const Nav = () => {
                 {
                     authorized ? (
                         <div className="logged_in">
-                            <div className="profile_circle">
-                                { user.firstName.charAt(0) }
+                            <div className="profile_circle"
+                                style={{ backgroundImage: `url(${user.profileImg})` }}
+                            >
+                                { !user.profileImg ? user.firstName.charAt(0) : '' }
                                 <div className="hover_holder">
                                     <ul className="profile_options">
                                         <div className="options_triangle"></div>

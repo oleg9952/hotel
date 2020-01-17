@@ -38,7 +38,8 @@ const UserInfo = () => {
                     location,
                     email
                 },
-                uid: uid
+                uid: uid,
+                img: profileImg
             }
         ))
 

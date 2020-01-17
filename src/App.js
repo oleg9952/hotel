@@ -46,7 +46,7 @@ const App = () => {
           dispatch(fetchFavorites(user.uid))
         })
       } else {
-        console.log('logged out...')
+        console.log('logged out')
       }
     })
   }, [])

@@ -108,7 +108,7 @@ const Card = (props) => {
                 {
                     
 
-                    authorized ? favoritesCheck(id) ? (
+                    authorized ? favoritesCheck(id) || favoritesCheck(id) === undefined ? (
                         <div className="favorites">
                             <i className="far fa-heart" onClick={handleFavorites}></i>
                         </div>

@@ -271,7 +271,11 @@ const RoomPage = (props) => {
                             {
                                 authorized ? (
                                     <form className="customer_review auth-true" onSubmit={handleNewReview}>
-                                        <div className="profile_pic" />
+                                        <div className="profile_pic"
+                                            style={{ backgroundImage: `url(${user.profileImg})` }}
+                                        >
+                                            { !user.profileImg ? user.firstName.charAt(0) : '' }
+                                        </div>
                                         <p className="user_name">
                                             {`${user.firstName} ${user.lastName}` }
                                         </p>

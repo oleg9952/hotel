@@ -27,7 +27,19 @@ export const fetchUserAuthData = data => dispatch => {
                             payload: currentUser
                         })
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => {
+                        let currentUser = {
+                            ...resp.data(),
+                            uid: data.uid,
+                            email: data.email,
+                            profileImg: null
+                        }
+                        dispatch({
+                            type: 'SET_USER',
+                            payload: currentUser
+                        })
+                        console.error(error)
+                    })
             } else {
                 let currentUser = {
                     ...resp.data(),
@@ -53,34 +65,6 @@ export const setAuthError = arg => {
 
 //-------- SIGN UP --------
 
-// export const signUp = data => dispatch => {
-//     auth.createUserWithEmailAndPassword(data.email, data.password)
-//         .then(resp => {
-//             firestore.collection('users').doc(`${resp.user.uid}`)
-//                 .set({
-//                     firstName: data.firstName,
-//                     lastName: data.lastName,
-//                     location: data.location
-//                 })
-//                 .catch(error => console.error(error))
-//             dispatch({
-//                 type: 'FIRE_NOTIFICATION',
-//                 payload: 'signUp',
-//                 userEmail: resp.user.email
-//             })
-//         })
-//         .catch(error => {
-//             dispatch({
-//                 type: 'AUTH_ERRORS',
-//                 payload: error
-//             })
-//             dispatch({
-//                 type: 'FIRE_NOTIFICATION',
-//                 payload: 'signUp'
-//             })
-//         })
-// }
-
 export const signUp = data => dispatch => {
     auth.createUserWithEmailAndPassword(data.email, data.password)
         .then(resp => {
@@ -88,17 +72,28 @@ export const signUp = data => dispatch => {
             if(data.profileImg !== null) {
                 storage.ref().child(`profilePictures/${resp.user.uid}.jpg`)
                     .put(data.profileImg)
+                    .then(() => {
+                        firestore.collection('users').doc(`${resp.user.uid}`)
+                            .set({
+                                firstName: data.firstName,
+                                lastName: data.lastName,
+                                location: data.location,
+                                picture: data.profileImg ? true : false
+                            })
+                            .catch(error => console.error(error))
+                    })
+                    .catch(error => console.error(error))
+            } else {
+                firestore.collection('users').doc(`${resp.user.uid}`)
+                    .set({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        location: data.location,
+                        picture: data.profileImg ? true : false
+                    })
                     .catch(error => console.error(error))
             }
 
-            firestore.collection('users').doc(`${resp.user.uid}`)
-                .set({
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    location: data.location,
-                    picture: data.profileImg ? true : false
-                })
-                .catch(error => console.error(error))
             dispatch({
                 type: 'FIRE_NOTIFICATION',
                 payload: 'signUp',
@@ -172,7 +167,8 @@ export const updateCreds = creds => dispatch => {
     const update = {
         firstName: newDetails.firstName.length !== 0 ? newDetails.firstName : currentDetails.firstName,
         lastName: newDetails.lastName.length !== 0 ? newDetails.lastName : currentDetails.lastName,
-        location: newDetails.location.length !== 0 ? newDetails.location : currentDetails.location
+        location: newDetails.location.length !== 0 ? newDetails.location : currentDetails.location,
+        picture: creds.img ? true : false
     }
 
     firestore.collection('users').doc(`${creds.uid}`)
