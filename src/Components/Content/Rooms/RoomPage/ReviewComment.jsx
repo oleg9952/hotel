@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ReviewComment = (props) => {
-    const { date, name, message, registered } = props.review
+    const { date, name, message, registered, profileImg } = props.review
 
     const formatDate = date => {
         let d = new Date(date)
@@ -14,8 +14,10 @@ const ReviewComment = (props) => {
     return (
         <div className="feedback_card">
             <div className="card">
-                <div className="card_img">
-                    { !registered ? name.charAt(0).toUpperCase() : '' }
+                <div className="card_img"
+                    style={{ backgroundImage: `url(${profileImg})` }}
+                >
+                    { registered ? profileImg ? '' : name.charAt(0).toUpperCase() : name.charAt(0).toUpperCase() }
                 </div>
                 <p className="feedback_message">
                     { message }

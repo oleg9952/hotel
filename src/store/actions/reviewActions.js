@@ -6,19 +6,8 @@ export const fetchReviews = () => dispatch => {
         .get()
         .then(resp => {
             let reviews = []
-            resp.docs.forEach(doc => {
-                let review = {
-                    id: doc.data().id,
-                    date: doc.data().date,
-                    name: doc.data().name,
-                    message: doc.data().message,
-                    registered: doc.data().registered
-                }
-                reviews.push(review)
-            })
-
+            resp.docs.forEach(doc => reviews.push(doc.data()))
             let sorted = reviews.sort(compare)
-
             dispatch({
                 type: 'FETCH_REVIEWS',
                 payload: sorted

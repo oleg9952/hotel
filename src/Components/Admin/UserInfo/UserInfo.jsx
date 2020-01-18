@@ -30,7 +30,7 @@ const UserInfo = () => {
                     firstName: userFirstName.current.value,
                     lastName: userLastName.current.value,
                     location: userLocation.current.value,
-                    newEmail: userEmail.current.value  
+                    newEmail: userEmail.current.value
                 },
                 currentCreds: {
                     firstName,

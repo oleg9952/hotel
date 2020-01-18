@@ -12,46 +12,15 @@ export const fetchUserAuthData = data => dispatch => {
     firestore.collection('users').doc(`${data.uid}`)
         .get()
         .then(resp => {
-            if(resp.data().picture) {
-                storage.ref().child(`profilePictures/${data.uid}.jpg`)
-                    .getDownloadURL()
-                    .then(url => {
-                        let currentUser = {
-                            ...resp.data(),
-                            uid: data.uid,
-                            email: data.email,
-                            profileImg: url
-                        }
-                        dispatch({
-                            type: 'SET_USER',
-                            payload: currentUser
-                        })
-                    })
-                    .catch(error => {
-                        let currentUser = {
-                            ...resp.data(),
-                            uid: data.uid,
-                            email: data.email,
-                            profileImg: null
-                        }
-                        dispatch({
-                            type: 'SET_USER',
-                            payload: currentUser
-                        })
-                        console.error(error)
-                    })
-            } else {
-                let currentUser = {
-                    ...resp.data(),
-                    uid: data.uid,
-                    email: data.email,
-                    profileImg: null
-                }
-                dispatch({
-                    type: 'SET_USER',
-                    payload: currentUser
-                })
+            let currentUser = {
+                ...resp.data(),
+                uid: data.uid,
+                email: data.email,
             }
+            dispatch({
+                type: 'SET_USER',
+                payload: currentUser
+            })
         })
         .catch(error => console.error(error))
 }
@@ -68,19 +37,33 @@ export const setAuthError = arg => {
 export const signUp = data => dispatch => {
     auth.createUserWithEmailAndPassword(data.email, data.password)
         .then(resp => {
-            //----- UPLOAD IMG -----
             if(data.profileImg !== null) {
                 storage.ref().child(`profilePictures/${resp.user.uid}.jpg`)
                     .put(data.profileImg)
                     .then(() => {
-                        firestore.collection('users').doc(`${resp.user.uid}`)
-                            .set({
-                                firstName: data.firstName,
-                                lastName: data.lastName,
-                                location: data.location,
-                                picture: data.profileImg ? true : false
+                        storage.ref().child(`profilePictures/${resp.user.uid}.jpg`)
+                            .getDownloadURL()
+                            .then(url => {
+                                firestore.collection('users').doc(`${resp.user.uid}`)
+                                    .set({
+                                        firstName: data.firstName,
+                                        lastName: data.lastName,
+                                        location: data.location,
+                                        profileImg: url
+                                    })
+                                    .catch(error => console.error(error))
                             })
-                            .catch(error => console.error(error))
+                            .catch(error => {
+                                console.error(error)
+                                firestore.collection('users').doc(`${resp.user.uid}`)
+                                    .set({
+                                        firstName: data.firstName,
+                                        lastName: data.lastName,
+                                        location: data.location,
+                                        profileImg: null
+                                    })
+                                    .catch(error => console.error(error))
+                            })
                     })
                     .catch(error => console.error(error))
             } else {
@@ -89,7 +72,7 @@ export const signUp = data => dispatch => {
                         firstName: data.firstName,
                         lastName: data.lastName,
                         location: data.location,
-                        picture: data.profileImg ? true : false
+                        profileImg: null
                     })
                     .catch(error => console.error(error))
             }
@@ -168,7 +151,7 @@ export const updateCreds = creds => dispatch => {
         firstName: newDetails.firstName.length !== 0 ? newDetails.firstName : currentDetails.firstName,
         lastName: newDetails.lastName.length !== 0 ? newDetails.lastName : currentDetails.lastName,
         location: newDetails.location.length !== 0 ? newDetails.location : currentDetails.location,
-        picture: creds.img ? true : false
+        profileImg: !creds.profileImg ? creds.img : null
     }
 
     firestore.collection('users').doc(`${creds.uid}`)

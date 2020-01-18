@@ -38,7 +38,7 @@ const Nav = () => {
                                 <div className="profile_img"
                                     style={{ backgroundImage: `url(${user.profileImg})` }}
                                 >
-                                    { !user.profileImg ? user.firstName.charAt(0) : '' }
+                                    { !user.profileImg && user.profileImg !== undefined ? user.firstName.charAt(0) : '' }
                                 </div>
                                 <p className="user_name">
                                     { `${user.firstName} ${user.lastName}` }

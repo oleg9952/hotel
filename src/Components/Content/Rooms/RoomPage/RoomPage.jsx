@@ -154,13 +154,15 @@ const RoomPage = (props) => {
         if(authorized) {
             dispatch(addReview({
                 ...newReview,
-                name: `${user.firstName} ${user.lastName}`
+                name: `${user.firstName} ${user.lastName}`,
+                profileImg: user.profileImg ? user.profileImg : null
             }))
             inputs[inputs.length - 1].current.value = null
         } else {
             dispatch(addReview({
                 ...newReview,
-                name: `${firstName.current.value} ${lastName.current.value}`
+                name: `${firstName.current.value} ${lastName.current.value}`,
+                profileImg: null
             }))
             inputs.forEach(input => input.current.value = null)
         }
