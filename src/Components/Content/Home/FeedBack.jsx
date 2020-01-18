@@ -76,9 +76,11 @@ class FeedBack extends Component {
                                 { this.recentReviews().map(review => (
                                     <div className="feedback_card" key={review.id}>
                                         <div className="card">
-                                            <div className="card_img">
+                                            <div className="card_img"
+                                                style={{ backgroundImage: `url(${review.profileImg})` }}
+                                            >
                                                 {
-                                                    review.name.charAt(0)
+                                                    !review.profileImg ? review.name.charAt(0) : ''
                                                 }
                                             </div>
                                             <p className="feedback_message">

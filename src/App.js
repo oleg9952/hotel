@@ -7,6 +7,7 @@ import { fetchReviews } from './store/actions/reviewActions'
 import { fetchUserAuthData } from './store/actions/authActions'
 import { fetchBookingHistory } from './store/actions/bookingActions'
 import { fetchFavorites } from './store/actions/favoritesActions'
+import { resetFavorites } from './store/actions/favoritesActions'
 import './App.css'
 import Header from './Components/Header/Header'
 import Content from './Components/Content/Content'
@@ -46,6 +47,7 @@ const App = () => {
           dispatch(fetchFavorites(user.uid))
         })
       } else {
+        dispatch(resetFavorites())
         console.log('logged out')
       }
     })

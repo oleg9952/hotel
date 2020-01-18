@@ -32,10 +32,11 @@ const Nav = () => {
                     <li className="nav_item">
                         <Link to="/rooms">Rooms</Link>
                         <ul className="room_class">
-                            <li className="class_item">VIP</li>
-                            <li className="class_item">Bussines</li>
-                            <li className="class_item">Standard</li>
-                            <li className="class_item">Economy</li>
+                            <li className="class_item">Single</li>
+                            <li className="class_item">Double</li>
+                            <li className="class_item">Triple</li>
+                            <li className="class_item">Quad</li>
+                            <li className="class_item">Queen</li>
                         </ul>
                     </li>
                     <span className="divider-two">|</span>

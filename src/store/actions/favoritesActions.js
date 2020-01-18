@@ -25,3 +25,9 @@ export const updateFavorites = (data, uid) => () => {
         .set(data)
         .catch(error => console.error(error))
 }
+
+export const resetFavorites = () => {
+    return {
+        type: 'RESET_FAVORITES'
+    }
+}

@@ -8,6 +8,10 @@ export default (state = initState, action) => {
             return {
                 favorites: action.payload
             }
+        case 'RESET_FAVORITES':
+            return {
+                favorites: null
+            }
         default:
             return state
     }

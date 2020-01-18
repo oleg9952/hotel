@@ -157,6 +157,7 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 5px;
+    text-transform: capitalize;
 }
 
 .nav_header .user_email {

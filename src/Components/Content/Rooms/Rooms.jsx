@@ -20,35 +20,41 @@ const Rooms = () => {
     // ------- FILTERING -------
     const [ data, setData ] = useState(null)
     const [ filtered, setFiltered ] = useState(false)
+    const [ currentFilter, setCurrentFilter ] = useState(null)
 
     const handleFiltering = e => {
         let target = e.target.innerText
         let store = []
         if(target === 'Single') {
+            setCurrentFilter(target)
             rooms.filter(room => {
                 if(room.type === 'Single') {
                     store.push(room)
                 }
             })
         } else if(target === 'Double') {
+            setCurrentFilter(target)
             rooms.filter(room => {
                 if(room.type === 'Double') {
                     store.push(room)
                 }
             })
         } else if(target === 'Triple') {
+            setCurrentFilter(target)
             rooms.filter(room => {
                 if(room.type === 'Triple') {
                     store.push(room)
                 }
             })
         } else if(target === 'Quad') {
+            setCurrentFilter(target)
             rooms.filter(room => {
                 if(room.type === 'Quad') {
                     store.push(room)
                 }
             })
         } else if(target === 'Queen') {
+            setCurrentFilter(target)
             rooms.filter(room => {
                 if(room.type === 'Queen') {
                     store.push(room)
@@ -66,6 +72,7 @@ const Rooms = () => {
     const resetFilter = () => {
         setFiltered(false)
         setData(null)
+        setCurrentFilter(null)
     }
 
     const toggleData = (root, filtered) => {
@@ -113,6 +120,7 @@ const Rooms = () => {
                         handleFiltering={handleFiltering}
                         resetFilter={resetFilter}
                         getNumberOfFiltered={getNumberOfFiltered}
+                        currentFilter={currentFilter}
                     />
                 </div>
                 <div className="rooms_column">

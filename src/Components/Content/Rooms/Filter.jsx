@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleSearch } from '../../../store/actions/searchActions'
 
-const Filter = ({toggleFilters, handleFiltering, resetFilter, getNumberOfFiltered}) => {
+const Filter = ({
+    toggleFilters, 
+    handleFiltering, 
+    resetFilter, 
+    getNumberOfFiltered, 
+    currentFilter
+}) => {
     const dispatch = useDispatch()
     const [ collections, setCollections ] = useState(true)
     
@@ -29,42 +35,42 @@ const Filter = ({toggleFilters, handleFiltering, resetFilter, getNumberOfFiltere
                         <div className={`accordion_arrow ${!collections ? 'active' : ''}`}></div>
                     </div>
                     <ul className="section_options">
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Single' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Single</span> ({ getNumberOfFiltered('Single') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Double' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Double</span> ({ getNumberOfFiltered('Double') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Triple' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Triple</span> ({ getNumberOfFiltered('Triple') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Quad' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Quad</span> ({ getNumberOfFiltered('Quad') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Queen' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Queen</span> ({ getNumberOfFiltered('Queen') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'King' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >King</span> ({ getNumberOfFiltered('King') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Twin' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Twin</span> ({ getNumberOfFiltered('Twin') })
                         </li>
-                        <li className="option_item">
+                        <li className={`option_item ${ currentFilter === 'Studio' ? 'selected' : '' }`}>
                             <span
                                 onClick={handleFiltering}
                             >Studio</span> ({ getNumberOfFiltered('Studio') })

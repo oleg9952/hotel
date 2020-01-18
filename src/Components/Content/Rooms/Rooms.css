@@ -131,6 +131,10 @@
     cursor: pointer;
 }
 
+.section_options .option_item.selected {
+    font-weight: bold;
+}
+
 .section_options .option_item:hover {
     color: orange;
 }

@@ -90,11 +90,13 @@
 }
 
 .nav_items .nav_item:nth-child(3):hover > .room_class {
-    height: 160px;
+    height: 212px;
+    padding-top: 8px;
 }
 
 .nav_items .room_class {
     position: absolute;
+    padding-top: 0px;
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 15px -5px #333 ;
     /* top: 70px; */
@@ -145,6 +147,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    text-transform: capitalize;
 }   
 
 .hover_holder {
