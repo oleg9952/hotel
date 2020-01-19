@@ -27,7 +27,7 @@
 }
 
 .table a {
-    color: #218eff;
+    color: #00c8ff;
     font-weight: bold;
     text-decoration: none;
 }
@@ -161,6 +161,11 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.booking_item .item_title a {
+    text-decoration: none;
+    color: #000;
 }
 
 .item_details .order_info {

@@ -17,36 +17,36 @@ const Notification = () => {
         const error = (<i className="fas fa-exclamation-triangle"></i>)
 
         if(notifType === 'signIn' && authError === null) {
-            color = '#38c3ff'
+            color = '#00df52'
             message = `Welcome back ${userEmail}!`
             icon = check
         } else if(notifType === 'signUp' && authError === null) {
-            color = '#38c3ff'
+            color = '#00df52'
             message = `Thank you for joining us ${userEmail}!`
             icon = check
         } else if(notifType === 'signOut' && authError === null) {
-            color = '#15e1c2'
+            color = '#00e4bb'
             message = 'Goodbye!'
             icon = exit
         } else if(notifType === 'book' && authError === null) {
-            color = '#38c3ff'
+            color = '#00df52'
             message = 'Thank you for your reservation!'
             icon = check
         } else if(notifType === 'emptyField' && authError === null) {
-            color = '#15e1c2'
+            color = '#00c8ff'
             message = `Make sure you've filled in all the fields!`
             icon = 'i'
         } else if(notifType === 'noDates' && authError === null) {
-            color = '#15e1c2'
+            color = '#00c8ff'
             message = `You forgot to specify the dates of your residence!`
             icon = 'i'
         } else if(notifType === 'updateEmail' && authError === null) {
-            color = '#38c3ff'
+            color = '#00df52'
             message = `Your email has been updated. Refresh the page to see the changes.`
             icon = check
         } else if(notifType === 'passReset' && authError === null) {
-            color = '#15e1c2'
-            message = `Check you email to continue reseting your password!`
+            color = '#00c8ff'
+            message = `Check your email to continue reseting your password!`
             icon = 'i'
         } else if(notifType && authError) {
             color = 'red'

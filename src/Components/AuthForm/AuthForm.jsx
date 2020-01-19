@@ -2,13 +2,10 @@ import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleAuthForms, signUp, signIn, fireNotification, resetPassword } from '../../store/actions/authActions'
 import style from './Auth.module.css'
-import Spinner from '../Spinner/Spinner'
 
 const AuthForm = () => {
     const dispatch = useDispatch()
     const { authForms } = useSelector(state => state.authReducers)
-
-    // const [ useSpinner, setUseSpinner ] = useState(false)
 
     //----- FORM TOGGLERS -----
     const [ formToggle, setFormToggle ] = useState(true)

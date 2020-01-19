@@ -38,7 +38,7 @@
 .contact_form .contact_info {
     height: 350px;
     width: 290px;
-    background-color: #f74949;
+    background-color: #00c8ff;
     position: absolute;
     top: 50%;
     left: 0;
@@ -102,6 +102,16 @@
     padding: 0 20px;
     outline: none;
     font-size: 18px;
+    transition: .2s;
+}
+
+.contact_form .contact_input:focus {
+    background-color: #83e4ff;
+    color: #fff;
+}
+
+.contact_form .contact_input:focus::placeholder {
+    color: #fff;
 }
 
 .contact_form .contact_message {
@@ -115,7 +125,7 @@
     display: block;
     padding: 10px 40px;
     border: none;
-    background-color: #f74949;
+    background-color: #00c8ff;
     border-radius: 30px;
     outline: none;
     cursor: pointer;
@@ -123,6 +133,12 @@
     color: #fff;
     font-size: 15px;
     font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: .2s;
+}
+
+.contact_form .contact_send:hover {
+    background-color: #45d7ff;
 }
 
 /************** MEDIA AUERIES **************/

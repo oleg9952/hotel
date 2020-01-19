@@ -15,7 +15,7 @@ const Pagination = ({ currentPage, roomsPerPage, totalOfRooms, filtered }) => {
 
     const style = {
         fontWeight: 'bold',
-        color: 'orange'
+        color: '#00c8ff'
     }    
 
     const paginate = page => dispatch(switchPage(page))

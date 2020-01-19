@@ -38,10 +38,11 @@
     font-size: 18px;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: .2s;
 }
 
 .rooms .rooms_search:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 .rooms .rooms_column:nth-child(2) {
@@ -79,9 +80,11 @@
     outline: none;
     cursor: pointer;
     background: transparent;
+    transition: .2s;
 }
 .filters_header .filters_reset:hover {
     text-decoration: underline;
+    color: #00c8ff;
 }
 
 .filters_holder .section {
@@ -129,14 +132,16 @@
 .section_options .option_item {
     line-height: 35px;
     cursor: pointer;
+    transition: .2s;
 }
 
 .section_options .option_item.selected {
     font-weight: bold;
+    color: #00c8ff;
 }
 
 .section_options .option_item:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 /*********** SORT ***********/
@@ -168,12 +173,14 @@
 .sort_price .sort_option {
     font-size: 16px;
     cursor: pointer;
+    transition: .2s;
 }
 .sort_price .sort_option.active {
     font-weight: bold;
+    color: #00c8ff;
 }
 .sort_price .sort_option:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 .rooms_sort .sort_relevance {
@@ -189,14 +196,16 @@
     height: 20px;
     width: 120px;
     position: relative;
+    color: #000;
 }
 
 .relevance_options p {
     margin-right: 10px;
     cursor: pointer;
+    transition: .2s;
 }
 .relevance_options p:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 .relevance_options .relevance_arrow {
@@ -248,9 +257,10 @@
 .options_block .item {
     line-height: 35px;
     cursor: pointer;
+    transition: .2s;
 }
 .options_block .item:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 /*********** CARD ***********/
@@ -337,21 +347,33 @@
     font-weight: bold;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     z-index: 1;
+    color: #000;
+    transition: .2s;
+}
+
+.card_img .card_info:hover {
+    background-color: #00c8ff;
+    color: #fff;
 }
 
 .card_info > div {
     width: 15px;
     height: 2px;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #000;
     position: absolute;
     top: 50%;
     left: 50%;
+    transition: .2s;
 }
 .card_info > div:nth-child(1) {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 .card_info > div:nth-child(2) {
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.card_img .card_info:hover > div {
+    background-color: #fff;
 }
 
 .card_img .card_select {
@@ -364,15 +386,17 @@
     top: 8px;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: .2s;
 }
 
 .card_select > div {
     width: 15px;
     height: 3px;
-    background-color: #bc6666;
+    background-color: #000;
     position: absolute;
     top: 50%;
     left: 50%;
+    transition: .2s;
 }
 
 .card_select > div:nth-child(1) {
@@ -380,6 +404,14 @@
 }
 .card_select > div:nth-child(2) {
     transform: translate(-50%, -50%);
+}
+
+.card_select:hover {
+    background-color: #00c8ff;
+}
+
+.card_select:hover > div {
+    background-color: #fff;
 }
 
 .card_status {
@@ -484,11 +516,13 @@
     align-items: center;
     font-size: 28px;
     cursor: pointer;
+    color: #000;
+    transition: .2s;
 }
 
 .pagination .pagin_btn:hover,
 .pagination .pagin_numbers > p:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 .pagination .pagin_numbers {
@@ -499,7 +533,7 @@
 
 .pagin_numbers > p {
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .loader_holder {

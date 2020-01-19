@@ -69,10 +69,11 @@
 .search_colse > i {
     cursor: pointer;
     color: #000;
+    transition: .2s;
 }
 
 .search_colse > i:hover {
-    color: orange;
+    color: #00c8ff;
 }
 
 /********** SEARCH_RESULTS **********/

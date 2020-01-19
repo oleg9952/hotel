@@ -38,6 +38,16 @@
     color: #fff;
 }
 
+.signin_signup {
+    color: #00df52;
+}
+.signout {
+    color: #00e4bb;
+}
+.booking {
+    color: #00c8ff;
+}
+
 /******** ANIMATIONS ********/
 
 @keyframes animNotification {

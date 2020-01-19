@@ -148,7 +148,6 @@
 }
 
 .overview_item .room_img {
-    /* background-image: url(/Assets/RoomPage/room_10/1.jpg); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -184,10 +183,6 @@
     transform: translate(-50%, -50%);
 }
 
-/* .overview_item .room_rating {
-    border: 1px solid black;
-} */
-
 .overview_item .overview_check {
     font-size: 18px;
 }
@@ -208,7 +203,6 @@
 }
 
 .overview_item .item_column:nth-child(4) .price_holder {
-    /* border: 1px solid black; */
     width: 100px;
     text-align: center;
 }
@@ -234,7 +228,6 @@
 
 .cart_overview .final_holder {
     text-align: center;
-    /* border: 1px solid black; */
     height: 80px;
     display: flex;
     flex-direction: column;
