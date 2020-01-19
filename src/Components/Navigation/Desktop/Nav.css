@@ -1,4 +1,4 @@
-/*********** DESKTOP 1444 ***********/
+/*********** DESKTOP ***********/
 
 .header_nav {
     width: 100%;
@@ -59,6 +59,8 @@
     list-style: none;
     font-size: 24px;
     text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0 0 5px #333;
 }
 .nav_items a,
 .nav_items .nav_item {
@@ -70,8 +72,9 @@
     line-height: 80px;
 }
 
-.nav_items .nav_item:hover {
-    color: orange;
+.nav_items .nav_item:hover,
+.nav_items .nav_item a:hover {
+    color: #00c8ff;
     text-decoration: underline;
 }
 
@@ -157,7 +160,6 @@
 }   
 
 .hover_holder {
-    /* border: 3px solid red; */
     width: 60px;
     height: 80px;
     border-radius: 10px;
@@ -199,7 +201,6 @@
     top: 0;
     transform: translate(-50%, -45%) rotate(45deg);
     mix-blend-mode: screen;
-    /* box-shadow: 0 0 10px #222; */
 }
 
 .profile_options .options_item {
@@ -286,7 +287,6 @@
     .mobile_toggle {
         width: 40px;
         height: 30px;
-        /* background-color: #fff; */
         margin-left: auto;
         position: relative;
         cursor: pointer;

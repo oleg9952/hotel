@@ -75,9 +75,9 @@ const BookingModal = () => {
         }, 500)
     }
 
-    const calcServices = (...args) => {
+    const calcServices = (...services) => {
         let counter = 0
-        for(let i = 0; i < args.filter(Boolean).length; i++) {
+        for(let i = 0; i < services.filter(Boolean).length; i++) {
             counter += 10
         }
         return counter
@@ -146,7 +146,12 @@ const BookingModal = () => {
                                 <div className="services_options">
                                     <div className="service_item">
                                         <p className="service_name">Food</p>
-                                        <div className="service_select" onClick={addFood}>
+                                        <div className="service_select" onClick={addFood}
+                                            style={{
+                                                backgroundColor: food ? '#00c8ff' : '',
+                                                color: food ? '#fff' : ''
+                                            }}
+                                        >
                                             {
                                                 food ?
                                                 <i className="fas fa-clipboard-check"></i> :
@@ -156,7 +161,12 @@ const BookingModal = () => {
                                     </div>
                                     <div className="service_item">
                                         <p className="service_name">Pool</p>
-                                        <div className="service_select" onClick={addPool}>
+                                        <div className="service_select" onClick={addPool}
+                                            style={{
+                                                backgroundColor: pool ? '#00c8ff' : '',
+                                                color: pool ? '#fff' : ''
+                                            }}
+                                        >
                                             {
                                                 pool ?
                                                 <i className="fas fa-clipboard-check"></i> :
@@ -166,7 +176,12 @@ const BookingModal = () => {
                                     </div>
                                     <div className="service_item">
                                         <p className="service_name">Gym</p>
-                                        <div className="service_select" onClick={addGym}>
+                                        <div className="service_select" onClick={addGym}
+                                            style={{
+                                                backgroundColor: gym ? '#00c8ff' : '',
+                                                color: gym ? '#fff' : ''
+                                            }}
+                                        >
                                             {
                                                 gym ?
                                                 <i className="fas fa-clipboard-check"></i> :

@@ -20,13 +20,18 @@
 .booking_cart .cart_close {
     width: 30px;
     height: 30px;
-    /* border: 1px solid black; */
     position: absolute;
     top: 10px;
     right: 37px;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 8px -3px #333;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: .2s;
+}
+
+.booking_cart .cart_close:hover {
+    background-color: #fff;
 }
 
 .cart_close > div {
@@ -116,6 +121,11 @@
     min-height: 150px;
     display: grid;
     grid-template-columns: 200px 1fr 1fr 1fr;
+}
+
+.overview_item a {
+    text-decoration: none;
+    color: #000;
 }
 
 .cart_overview .overview_item:last-child {
@@ -211,7 +221,7 @@
 .price_holder p:nth-child(2) {
     font-size: 24px;
     font-weight: bold;
-    color: red;
+    color: #000;
 }
 
 .cart_overview .final {
@@ -241,7 +251,7 @@
 .final_holder p:last-child {
     font-size: 34px;
     font-weight: bold;
-    color: red;
+    color: #000;
 }
 
 .cart_overview .confirmation {
@@ -255,14 +265,21 @@
 .cart_confirmation .confirmation_btn {
     padding: 15px 20px;
     font-size: 18px;
-    background-color: #57b357;
+    background-color: #00c8ff;
     display: block;
     margin: 0 auto;
     color: #fff;
     border: none;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: .2s;
+}
+
+.cart_overview .confirmation_btn:hover,
+.cart_confirmation .confirmation_btn:hover {
+    background-color: #fff;
+    color: #00c8ff;
 }
 
 /************* CONFIRMATION *************/

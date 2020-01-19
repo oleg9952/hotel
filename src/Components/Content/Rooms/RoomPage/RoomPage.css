@@ -37,7 +37,7 @@
 
 .room_booking .room_title {
     font-size: 30px;
-    color: red;
+    color: #000;
 }
 
 .room_booking .room_calendar {
@@ -72,13 +72,13 @@
 }
 
 .room_guests .guests_number:focus {
-    border: 2px solid orange;
+    border: 2px solid #00c8ff;
 }
 
 .room_booking .room_price {
     font-size: 30px;
     font-weight: bold;
-    color: red;
+    color: #000;
 }
 
 .room_booking .book_btn {
@@ -99,7 +99,7 @@
 }
 
 .room_booking .book_btn:focus {
-    border: 2px solid orange;
+    border: 2px solid #00c8ff;
 }
 
 /************* BODY *************/
@@ -317,11 +317,13 @@
     outline: none;
     border: none;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .customer_review button:hover,
 .customer_review button:focus {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-color: #00c8ff;
+    color: #fff;
 }
 
 /************************/
@@ -378,7 +380,7 @@
 }
 
 .services_holder .services_close:hover {
-    background-color: #515151;
+    background-color: #00c8ff;
 }
 
 .services_close:hover > div {
@@ -450,9 +452,10 @@
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    color: red;
+    color: #000;
     padding-top: 10px;
     margin-bottom: 15px;
+    font-weight: bold;
 }
 
 .services_holder button {
@@ -469,7 +472,7 @@
 }
 
 .services_holder button:hover {
-    background-color: #515151;
+    background-color: #00c8ff;
     color: #fff;
 }
 

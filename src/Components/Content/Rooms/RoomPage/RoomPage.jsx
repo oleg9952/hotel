@@ -124,10 +124,12 @@ const RoomPage = (props) => {
         return status.indexOf(currentId) === -1
     }
 
-    let servicesTotal = 0
-
-    for(let i = 0; i < [food, pool, gym].filter(Boolean).length; i++) {
-        servicesTotal += 10
+    const calcServicesTotal = (...services) => {
+        let counter = 0
+        for(let i = 0; i < services.filter(Boolean).length; i++) {
+            counter += 10
+        }
+        return counter
     }
 
     //----- ADD REVIEW -----
@@ -320,7 +322,12 @@ const RoomPage = (props) => {
                     <h2 className="services_title">Services</h2>
                     <div className="services_item">
                         Food
-                        <div className="item_selector" onClick={addFood}>
+                        <div className="item_selector" onClick={addFood}
+                            style={{
+                                backgroundColor: food ? '#00c8ff' : '#fff',
+                                color: food ? '#fff' : '#000'
+                            }}
+                        >
                             {
                                 food ?
                                 <i className="fas fa-clipboard-check"></i> :
@@ -330,7 +337,12 @@ const RoomPage = (props) => {
                     </div>
                     <div className="services_item">
                         Pool
-                        <div className="item_selector" onClick={addPool}>
+                        <div className="item_selector" onClick={addPool}
+                            style={{
+                                backgroundColor: pool ? '#00c8ff' : '#fff',
+                                color: pool ? '#fff' : '#000'
+                            }}
+                        >
                             {
                                 pool ?
                                 <i className="fas fa-clipboard-check"></i> :
@@ -340,7 +352,12 @@ const RoomPage = (props) => {
                     </div>
                     <div className="services_item">
                         Gym
-                        <div className="item_selector" onClick={addGym}>
+                        <div className="item_selector" onClick={addGym}
+                            style={{
+                                backgroundColor: gym ? '#00c8ff' : '#fff',
+                                color: gym ? '#fff' : '#000'
+                            }}
+                        >
                             {
                                 gym ?
                                 <i className="fas fa-clipboard-check"></i> :
@@ -351,10 +368,10 @@ const RoomPage = (props) => {
                     <p className="total_price">
                         { 
                             rooms.length !== 0 ? 
-                            `$${(room().price * bookingDuration) + servicesTotal}` : ''
+                            `$${(room().price * bookingDuration) + calcServicesTotal(food, pool, gym)}` : ''
                         }
                     </p>
-                    <button type="submit">Confirm</button>
+                    <button type="submit" className="services_btn">Confirm</button>
                 </form>
             </div>          
         </div>
