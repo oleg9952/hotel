@@ -97,7 +97,6 @@
     left: 0;
     display: grid;
     grid-template-columns: 60% 1fr;
-    /* overflow-y: scroll; */
 }
 
 .booking_modal .body_column:nth-child(1) {
@@ -108,7 +107,6 @@
 
 .booking_modal .room_slider {
     max-width: 360px;
-    /* border: 1px solid black; */
 }
 
 .booking_modal .slick-dots {
@@ -139,8 +137,6 @@
     padding: 0px 10px 10px 10px;
     transform: translateX(0%);
     transition: .5s;
-    /* box-sizing: content-box;
-    padding-right: 17px; */
 }
 
 .booking_modal .booking_date.active {
@@ -156,7 +152,6 @@
 
 .booking_modal .booking_calendar {
     width: 100%;
-    /* height: 50%; */
     height: auto;
     padding-bottom: 10px;
     background-color: #fff;
@@ -307,7 +302,6 @@
     .booking_modal {
         width: 100%;
         height: 100%;
-        /* padding-bottom: 15px; */
         border-radius: 0;
     }
 
@@ -353,7 +347,3 @@
         margin-bottom: 20px;
     }
 }
-
-/* @media screen and (max-height: 850px) {
-
-} */

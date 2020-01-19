@@ -10,7 +10,7 @@
     overflow-y: scroll;
     transition: .5s;
     box-sizing: content-box;
-    padding: 40px 32px 40px 0px;
+    padding: 40px 25px 40px 0px;
 }
 
 .booking_cart.active {
@@ -100,13 +100,11 @@
 
 .booking_cart .cart_overview {
     max-width: 1200px;
-    /* border: 1px solid black; */
     margin: 0 auto 50px;
     border-radius: 5px;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    /* display: none; */
 }
 
 .cart_overview > h2 {
@@ -116,7 +114,6 @@
 }
 
 .cart_overview .overview_item {
-    /* border: 1px solid red; */
     border-bottom: 2px solid #ccc;
     min-height: 150px;
     display: grid;
@@ -131,10 +128,6 @@
 .cart_overview .overview_item:last-child {
     border: none;
 }
-
-/* .overview_item .item_column {
-    border: 1px solid black;
-} */
 
 .overview_item .item_column:nth-child(2) > *,
 .overview_item .item_column:nth-child(3) > *,
@@ -399,11 +392,11 @@
     }
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
     .booking_cart {
-        padding: 40px 0px;
+        padding: 40px 32px 40px 0px;
     }
-}
+} */
 
 @media screen and (max-width: 375px) {
     .booking_cart .cart_title {
