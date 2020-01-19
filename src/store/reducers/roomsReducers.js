@@ -7,7 +7,8 @@ const initState = {
     sortDescending: false,
     // ------- FILTERING -------
     data: null,
-    filtered: false
+    filtered: false,
+    currentFilter: null
 }
 
 const sortAscending = selector => {
@@ -73,32 +74,34 @@ export default (state = initState, action) => {
             }
         // ------- FILTERING -------
         case 'APPLY_FILTER':
+            console.log(action.payload)
             let store = []
-            if(action.payload === 'Single') {
+            let target = action.payload.toLowerCase()
+            if(target === 'single') {
                 state.rooms.filter(room => {
                     if(room.type === 'Single') {
                         store.push(room)
                     }
                 })
-            } else if(action.payload === 'Double') {
+            } else if(target === 'double') {
                 state.rooms.filter(room => {
                     if(room.type === 'Double') {
                         store.push(room)
                     }
                 })
-            } else if(action.payload === 'Triple') {
+            } else if(target === 'triple') {
                 state.rooms.filter(room => {
                     if(room.type === 'Triple') {
                         store.push(room)
                     }
                 })
-            } else if(action.payload === 'Quad') {
+            } else if(target === 'quad') {
                 state.rooms.filter(room => {
                     if(room.type === 'Quad') {
                         store.push(room)
                     }
                 })
-            } else if(action.payload === 'Queen') {
+            } else if(target === 'queen') {
                 state.rooms.filter(room => {
                     if(room.type === 'Queen') {
                         store.push(room)
@@ -108,7 +111,8 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 data: store,
-                filtered: true
+                filtered: true,
+                currentFilter: target
             }
         case 'RESET_FILTER':
             return {

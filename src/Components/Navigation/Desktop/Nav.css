@@ -114,6 +114,12 @@
     color: #fff;
     line-height: 30px;
 }
+.class_item a {
+    text-decoration: none;
+    color: #fff;
+    line-height: initial;
+}
+
 .room_class .class_item:hover {
     color: orange;
     text-decoration: underline;

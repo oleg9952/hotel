@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleMobileNav } from '../../../store/actions/navActions'
 import { toggleAdmin } from '../../../store/actions/adminActions'
 import { toggleAuthForms, signOut } from '../../../store/actions/authActions'
 import { resetHistory } from '../../../store/actions/bookingActions'
-import { Link } from 'react-router-dom'
+import { applyFilter } from '../../../store/actions/roomsActions'
 import './Nav.css'
 
 const Nav = () => {
+    const dispatch = useDispatch()
     const { intro, mobileNav } = useSelector(state => state.navReducers)
     const { authorized, user } = useSelector(state => state.authReducers)
-    const dispatch = useDispatch()
 
     const handleSignOut = () => {
         dispatch(signOut())
@@ -32,11 +33,41 @@ const Nav = () => {
                     <li className="nav_item">
                         <Link to="/rooms">Rooms</Link>
                         <ul className="room_class">
-                            <li className="class_item">Single</li>
-                            <li className="class_item">Double</li>
-                            <li className="class_item">Triple</li>
-                            <li className="class_item">Quad</li>
-                            <li className="class_item">Queen</li>
+                            <li className="class_item">
+                                <Link to="/rooms" 
+                                    onClick={e => dispatch(applyFilter(e.target.innerText))}
+                                >
+                                    Single
+                                </Link>
+                            </li>
+                            <li className="class_item">
+                                <Link to="/rooms" 
+                                    onClick={e => dispatch(applyFilter(e.target.innerText))}
+                                >
+                                    Double
+                                </Link>
+                            </li>
+                            <li className="class_item">
+                                <Link to="/rooms" 
+                                    onClick={e => dispatch(applyFilter(e.target.innerText))}
+                                >
+                                    Triple
+                                </Link>
+                            </li>
+                            <li className="class_item">
+                                <Link to="/rooms" 
+                                    onClick={e => dispatch(applyFilter(e.target.innerText))}
+                                >
+                                    Quad
+                                </Link>
+                            </li>
+                            <li className="class_item">
+                                <Link to="/rooms" 
+                                    onClick={e => dispatch(applyFilter(e.target.innerText))}
+                                >
+                                    Queen
+                                </Link>
+                            </li>
                         </ul>
                     </li>
                     <span className="divider-two">|</span>
