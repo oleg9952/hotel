@@ -4,7 +4,10 @@ const initState = {
     roomsPerPage: 9,
     // ------- SORTING -------
     sortAscending: false,
-    sortDescending: false
+    sortDescending: false,
+    // ------- FILTERING -------
+    data: null,
+    filtered: false
 }
 
 const sortAscending = selector => {
@@ -67,6 +70,52 @@ export default (state = initState, action) => {
                 sortAscending: false,
                 sortDescending: true,
                 rooms: state.rooms.sort(sortDescending('price'))
+            }
+        // ------- FILTERING -------
+        case 'APPLY_FILTER':
+            let store = []
+            if(action.payload === 'Single') {
+                state.rooms.filter(room => {
+                    if(room.type === 'Single') {
+                        store.push(room)
+                    }
+                })
+            } else if(action.payload === 'Double') {
+                state.rooms.filter(room => {
+                    if(room.type === 'Double') {
+                        store.push(room)
+                    }
+                })
+            } else if(action.payload === 'Triple') {
+                state.rooms.filter(room => {
+                    if(room.type === 'Triple') {
+                        store.push(room)
+                    }
+                })
+            } else if(action.payload === 'Quad') {
+                state.rooms.filter(room => {
+                    if(room.type === 'Quad') {
+                        store.push(room)
+                    }
+                })
+            } else if(action.payload === 'Queen') {
+                state.rooms.filter(room => {
+                    if(room.type === 'Queen') {
+                        store.push(room)
+                    }
+                })
+            }
+            return {
+                ...state,
+                data: store,
+                filtered: true
+            }
+        case 'RESET_FILTER':
+            return {
+                ...state,
+                data: null,
+                filtered: false,
+                currentFilter: null
             }
         default:
             return state

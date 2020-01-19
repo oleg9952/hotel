@@ -66,3 +66,17 @@ export const sortPriceDown = () => {
         type: 'PRICE_DESCENDING'
     }
 }
+
+// ------- FILTERING -------
+export const applyFilter = filterBy => {
+    return {
+        type: 'APPLY_FILTER',
+        payload: filterBy
+    }
+}
+
+export const resetFilter = () => {
+    return {
+        type: 'RESET_FILTER'
+    }
+}
