@@ -12,7 +12,7 @@ import BookingDetails from './History/BookingDetails'
 import Favorites from './Favorites/Favorites'
 
 const Admin = () => {
-    const { firstName, lastName, email, profileImg } = useSelector(state => state.authReducers.user)
+    const { firstName, lastName, profileImg } = useSelector(state => state.authReducers.user)
 
     const [ toggleNav, setToggleNav ] = useState(false)
     const dispatch = useDispatch()
@@ -72,9 +72,9 @@ const Admin = () => {
                         <p className={style.user_name}>
                             { `${firstName} ${lastName}` }
                         </p>
-                        <p className={style.user_email}>
+                        {/* <p className={style.user_email}>
                             { email }
-                        </p>
+                        </p> */}
                     </div>
                     {/* ------- USER NAV ------- */}
                     <ul className={style.nav_holder}>

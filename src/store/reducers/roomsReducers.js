@@ -74,7 +74,6 @@ export default (state = initState, action) => {
             }
         // ------- FILTERING -------
         case 'APPLY_FILTER':
-            console.log(action.payload)
             let store = []
             let target = action.payload.toLowerCase()
             if(target === 'single') {

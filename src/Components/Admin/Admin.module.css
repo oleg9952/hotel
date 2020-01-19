@@ -32,10 +32,6 @@
     padding: 0 15px;
 }
 
-/* .admin_header > div {
-    border: 1px solid black;
-} */
-
 /*----- NAV_BTN_TOGGLE -----*/
 
 .admin_header .nav_toggle {
@@ -55,7 +51,6 @@
     left: 50%;
     transition: .5s;
 }
-
 
 .nav_toggle > div:nth-child(1) {
     top: 0%;
@@ -134,10 +129,10 @@
 }
 
 .nav_header {
-    /* border: 1px solid black; */
     min-height: 50px;
     padding-top: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .nav_header .profile_img {
@@ -160,15 +155,15 @@
     text-transform: capitalize;
 }
 
-.nav_header .user_email {
+/* .nav_header .user_email {
     font-size: 14px;
     text-align: center;
-}
+    width: 200px;
+    background-color: orange;
+} */
 
 .nav .nav_holder {
-    /* border: 1px solid black; */
     list-style: none;
-    /* padding: 10px; */
     padding-left: 10px;
 }
 
@@ -181,7 +176,6 @@
     display: grid;
     grid-template-columns: 30px 1fr;
     align-items: center;
-    /* border: 1px solid black; */
     height: 40px;
     font-size: 18px;
 }
@@ -192,8 +186,6 @@
 .nav_holder li a {
     text-decoration: none;
     color: #000;
-    
-    /* line-height: 40px; */
 }
 
 /********* CONTENT *********/
@@ -202,7 +194,6 @@
     height: calc(100vh - 60px);
     width: calc(100vw - 170px);
     overflow-y: scroll;
-    /* border: 4px solid red; */
     transition: .5s;
     padding: 15px;
     box-sizing: content-box;
