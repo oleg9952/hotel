@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleCart, confirmBooking } from '../../../store/actions/bookingActions'
+import { toggleCart, confirmBooking, resetCart } from '../../../store/actions/bookingActions'
 import { fireNotification } from '../../../store/actions/authActions'
 import OverviewItem from './OverviewItem'
 import './BookingCart.css'
@@ -50,8 +50,21 @@ const BookingCart = (props) => {
             dispatch(confirmBooking(booking, cart))
             dispatch(fireNotification('book'))
         } else {
-            alert('Sign in to be able to book rooms!')
-            inputs.forEach(input => input.current.value = null)
+            if(
+                firstName.current.value.length !== 0 &&
+                lastName.current.value.length !== 0 &&
+                email.current.value.length !== 0 &&
+                country.current.value.length !== 0 &&
+                phoneNumber.current.value.length !== 0 &&
+                zipCode.current.value.length !== 0
+            ) {
+                dispatch(fireNotification('bookUnothorized'))
+                dispatch(resetCart())
+                inputs.forEach(input => input.current.value = null)
+
+            } else {
+                dispatch(fireNotification('emptyField'))
+            }
         }
     }
 

@@ -7,14 +7,17 @@
     z-index: 3;
     overflow-y: scroll;
     background-color: #fff;
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
     visibility: hidden;
+    -webkit-transition: .5s;
     transition: .5s;
 }
 
 .mobile_nav.active {
     visibility: visible;
-    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
 }
 
 .nav_holder {
@@ -28,13 +31,17 @@
     top: 0;
     left: 0;
     position: absolute;
-    background: 
+    /* background: 
         radial-gradient(ellipse at top, #42dcff, transparent),
         radial-gradient(ellipse at bottom, #ff911b, transparent);
-    animation: animateGradient 5s linear infinite;
+    animation: animateGradient 5s linear infinite; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/Assets/MobileNav/mobile_bg.jpg);
     z-index: 1;
+    filter: brightness(.7);
 }
-
 
 
 .mobile_nav .nav_header,
@@ -75,9 +82,12 @@
     background-color: #5b5b5b;
     cursor: pointer;
     box-shadow: 0px 6px 25px -8px rgba(0,0,0,0.5);
+    display: -webkit-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
     color: #fff;
     font-size: 38px;
     font-weight: bold;
@@ -143,14 +153,32 @@
     }
 }
 
-@keyframes animateGradient {
+@-webkit-keyframes animateGradient {
     0% {
-        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
     }
     50% {
-        filter: hue-rotate(360deg);
+        -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
     }
     100% {
-        filter: hue-rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes animateGradient {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
+    }
+    50% {
+        -webkit-filter: hue-rotate(360deg);
+                filter: hue-rotate(360deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+                filter: hue-rotate(0deg);
     }
 }

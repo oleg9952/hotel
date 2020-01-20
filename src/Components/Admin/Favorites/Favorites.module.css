@@ -71,7 +71,7 @@
 
 .card .card_title {
     text-align: center;
-    background-color: rgba(0, 0, 0, .5);
+    background: linear-gradient(0deg,rgba(0, 0, 0, .7), transparent);
     color: #fff;
     line-height: 50px;
     font-size: 18px;

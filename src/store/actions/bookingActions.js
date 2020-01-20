@@ -112,3 +112,9 @@ export const resetHistory = () => {
         type: 'RESET_HISTORY'
     }
 }
+
+export const resetCart = () => {
+    return {
+        type: 'RESET_CART'
+    }
+}

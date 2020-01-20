@@ -32,6 +32,10 @@ const Notification = () => {
             color = '#00df52'
             message = 'Thank you for your reservation!'
             icon = check
+        } else if(notifType === 'bookUnothorized' && authError === null) {
+            color = '#00df52'
+            message = 'Thank you for your reservation. We\'ll get in touch with you as soon as possible to confirm your booking.'
+            icon = check
         } else if(notifType === 'emptyField' && authError === null) {
             color = '#00c8ff'
             message = `Make sure you've filled in all the fields!`
